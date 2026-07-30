@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 84" role="img" aria-labelledby="title">
+  <title id="title">Hola Credit reversed</title>
+  <g transform="translate(0 10)">
+    <path fill="#16B8A6" d="M8 8h30v14c0 8-6 14-14 14H8V8Zm80 0H58v14c0 8 6 14 14 14h16V8Z"/>
+    <path fill="#FFFFFF" d="M8 56h30V42c0-8-6-14-14-14H8v28Zm80 0H58V42c0-8 6-14 14-14h16v28Z"/>
+  </g>
+  <text x="112" y="57" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" font-size="44" font-weight="550" letter-spacing="-1.8">hola credit</text>
+</svg>

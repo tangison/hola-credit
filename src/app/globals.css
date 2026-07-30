@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  /* Hola Credit brand tokens */
+  --color-ink: #111512;
+  --color-sand: #F3EFE4;
+  --color-mineral-teal: #16B8A6;
+  --color-stone: #A8AAA3;
+  --color-white: #FFFFFF;
+  --color-alert: #B9382E;
+  --color-warning: #A46300;
+  --color-success: #197A55;
+
+  /* Extended palette */
+  --color-sand-50: #FDFCFA;
+  --color-sand-100: #F9F7F2;
+  --color-sand-200: #F3EFE4;
+  --color-sand-300: #E8E3D5;
+  --color-sand-400: #D4CFC0;
+  --color-ink-50: #2A2C2E;
+  --color-ink-100: #1F2123;
+  --color-ink-900: #111512;
+  --color-teal-50: #E6F9F7;
+  --color-teal-100: #B3EDE6;
+  --color-teal-200: #80E1D5;
+  --color-teal-300: #4DD5C4;
+  --color-teal-400: #16B8A6;
+  --color-teal-500: #0E8A7D;
+  --color-teal-600: #075C54;
+
+  /* Typography */
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+
+  /* Motion tokens */
+  --duration-ui: 160ms;
+  --duration-drawer: 280ms;
+  --duration-hero: 520ms;
+  --ease-entrance: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-state: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-sand);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-teal-50);
+    color: var(--color-ink);
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid var(--color-mineral-teal);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Font imports */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/manrope/v15/xn7_YHE41ni1AdIRqAuZuw1Bx98mbGM.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/sourceserif4/v8/vEFy2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHt6Oj0.woff2") format("woff2");
+}

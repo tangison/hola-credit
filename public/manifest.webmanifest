@@ -1,0 +1,23 @@
+{
+  "name": "Hola Credit",
+  "short_name": "Hola Credit",
+  "description": "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F3EFE4",
+  "theme_color": "#16B8A6",
+  "icons": [
+    {
+      "src": "/logos/hola-credit-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/logos/hola-credit-symbol.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

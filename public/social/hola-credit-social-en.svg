@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
+  <title id="title">Hola Credit English social media post</title>
+  <desc id="desc">See the income a payslip misses.</desc>
+  <defs><clipPath id="photo"><path d="M0 0h1080v610H0z"/></clipPath><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#111512" stop-opacity="0"/><stop offset="1" stop-color="#111512" stop-opacity=".9"/></linearGradient></defs>
+  <rect width="1080" height="1350" fill="#F3EFE4"/>
+  <image href="../images/freelance-professional-studio-master.png" width="1080" height="720" preserveAspectRatio="xMidYMid slice" clip-path="url(#photo)"/>
+  <rect width="1080" height="610" fill="url(#fade)"/>
+  <g transform="translate(72 72) scale(.72)"><path fill="#16B8A6" d="M8 8h30v14c0 8-6 14-14 14H8V8Zm80 0H58v14c0 8 6 14 14 14h16V8Z"/><path fill="#F3EFE4" d="M8 56h30V42c0-8-6-14-14-14H8v28Zm80 0H58V42c0-8 6-14 14-14h16v28Z"/></g>
+  <text x="156" y="114" fill="#F3EFE4" font-family="DejaVu Sans, sans-serif" font-size="38" font-weight="600">hola credit</text>
+  <text x="72" y="728" fill="#111512" font-family="DejaVu Sans, sans-serif" font-size="82" font-weight="700" letter-spacing="-3"><tspan x="72">See the income a</tspan><tspan x="72" dy="92">payslip misses.</tspan></text>
+  <text x="72" y="920" fill="#39403B" font-family="DejaVu Sans, sans-serif" font-size="31"><tspan x="72">Understand real cash flow from a</tspan><tspan x="72" dy="46">borrower-authorised three-month</tspan><tspan x="72" dy="46">bank statement.</tspan></text>
+  <rect x="72" y="1070" width="422" height="82" rx="8" fill="#16B8A6"/>
+  <text x="283" y="1123" text-anchor="middle" fill="#111512" font-family="DejaVu Sans, sans-serif" font-size="28" font-weight="700">Request pilot access</text>
+  <text x="72" y="1242" fill="#111512" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="600">hola@tangison.com</text>
+  <text x="1008" y="1242" text-anchor="end" fill="#656B66" font-family="DejaVu Sans, sans-serif" font-size="23">A product by Tangison Technologies</text>
+  <text x="72" y="1280" fill="#656B66" font-family="DejaVu Sans, sans-serif" font-size="21">hola.tangison.com</text>
+  <rect x="72" y="1288" width="936" height="2" fill="#C9C7BF"/>
+</svg>
