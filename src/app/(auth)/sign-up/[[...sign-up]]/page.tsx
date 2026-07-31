@@ -4,7 +4,7 @@ import { WaitingListForm } from "@/components/shared/waiting-list-form";
 import Link from "next/link";
 import { AuthLogo } from "@/components/shared/auth-logo";
 
-export default function WaitlistPage() {
+export default function SignUpPage() {
   return (
     <div className="w-full max-w-md mx-auto p-6">
       <div className="text-center mb-8">

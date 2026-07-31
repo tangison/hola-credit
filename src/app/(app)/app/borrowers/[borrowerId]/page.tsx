@@ -1,47 +1,37 @@
+"use client";
+
 import Link from "next/link";
+import {
+  demoBorrowers,
+  demoApplications,
+  demoConsents,
+  applicationStatusConfig,
+  consentStatusConfig,
+  formatNADShort,
+} from "@/lib/demo-data";
 
-interface BorrowerApplication {
-  id: string;
-  reference: string;
-  status: string;
-  date: string;
-}
+export default function BorrowerDetailPage({ params }: { params: Promise<{ borrowerId: string }> }) {
+  // For demo, resolve from URL path
+  const borrowerId = typeof window !== "undefined"
+    ? window.location.pathname.split("/").pop() ?? ""
+    : "";
 
-interface ConsentRecord {
-  id: string;
-  purpose: string;
-  status: "active" | "expired" | "withdrawn";
-  capturedDate: string;
-  expiryDate: string;
-}
+  const borrower = demoBorrowers.find((b) => b.id === borrowerId) ?? demoBorrowers[0];
+  const applications = demoApplications.filter((a) => a.borrowerId === borrower.id);
+  const consents = demoConsents.filter((c) => c.borrowerId === borrower.id);
 
-// Demo borrower data
-const borrower = {
-  id: "bor_demo_001",
-  displayName: "Maria K.",
-  localReference: "BRW-00142",
-  createdAt: "2024-01-15",
-  applications: [] as BorrowerApplication[],
-  consents: [] as ConsentRecord[],
-};
+  // Calculate assessment summary
+  const completedApps = applications.filter((a) => a.assessment);
+  const avgScore = completedApps.length > 0
+    ? Math.round(completedApps.reduce((sum, a) => sum + (a.assessment?.score ?? 0), 0) / completedApps.length)
+    : null;
+  const avgIncomeFloor = completedApps.length > 0
+    ? Math.round(completedApps.reduce((sum, a) => sum + (a.assessment?.incomeFloorMinor ?? 0), 0) / completedApps.length)
+    : null;
+  const avgConsistency = completedApps.length > 0
+    ? Math.round(completedApps.reduce((sum, a) => sum + (a.assessment?.consistency ?? 0), 0) / completedApps.length * 100)
+    : null;
 
-const statusConfig: Record<string, { label: string; className: string; dotClassName: string }> = {
-  draft: { label: "Draft", className: "bg-sand-100 text-ink/60", dotClassName: "bg-ink/40" },
-  submitted: { label: "Submitted", className: "bg-teal-50 text-teal-500", dotClassName: "bg-teal-400" },
-  processing: { label: "Processing", className: "bg-teal-50 text-teal-500", dotClassName: "bg-teal-400" },
-  needs_review: { label: "Needs review", className: "bg-amber-50 text-warning", dotClassName: "bg-warning" },
-  ready: { label: "Ready", className: "bg-emerald-50 text-success", dotClassName: "bg-success" },
-  completed: { label: "Completed", className: "bg-sand-100 text-ink/60", dotClassName: "bg-ink/40" },
-  withdrawn: { label: "Withdrawn", className: "bg-sand-100 text-ink/40", dotClassName: "bg-ink/30" },
-};
-
-const consentStatusConfig: Record<string, { label: string; className: string }> = {
-  active: { label: "Active", className: "bg-emerald-50 text-success" },
-  expired: { label: "Expired", className: "bg-sand-100 text-ink/50" },
-  withdrawn: { label: "Withdrawn", className: "bg-red-50 text-alert" },
-};
-
-export default function BorrowerDetailPage() {
   return (
     <div className="space-y-6">
       {/* Breadcrumb */}
@@ -58,7 +48,12 @@ export default function BorrowerDetailPage() {
             {borrower.displayName.charAt(0)}
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-ink">{borrower.displayName}</h1>
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl font-bold text-ink">{borrower.displayName}</h1>
+              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-teal-50 text-teal-500 border border-teal-200">
+                Demo
+              </span>
+            </div>
             <p className="text-sm text-ink/60">Reference: {borrower.localReference} &middot; Added {borrower.createdAt}</p>
           </div>
         </div>
@@ -77,7 +72,7 @@ export default function BorrowerDetailPage() {
           {/* Associated applications */}
           <section className="bg-white border border-sand-300 rounded-lg p-6">
             <h2 className="text-lg font-semibold text-ink mb-4">Applications</h2>
-            {borrower.applications.length === 0 ? (
+            {applications.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-sm text-ink/50">No applications for this borrower yet.</p>
                 <Link
@@ -90,13 +85,13 @@ export default function BorrowerDetailPage() {
               </div>
             ) : (
               <div className="divide-y divide-sand-300">
-                {borrower.applications.map((app) => {
-                  const config = statusConfig[app.status] || statusConfig.draft;
+                {applications.map((app) => {
+                  const config = applicationStatusConfig[app.status];
                   return (
                     <Link key={app.id} href={`/app/applications/${app.id}`} className="flex items-center justify-between py-3 first:pt-0 last:pb-0 hover:bg-sand-50 -mx-2 px-2 rounded transition-colors duration-ui">
                       <div>
                         <p className="text-sm font-medium text-teal-500">{app.reference}</p>
-                        <p className="text-xs text-ink/50">{app.date}</p>
+                        <p className="text-xs text-ink/50">{app.productType} &middot; {app.createdAt}</p>
                       </div>
                       <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium ${config.className}`}>
                         <span className={`w-1.5 h-1.5 rounded-full ${config.dotClassName}`} />
@@ -112,13 +107,13 @@ export default function BorrowerDetailPage() {
           {/* Consent history */}
           <section className="bg-white border border-sand-300 rounded-lg p-6">
             <h2 className="text-lg font-semibold text-ink mb-4">Consent history</h2>
-            {borrower.consents.length === 0 ? (
+            {consents.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-sm text-ink/50">No consent records for this borrower yet.</p>
               </div>
             ) : (
               <div className="divide-y divide-sand-300">
-                {borrower.consents.map((consent) => {
+                {consents.map((consent) => {
                   const config = consentStatusConfig[consent.status];
                   return (
                     <div key={consent.id} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
@@ -126,7 +121,8 @@ export default function BorrowerDetailPage() {
                         <p className="text-sm font-medium text-ink">{consent.purpose}</p>
                         <p className="text-xs text-ink/50">Captured {consent.capturedDate} &middot; Expires {consent.expiryDate}</p>
                       </div>
-                      <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${config.className}`}>
+                      <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium ${config.className}`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${config.dotClassName}`} />
                         {config.label}
                       </span>
                     </div>
@@ -137,8 +133,8 @@ export default function BorrowerDetailPage() {
           </section>
         </div>
 
-        {/* Right column - profile */}
-        <div>
+        {/* Right column - profile + assessment summary */}
+        <div className="space-y-6">
           <section className="bg-white border border-sand-300 rounded-lg p-5">
             <h3 className="text-sm font-semibold text-ink mb-3">Borrower profile</h3>
             <div className="space-y-3">
@@ -151,19 +147,58 @@ export default function BorrowerDetailPage() {
                 <p className="text-sm text-ink">{borrower.localReference}</p>
               </div>
               <div>
+                <p className="text-xs text-ink/50">Occupation</p>
+                <p className="text-sm text-ink">{borrower.occupation}</p>
+              </div>
+              <div>
+                <p className="text-xs text-ink/50">Bank</p>
+                <p className="text-sm text-ink">{borrower.bank}</p>
+              </div>
+              <div>
                 <p className="text-xs text-ink/50">Record created</p>
                 <p className="text-sm text-ink">{borrower.createdAt}</p>
               </div>
               <div>
                 <p className="text-xs text-ink/50">Total applications</p>
-                <p className="text-sm text-ink">{borrower.applications.length}</p>
+                <p className="text-sm text-ink">{applications.length}</p>
               </div>
               <div>
                 <p className="text-xs text-ink/50">Active consents</p>
-                <p className="text-sm text-ink">{borrower.consents.filter((c) => c.status === "active").length}</p>
+                <p className="text-sm text-ink">{consents.filter((c) => c.status === "active").length}</p>
               </div>
             </div>
           </section>
+
+          {/* Assessment summary */}
+          {completedApps.length > 0 && (
+            <section className="bg-white border border-sand-300 rounded-lg p-5">
+              <h3 className="text-sm font-semibold text-ink mb-3">Assessment summary</h3>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-xs text-ink/50">Average score</p>
+                  <p className="text-lg font-bold text-ink">{avgScore}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-ink/50">Average income floor</p>
+                  <p className="text-sm font-medium text-ink">{avgIncomeFloor ? formatNADShort(avgIncomeFloor) : "—"}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-ink/50">Average consistency</p>
+                  <p className="text-sm font-medium text-ink">{avgConsistency !== null ? `${avgConsistency}%` : "—"}</p>
+                </div>
+              </div>
+              <p className="mt-3 text-xs text-ink/50">
+                Based on {completedApps.length} completed assessment{completedApps.length !== 1 ? "s" : ""}. This is synthetic demo data.
+              </p>
+            </section>
+          )}
+
+          {/* Demo notice */}
+          <div className="p-4 bg-sand-50 border border-sand-300 rounded-lg">
+            <p className="text-xs text-ink/50">
+              This borrower record uses synthetic demo data. No real personal or financial information is being displayed.
+            </p>
+          </div>
         </div>
       </div>
     </div>

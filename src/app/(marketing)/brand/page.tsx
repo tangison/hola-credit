@@ -37,7 +37,7 @@ export default function BrandPage() {
               <div className="border border-sand-300 rounded-lg p-8">
                 <p className="text-sm font-medium text-ink/60 mb-4">Symbol mark</p>
                 <div className="flex items-center gap-4">
-                  <Logo variant="symbol" />
+                  <Logo variant="compact" />
                 </div>
               </div>
 

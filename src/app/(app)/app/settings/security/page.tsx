@@ -11,8 +11,8 @@ interface Session {
 }
 
 const sessions: Session[] = [
-  { id: "s_001", device: "Chrome on macOS", location: "Windhoek, Namibia", lastActive: "2024-03-12 09:14", current: true },
-  { id: "s_002", device: "Safari on iPhone", location: "Windhoek, Namibia", lastActive: "2024-03-11 16:30", current: false },
+  { id: "s_001", device: "Chrome on macOS", location: "Windhoek, Namibia", lastActive: "2024-03-16 08:30", current: true },
+  { id: "s_002", device: "Safari on iPhone", location: "Windhoek, Namibia", lastActive: "2024-03-15 16:30", current: false },
 ];
 
 export default function SecuritySettingsPage() {
@@ -26,7 +26,12 @@ export default function SecuritySettingsPage() {
         <div className="flex items-center gap-2 text-sm text-ink/50 mb-2">
           <span>Settings</span>
         </div>
-        <h1 className="text-2xl font-bold text-ink">Security</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-ink">Security</h1>
+          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-teal-50 text-teal-500 border border-teal-200">
+            Demo
+          </span>
+        </div>
         <p className="mt-1 text-sm text-ink/60">
           Manage your account security settings, multi-factor authentication, and active sessions.
         </p>
@@ -44,9 +49,9 @@ export default function SecuritySettingsPage() {
             </p>
           </div>
           <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium ${
-            mfaEnabled ? "bg-emerald-50 text-success" : "bg-sand-100 text-ink/50"
+            mfaEnabled ? "bg-teal-50 text-teal-500" : "bg-sand-100 text-ink/50"
           }`}>
-            <span className={`w-1.5 h-1.5 rounded-full ${mfaEnabled ? "bg-success" : "bg-ink/30"}`} />
+            <span className={`w-1.5 h-1.5 rounded-full ${mfaEnabled ? "bg-teal-400" : "bg-ink/30"}`} />
             {mfaEnabled ? "Enabled" : "Disabled"}
           </span>
         </div>
@@ -164,7 +169,7 @@ export default function SecuritySettingsPage() {
             "Cannot reuse the last 5 passwords",
           ].map((rule) => (
             <li key={rule} className="flex items-center gap-2 text-sm text-ink/70">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-success flex-shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500 flex-shrink-0">
                 <path d="M20 6L9 17l-5-5" />
               </svg>
               {rule}
@@ -179,6 +184,13 @@ export default function SecuritySettingsPage() {
             Change password
           </button>
         </div>
+      </div>
+
+      {/* Demo notice */}
+      <div className="p-4 bg-sand-50 border border-sand-300 rounded-lg">
+        <p className="text-xs text-ink/50">
+          This is a demo environment. Security settings changes are not persisted. All data shown is synthetic.
+        </p>
       </div>
     </div>
   );

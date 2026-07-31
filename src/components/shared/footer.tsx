@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/shared/logo";
 
 const footerLinks = {
   Product: [
@@ -34,16 +35,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <Link href="/" aria-label="Hola Credit home" className="inline-flex items-center gap-2">
-              {/* Symbol mark — pure paths, always renders */}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" className="h-8 w-12" aria-hidden="true">
-                <path fill="#16B8A6" d="M8 8h30v14c0 8-6 14-14 14H8V8Zm80 0H58v14c0 8 6 14 14 14h16V8Z" />
-                <path fill="#FFFFFF" d="M8 56h30V42c0-8-6-14-14-14H8v28Zm80 0H58V42c0-8 6-14 14-14h16v28Z" />
-              </svg>
-              <span className="font-sans text-lg font-semibold tracking-tight text-white whitespace-nowrap">
-                hola credit
-              </span>
-            </Link>
+            <Logo variant="reversed" />
             <p className="mt-4 text-sm text-sand-300 max-w-xs">
               Cash-flow underwriting support for Namibian lenders and retailers.
             </p>

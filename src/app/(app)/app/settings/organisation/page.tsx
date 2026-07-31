@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { demoOrganisation } from "@/lib/demo-data";
 
 type OrgStatus = "pending" | "approved" | "suspended";
 
 const statusConfig: Record<OrgStatus, { label: string; className: string; dotClassName: string }> = {
   pending: { label: "Pending approval", className: "bg-amber-50 text-warning", dotClassName: "bg-warning" },
-  approved: { label: "Approved", className: "bg-emerald-50 text-success", dotClassName: "bg-success" },
+  approved: { label: "Approved", className: "bg-teal-50 text-teal-500", dotClassName: "bg-teal-400" },
   suspended: { label: "Suspended", className: "bg-red-50 text-alert", dotClassName: "bg-alert" },
 };
 
@@ -20,8 +21,8 @@ const businessTypes = [
 ];
 
 export default function OrganisationSettingsPage() {
-  const [orgName, setOrgName] = useState("Demo Lender");
-  const [businessType, setBusinessType] = useState("Microfinance institution");
+  const [orgName, setOrgName] = useState(demoOrganisation.name);
+  const [businessType, setBusinessType] = useState(demoOrganisation.businessType);
   const [orgStatus] = useState<OrgStatus>("approved");
   const [isSaving, setIsSaving] = useState(false);
 
@@ -37,9 +38,14 @@ export default function OrganisationSettingsPage() {
       {/* Header */}
       <div>
         <div className="flex items-center gap-2 text-sm text-ink/50 mb-2">
-          <a href="/app/settings/organisation" className="text-ink">Settings</a>
+          <span>Settings</span>
         </div>
-        <h1 className="text-2xl font-bold text-ink">Organisation</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-ink">Organisation</h1>
+          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-teal-50 text-teal-500 border border-teal-200">
+            Demo
+          </span>
+        </div>
         <p className="mt-1 text-sm text-ink/60">
           Manage your organisation&apos;s identity and compliance profile. Changes here affect all team members.
         </p>
@@ -111,23 +117,30 @@ export default function OrganisationSettingsPage() {
         <div className="space-y-3">
           <div className="flex items-center justify-between py-2 border-b border-sand-300">
             <span className="text-sm text-ink/60">Registered name</span>
-            <span className="text-sm font-medium text-ink">Demo Microfinance (Pty) Ltd</span>
+            <span className="text-sm font-medium text-ink">{demoOrganisation.registeredName}</span>
           </div>
           <div className="flex items-center justify-between py-2 border-b border-sand-300">
             <span className="text-sm text-ink/60">Regulatory body</span>
-            <span className="text-sm font-medium text-ink">Bank of Namibia</span>
+            <span className="text-sm font-medium text-ink">{demoOrganisation.regulatoryBody}</span>
           </div>
           <div className="flex items-center justify-between py-2 border-b border-sand-300">
             <span className="text-sm text-ink/60">License number</span>
-            <span className="text-sm font-medium text-ink">MFI-2024-0042</span>
+            <span className="text-sm font-medium text-ink">{demoOrganisation.licenseNumber}</span>
           </div>
           <div className="flex items-center justify-between py-2">
             <span className="text-sm text-ink/60">Data processing officer</span>
-            <span className="text-sm font-medium text-ink">admin@demo.na</span>
+            <span className="text-sm font-medium text-ink">{demoOrganisation.dataProcessingOfficer}</span>
           </div>
         </div>
         <p className="mt-4 text-xs text-ink/50">
           To update your compliance profile, contact Hola Credit support. Changes to regulatory information are audited.
+        </p>
+      </div>
+
+      {/* Demo notice */}
+      <div className="p-4 bg-sand-50 border border-sand-300 rounded-lg">
+        <p className="text-xs text-ink/50">
+          This is a demo environment. Organisation settings changes are not persisted. All data shown is synthetic.
         </p>
       </div>
     </div>

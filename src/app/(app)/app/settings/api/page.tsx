@@ -2,16 +2,6 @@
 
 import { useState } from "react";
 
-interface WebhookEndpoint {
-  id: string;
-  url: string;
-  events: string[];
-  status: "active" | "inactive";
-  created: string;
-}
-
-const webhookEndpoints: WebhookEndpoint[] = [];
-
 export default function ApiSettingsPage() {
   const [showKey, setShowKey] = useState(false);
   const [webhookUrl, setWebhookUrl] = useState("");
@@ -26,7 +16,12 @@ export default function ApiSettingsPage() {
         <div className="flex items-center gap-2 text-sm text-ink/50 mb-2">
           <span>Settings</span>
         </div>
-        <h1 className="text-2xl font-bold text-ink">API</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-ink">API</h1>
+          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-teal-50 text-teal-500 border border-teal-200">
+            Demo
+          </span>
+        </div>
         <p className="mt-1 text-sm text-ink/60">
           Manage API keys, webhook endpoints, and monitor usage for programmatic access to the Hola Credit platform.
         </p>
@@ -39,7 +34,7 @@ export default function ApiSettingsPage() {
             <h2 className="text-lg font-semibold text-ink">API keys</h2>
             <p className="text-sm text-ink/60 mt-0.5">Use API keys to integrate Hola Credit with your existing systems.</p>
           </div>
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sand-100 text-ink/50">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-warning">
             Coming soon
           </span>
         </div>
@@ -81,7 +76,6 @@ export default function ApiSettingsPage() {
           Configure webhook endpoints to receive real-time notifications when events occur in your organisation.
         </p>
 
-        {/* Add webhook form */}
         <div className="p-4 bg-sand-50 border border-sand-300 rounded-md mb-4">
           <h3 className="text-sm font-semibold text-ink mb-3">Add endpoint</h3>
           <div className="space-y-3">
@@ -133,28 +127,9 @@ export default function ApiSettingsPage() {
           </div>
         </div>
 
-        {/* Existing endpoints */}
-        {webhookEndpoints.length === 0 ? (
-          <div className="text-center py-6">
-            <p className="text-sm text-ink/50">No webhook endpoints configured yet.</p>
-          </div>
-        ) : (
-          <div className="divide-y divide-sand-300">
-            {webhookEndpoints.map((endpoint) => (
-              <div key={endpoint.id} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
-                <div>
-                  <p className="text-sm font-medium text-ink font-mono">{endpoint.url}</p>
-                  <p className="text-xs text-ink/50 mt-0.5">{endpoint.events.join(", ")} &middot; Created {endpoint.created}</p>
-                </div>
-                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
-                  endpoint.status === "active" ? "bg-emerald-50 text-success" : "bg-sand-100 text-ink/50"
-                }`}>
-                  {endpoint.status === "active" ? "Active" : "Inactive"}
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="text-center py-6">
+          <p className="text-sm text-ink/50">No webhook endpoints configured yet. Add one above to get started.</p>
+        </div>
       </div>
 
       {/* Usage stats */}
@@ -176,6 +151,13 @@ export default function ApiSettingsPage() {
         </div>
         <p className="mt-3 text-xs text-ink/50">
           Usage resets at the beginning of each calendar month. Rate limits apply based on your plan.
+        </p>
+      </div>
+
+      {/* Demo notice */}
+      <div className="p-4 bg-sand-50 border border-sand-300 rounded-lg">
+        <p className="text-xs text-ink/50">
+          This is a demo environment. API keys and webhooks are not functional. All data shown is synthetic.
         </p>
       </div>
     </div>

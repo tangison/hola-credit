@@ -14,7 +14,7 @@ export default function WaitlistPage() {
           </div>
           <h1 className="text-2xl font-bold text-ink">Join the waitlist</h1>
           <p className="mt-2 text-sm text-ink/60 max-w-sm mx-auto">
-            Hola Credit is in early access. Solve a quick math question to prove you&apos;re human, then add your email to get notified when it&apos;s your turn.
+            Hola Credit is in early access. Solve a quick math question to prove you&apos;re human, then fill in your details to get notified when it&apos;s your turn.
           </p>
         </div>
 

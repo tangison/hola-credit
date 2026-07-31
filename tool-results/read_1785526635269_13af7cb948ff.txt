@@ -1,0 +1,645 @@
+     1→"use client";
+     2→
+     3→import { useState, useCallback } from "react";
+     4→import Link from "next/link";
+     5→
+     6→type Step = 1 | 2 | 3 | 4 | 5;
+     7→
+     8→const stepLabels: Record<Step, string> = {
+     9→  1: "Case details",
+    10→  2: "Consent",
+    11→  3: "Statement upload",
+    12→  4: "Processing",
+    13→  5: "Review",
+    14→};
+    15→
+    16→interface CaseDetails {
+    17→  lenderReference: string;
+    18→  applicantDisplayName: string;
+    19→  productType: string;
+    20→  requestedAmount: string;
+    21→  assessmentPurpose: string;
+    22→}
+    23→
+    24→interface ConsentDetails {
+    25→  purposeAccepted: boolean;
+    26→  dataCategoriesAccepted: boolean;
+    27→  organisationAccepted: boolean;
+    28→  retentionAccepted: boolean;
+    29→  sharingScopeAccepted: boolean;
+    30→  expiryAccepted: boolean;
+    31→}
+    32→
+    33→const productTypes = [
+    34→  "Personal loan",
+    35→  "Microfinance loan",
+    36→  "Retail credit",
+    37→  "Vehicle finance",
+    38→  "Business loan",
+    39→  "Housing loan",
+    40→];
+    41→
+    42→const assessmentPurposes = [
+    43→  "New credit application",
+    44→  "Credit limit increase",
+    45→  "Account review",
+    46→  "Debt restructuring",
+    47→  "Regulatory compliance",
+    48→];
+    49→
+    50→interface PipelineStage {
+    51→  label: string;
+    52→  status: "pending" | "active" | "complete";
+    53→}
+    54→
+    55→export default function NewApplicationPage() {
+    56→  const [currentStep, setCurrentStep] = useState<Step>(1);
+    57→  const [caseDetails, setCaseDetails] = useState<CaseDetails>({
+    58→    lenderReference: "",
+    59→    applicantDisplayName: "",
+    60→    productType: "",
+    61→    requestedAmount: "",
+    62→    assessmentPurpose: "",
+    63→  });
+    64→  const [consent, setConsent] = useState<ConsentDetails>({
+    65→    purposeAccepted: false,
+    66→    dataCategoriesAccepted: false,
+    67→    organisationAccepted: false,
+    68→    retentionAccepted: false,
+    69→    sharingScopeAccepted: false,
+    70→    expiryAccepted: false,
+    71→  });
+    72→  const [uploadedFiles, setUploadedFiles] = useState<{ name: string; size: string; type: string }[]>([]);
+    73→  const [isDragging, setIsDragging] = useState(false);
+    74→
+    75→  const allConsentAccepted = Object.values(consent).every(Boolean);
+    76→  const caseDetailsValid =
+    77→    caseDetails.lenderReference.trim() !== "" &&
+    78→    caseDetails.applicantDisplayName.trim() !== "" &&
+    79→    caseDetails.productType !== "" &&
+    80→    caseDetails.requestedAmount.trim() !== "" &&
+    81→    caseDetails.assessmentPurpose !== "";
+    82→
+    83→  const pipelineStages: PipelineStage[] = [
+    84→    { label: "Received", status: "complete" },
+    85→    { label: "Security checks", status: "complete" },
+    86→    { label: "Text extraction", status: "active" },
+    87→    { label: "Transaction review", status: "pending" },
+    88→    { label: "Assessment calculation", status: "pending" },
+    89→    { label: "Ready", status: "pending" },
+    90→  ];
+    91→
+    92→  const handleDragOver = useCallback((e: React.DragEvent) => {
+    93→    e.preventDefault();
+    94→    setIsDragging(true);
+    95→  }, []);
+    96→
+    97→  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    98→    e.preventDefault();
+    99→    setIsDragging(false);
+   100→  }, []);
+   101→
+   102→  const handleDrop = useCallback((e: React.DragEvent) => {
+   103→    e.preventDefault();
+   104→    setIsDragging(false);
+   105→    const files = Array.from(e.dataTransfer.files);
+   106→    const validTypes = ["application/pdf", "image/png", "image/jpeg"];
+   107→    const validFiles = files.filter((f) => validTypes.includes(f.type));
+   108→    const newFiles = validFiles.map((f) => ({
+   109→      name: f.name,
+   110→      size: f.size > 1024 * 1024 ? `${(f.size / (1024 * 1024)).toFixed(1)} MB` : `${(f.size / 1024).toFixed(0)} KB`,
+   111→      type: f.type.split("/")[1].toUpperCase(),
+   112→    }));
+   113→    setUploadedFiles((prev) => [...prev, ...newFiles]);
+   114→  }, []);
+   115→
+   116→  const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+   117→    const files = Array.from(e.target.files || []);
+   118→    const newFiles = files.map((f) => ({
+   119→      name: f.name,
+   120→      size: f.size > 1024 * 1024 ? `${(f.size / (1024 * 1024)).toFixed(1)} MB` : `${(f.size / 1024).toFixed(0)} KB`,
+   121→      type: f.type.split("/")[1].toUpperCase(),
+   122→    }));
+   123→    setUploadedFiles((prev) => [...prev, ...newFiles]);
+   124→  }, []);
+   125→
+   126→  const removeFile = useCallback((index: number) => {
+   127→    setUploadedFiles((prev) => prev.filter((_, i) => i !== index));
+   128→  }, []);
+   129→
+   130→  return (
+   131→    <div className="max-w-3xl mx-auto space-y-8">
+   132→      {/* Header */}
+   133→      <div>
+   134→        <div className="flex items-center gap-2 text-sm text-ink/50 mb-2">
+   135→          <Link href="/app/applications" className="hover:text-ink transition-colors duration-ui">Applications</Link>
+   136→          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+   137→          <span className="text-ink">New application</span>
+   138→        </div>
+   139→        <h1 className="text-2xl font-bold text-ink">New credit assessment</h1>
+   140→        <p className="mt-1 text-sm text-ink/60">
+   141→          Complete each step to submit a new cash-flow assessment application.
+   142→        </p>
+   143→      </div>
+   144→
+   145→      {/* Step progress indicator */}
+   146→      <nav aria-label="Application progress" className="relative">
+   147→        <div className="flex items-center justify-between">
+   148→          {([1, 2, 3, 4, 5] as Step[]).map((step) => (
+   149→            <div key={step} className="flex flex-col items-center relative z-10">
+   150→              <div
+   151→                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-ui ${
+   152→                  step < currentStep
+   153→                    ? "bg-success text-white"
+   154→                    : step === currentStep
+   155→                    ? "bg-ink text-sand-50"
+   156→                    : "bg-sand-300 text-ink/40"
+   157→                }`}
+   158→              >
+   159→                {step < currentStep ? (
+   160→                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+   161→                    <path d="M20 6L9 17l-5-5" />
+   162→                  </svg>
+   163→                ) : (
+   164→                  step
+   165→                )}
+   166→              </div>
+   167→              <span className={`mt-1.5 text-xs font-medium hidden sm:block ${
+   168→                step <= currentStep ? "text-ink" : "text-ink/40"
+   169→              }`}>
+   170→                {stepLabels[step]}
+   171→              </span>
+   172→            </div>
+   173→          ))}
+   174→        </div>
+   175→        {/* Progress line */}
+   176→        <div className="absolute top-4 left-0 right-0 h-0.5 bg-sand-300 -z-0" aria-hidden="true">
+   177→          <div
+   178→            className="h-full bg-ink transition-all duration-500"
+   179→            style={{ width: `${((currentStep - 1) / 4) * 100}%` }}
+   180→          />
+   181→        </div>
+   182→      </nav>
+   183→
+   184→      {/* Step content */}
+   185→      <div className="bg-white border border-sand-300 rounded-lg p-6 sm:p-8">
+   186→        {/* Step 1: Case details */}
+   187→        {currentStep === 1 && (
+   188→          <div className="space-y-6">
+   189→            <div>
+   190→              <h2 className="text-lg font-semibold text-ink">Case details</h2>
+   191→              <p className="mt-1 text-sm text-ink/60">Provide the basic details for this credit assessment.</p>
+   192→            </div>
+   193→
+   194→            <div className="space-y-4">
+   195→              <div>
+   196→                <label htmlFor="lenderReference" className="block text-sm font-medium text-ink mb-1.5">
+   197→                  Lender reference <span className="text-alert">*</span>
+   198→                </label>
+   199→                <input
+   200→                  id="lenderReference"
+   201→                  type="text"
+   202→                  value={caseDetails.lenderReference}
+   203→                  onChange={(e) => setCaseDetails((prev) => ({ ...prev, lenderReference: e.target.value }))}
+   204→                  placeholder="e.g. LN-2024-00142"
+   205→                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+   206→                />
+   207→              </div>
+   208→
+   209→              <div>
+   210→                <label htmlFor="applicantName" className="block text-sm font-medium text-ink mb-1.5">
+   211→                  Applicant display name <span className="text-alert">*</span>
+   212→                </label>
+   213→                <input
+   214→                  id="applicantName"
+   215→                  type="text"
+   216→                  value={caseDetails.applicantDisplayName}
+   217→                  onChange={(e) => setCaseDetails((prev) => ({ ...prev, applicantDisplayName: e.target.value }))}
+   218→                  placeholder="e.g. Maria K."
+   219→                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+   220→                />
+   221→                <p className="mt-1 text-xs text-ink/50">A display name is used instead of the full legal name to protect borrower privacy.</p>
+   222→              </div>
+   223→
+   224→              <div>
+   225→                <label htmlFor="productType" className="block text-sm font-medium text-ink mb-1.5">
+   226→                  Product type <span className="text-alert">*</span>
+   227→                </label>
+   228→                <select
+   229→                  id="productType"
+   230→                  value={caseDetails.productType}
+   231→                  onChange={(e) => setCaseDetails((prev) => ({ ...prev, productType: e.target.value }))}
+   232→                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
+   233→                >
+   234→                  <option value="">Select a product type</option>
+   235→                  {productTypes.map((type) => (
+   236→                    <option key={type} value={type}>{type}</option>
+   237→                  ))}
+   238→                </select>
+   239→              </div>
+   240→
+   241→              <div>
+   242→                <label htmlFor="requestedAmount" className="block text-sm font-medium text-ink mb-1.5">
+   243→                  Requested amount (NAD) <span className="text-alert">*</span>
+   244→                </label>
+   245→                <input
+   246→                  id="requestedAmount"
+   247→                  type="text"
+   248→                  value={caseDetails.requestedAmount}
+   249→                  onChange={(e) => setCaseDetails((prev) => ({ ...prev, requestedAmount: e.target.value }))}
+   250→                  placeholder="e.g. 15000"
+   251→                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+   252→                />
+   253→              </div>
+   254→
+   255→              <div>
+   256→                <label htmlFor="assessmentPurpose" className="block text-sm font-medium text-ink mb-1.5">
+   257→                  Assessment purpose <span className="text-alert">*</span>
+   258→                </label>
+   259→                <select
+   260→                  id="assessmentPurpose"
+   261→                  value={caseDetails.assessmentPurpose}
+   262→                  onChange={(e) => setCaseDetails((prev) => ({ ...prev, assessmentPurpose: e.target.value }))}
+   263→                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
+   264→                >
+   265→                  <option value="">Select an assessment purpose</option>
+   266→                  {assessmentPurposes.map((purpose) => (
+   267→                    <option key={purpose} value={purpose}>{purpose}</option>
+   268→                  ))}
+   269→                </select>
+   270→              </div>
+   271→            </div>
+   272→          </div>
+   273→        )}
+   274→
+   275→        {/* Step 2: Consent */}
+   276→        {currentStep === 2 && (
+   277→          <div className="space-y-6">
+   278→            <div>
+   279→              <h2 className="text-lg font-semibold text-ink">Data processing consent</h2>
+   280→              <p className="mt-1 text-sm text-ink/60">
+   281→                The applicant must consent to the following before their data can be processed. Review each item and confirm.
+   282→              </p>
+   283→            </div>
+   284→
+   285→            <div className="space-y-4">
+   286→              <div className="border border-sand-300 rounded-md p-4">
+   287→                <div className="flex items-start gap-3">
+   288→                  <input
+   289→                    id="consentPurpose"
+   290→                    type="checkbox"
+   291→                    checked={consent.purposeAccepted}
+   292→                    onChange={(e) => setConsent((prev) => ({ ...prev, purposeAccepted: e.target.checked }))}
+   293→                    className="mt-0.5 w-4 h-4 rounded border-sand-300 text-teal-400 focus:ring-teal-400"
+   294→                  />
+   295→                  <div>
+   296→                    <label htmlFor="consentPurpose" className="text-sm font-medium text-ink cursor-pointer">Purpose of processing</label>
+   297→                    <p className="mt-0.5 text-sm text-ink/60">
+   298→                      The applicant&apos;s bank statement data will be processed solely for the purpose of conducting a cash-flow credit assessment for the product and purpose specified above.
+   299→                    </p>
+   300→                  </div>
+   301→                </div>
+   302→              </div>
+   303→
+   304→              <div className="border border-sand-300 rounded-md p-4">
+   305→                <div className="flex items-start gap-3">
+   306→                  <input
+   307→                    id="consentDataCategories"
+   308→                    type="checkbox"
+   309→                    checked={consent.dataCategoriesAccepted}
+   310→                    onChange={(e) => setConsent((prev) => ({ ...prev, dataCategoriesAccepted: e.target.checked }))}
+   311→                    className="mt-0.5 w-4 h-4 rounded border-sand-300 text-teal-400 focus:ring-teal-400"
+   312→                  />
+   313→                  <div>
+   314→                    <label htmlFor="consentDataCategories" className="text-sm font-medium text-ink cursor-pointer">Data categories</label>
+   315→                    <p className="mt-0.5 text-sm text-ink/60">
+   316→                      The following data categories will be processed: transaction descriptions, amounts, dates, running balances, and account metadata. No personally identifiable information beyond what is necessary will be extracted.
+   317→                    </p>
+   318→                  </div>
+   319→                </div>
+   320→              </div>
+   321→
+   322→              <div className="border border-sand-300 rounded-md p-4">
+   323→                <div className="flex items-start gap-3">
+   324→                  <input
+   325→                    id="consentOrganisation"
+   326→                    type="checkbox"
+   327→                    checked={consent.organisationAccepted}
+   328→                    onChange={(e) => setConsent((prev) => ({ ...prev, organisationAccepted: e.target.checked }))}
+   329→                    className="mt-0.5 w-4 h-4 rounded border-sand-300 text-teal-400 focus:ring-teal-400"
+   330→                  />
+   331→                  <div>
+   332→                    <label htmlFor="consentOrganisation" className="text-sm font-medium text-ink cursor-pointer">Processing organisation</label>
+   333→                    <p className="mt-0.5 text-sm text-ink/60">
+   334→                      Data will be processed by Hola Credit on behalf of Demo Lender. Hola Credit acts as a data processor under the terms of the data processing agreement between both parties.
+   335→                    </p>
+   336→                  </div>
+   337→                </div>
+   338→              </div>
+   339→
+   340→              <div className="border border-sand-300 rounded-md p-4">
+   341→                <div className="flex items-start gap-3">
+   342→                  <input
+   343→                    id="consentRetention"
+   344→                    type="checkbox"
+   345→                    checked={consent.retentionAccepted}
+   346→                    onChange={(e) => setConsent((prev) => ({ ...prev, retentionAccepted: e.target.checked }))}
+   347→                    className="mt-0.5 w-4 h-4 rounded border-sand-300 text-teal-400 focus:ring-teal-400"
+   348→                  />
+   349→                  <div>
+   350→                    <label htmlFor="consentRetention" className="text-sm font-medium text-ink cursor-pointer">Retention period</label>
+   351→                    <p className="mt-0.5 text-sm text-ink/60">
+   352→                      Processed data will be retained for 12 months from the date of assessment, after which it will be permanently deleted unless a longer retention period is required by law.
+   353→                    </p>
+   354→                  </div>
+   355→                </div>
+   356→              </div>
+   357→
+   358→              <div className="border border-sand-300 rounded-md p-4">
+   359→                <div className="flex items-start gap-3">
+   360→                  <input
+   361→                    id="consentSharing"
+   362→                    type="checkbox"
+   363→                    checked={consent.sharingScopeAccepted}
+   364→                    onChange={(e) => setConsent((prev) => ({ ...prev, sharingScopeAccepted: e.target.checked }))}
+   365→                    className="mt-0.5 w-4 h-4 rounded border-sand-300 text-teal-400 focus:ring-teal-400"
+   366→                  />
+   367→                  <div>
+   368→                    <label htmlFor="consentSharing" className="text-sm font-medium text-ink cursor-pointer">Sharing scope</label>
+   369→                    <p className="mt-0.5 text-sm text-ink/60">
+   370→                      Assessment results may be shared with the originating lender and any regulatory bodies that require access. Data will not be shared with third parties for marketing or unrelated purposes.
+   371→                    </p>
+   372→                  </div>
+   373→                </div>
+   374→              </div>
+   375→
+   376→              <div className="border border-sand-300 rounded-md p-4">
+   377→                <div className="flex items-start gap-3">
+   378→                  <input
+   379→                    id="consentExpiry"
+   380→                    type="checkbox"
+   381→                    checked={consent.expiryAccepted}
+   382→                    onChange={(e) => setConsent((prev) => ({ ...prev, expiryAccepted: e.target.checked }))}
+   383→                    className="mt-0.5 w-4 h-4 rounded border-sand-300 text-teal-400 focus:ring-teal-400"
+   384→                  />
+   385→                  <div>
+   386→                    <label htmlFor="consentExpiry" className="text-sm font-medium text-ink cursor-pointer">Consent expiry</label>
+   387→                    <p className="mt-0.5 text-sm text-ink/60">
+   388→                      This consent is valid for 90 days from the date it is given. If the assessment is not completed within this period, consent must be re-obtained from the applicant.
+   389→                    </p>
+   390→                  </div>
+   391→                </div>
+   392→              </div>
+   393→            </div>
+   394→          </div>
+   395→        )}
+   396→
+   397→        {/* Step 3: Statement upload */}
+   398→        {currentStep === 3 && (
+   399→          <div className="space-y-6">
+   400→            <div>
+   401→              <h2 className="text-lg font-semibold text-ink">Upload bank statements</h2>
+   402→              <p className="mt-1 text-sm text-ink/60">
+   403→                Upload the applicant&apos;s bank statements for analysis. Accepted formats: PDF, PNG, and JPEG.
+   404→              </p>
+   405→            </div>
+   406→
+   407→            <div
+   408→              onDragOver={handleDragOver}
+   409→              onDragLeave={handleDragLeave}
+   410→              onDrop={handleDrop}
+   411→              className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors duration-ui ${
+   412→                isDragging
+   413→                  ? "border-teal-400 bg-teal-50"
+   414→                  : "border-sand-300 bg-sand-50 hover:border-sand-400"
+   415→              }`}
+   416→            >
+   417→              <div className="flex flex-col items-center">
+   418→                <div className="w-10 h-10 rounded-full bg-sand-100 flex items-center justify-center mb-3">
+   419→                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-ink/50">
+   420→                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+   421→                  </svg>
+   422→                </div>
+   423→                <p className="text-sm font-medium text-ink">
+   424→                  Drag and drop files here, or{" "}
+   425→                  <label htmlFor="file-upload" className="text-teal-500 hover:text-teal-600 cursor-pointer transition-colors duration-ui">
+   426→                    browse
+   427→                  </label>
+   428→                </p>
+   429→                <p className="mt-1 text-xs text-ink/50">PDF, PNG, or JPEG up to 10 MB each</p>
+   430→              </div>
+   431→              <input
+   432→                id="file-upload"
+   433→                type="file"
+   434→                accept=".pdf,.png,.jpeg,.jpg"
+   435→                multiple
+   436→                onChange={handleFileInput}
+   437→                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+   438→                aria-label="Upload bank statement files"
+   439→              />
+   440→            </div>
+   441→
+   442→            {/* Uploaded files list */}
+   443→            {uploadedFiles.length > 0 && (
+   444→              <div className="space-y-2">
+   445→                <h3 className="text-sm font-medium text-ink">Uploaded files</h3>
+   446→                <ul className="divide-y divide-sand-300 border border-sand-300 rounded-md">
+   447→                  {uploadedFiles.map((file, index) => (
+   448→                    <li key={index} className="flex items-center justify-between px-4 py-2.5">
+   449→                      <div className="flex items-center gap-3 min-w-0">
+   450→                        <div className="w-8 h-8 rounded bg-sand-100 flex items-center justify-center flex-shrink-0">
+   451→                          <span className="text-xs font-bold text-ink/50">{file.type}</span>
+   452→                        </div>
+   453→                        <div className="min-w-0">
+   454→                          <p className="text-sm text-ink truncate">{file.name}</p>
+   455→                          <p className="text-xs text-ink/50">{file.size}</p>
+   456→                        </div>
+   457→                      </div>
+   458→                      <button
+   459→                        type="button"
+   460→                        onClick={() => removeFile(index)}
+   461→                        className="p-1 text-ink/40 hover:text-alert transition-colors duration-ui"
+   462→                        aria-label={`Remove ${file.name}`}
+   463→                      >
+   464→                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+   465→                          <path d="M18 6L6 18M6 6l12 12" />
+   466→                        </svg>
+   467→                      </button>
+   468→                    </li>
+   469→                  ))}
+   470→                </ul>
+   471→              </div>
+   472→            )}
+   473→          </div>
+   474→        )}
+   475→
+   476→        {/* Step 4: Processing */}
+   477→        {currentStep === 4 && (
+   478→          <div className="space-y-6">
+   479→            <div>
+   480→              <h2 className="text-lg font-semibold text-ink">Processing your application</h2>
+   481→              <p className="mt-1 text-sm text-ink/60">
+   482→                Your bank statements are being analysed. This usually takes 2 to 5 minutes depending on the document complexity.
+   483→              </p>
+   484→            </div>
+   485→
+   486→            <div className="space-y-0">
+   487→              {pipelineStages.map((stage, index) => (
+   488→                <div key={stage.label} className="flex items-start gap-4">
+   489→                  <div className="flex flex-col items-center">
+   490→                    <div
+   491→                      className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+   492→                        stage.status === "complete"
+   493→                          ? "bg-success text-white"
+   494→                          : stage.status === "active"
+   495→                          ? "bg-ink text-sand-50"
+   496→                          : "bg-sand-300 text-ink/40"
+   497→                      }`}
+   498→                    >
+   499→                      {stage.status === "complete" ? (
+   500→                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+   501→                          <path d="M20 6L9 17l-5-5" />
+   502→                        </svg>
+   503→                      ) : stage.status === "active" ? (
+   504→                        <div className="w-3 h-3 rounded-full bg-sand-50 animate-pulse" />
+   505→                      ) : (
+   506→                        <span className="text-xs font-bold">{index + 1}</span>
+   507→                      )}
+   508→                    </div>
+   509→                    {index < pipelineStages.length - 1 && (
+   510→                      <div className={`w-0.5 h-8 ${
+   511→                        stage.status === "complete" ? "bg-success" : "bg-sand-300"
+   512→                      }`} />
+   513→                    )}
+   514→                  </div>
+   515→                  <div className="pt-1 pb-6">
+   516→                    <p className={`text-sm font-medium ${
+   517→                      stage.status === "pending" ? "text-ink/40" : "text-ink"
+   518→                    }`}>
+   519→                      {stage.label}
+   520→                    </p>
+   521→                    {stage.status === "active" && (
+   522→                      <p className="text-xs text-teal-500 mt-0.5">In progress&hellip;</p>
+   523→                    )}
+   524→                  </div>
+   525→                </div>
+   526→              ))}
+   527→            </div>
+   528→          </div>
+   529→        )}
+   530→
+   531→        {/* Step 5: Review */}
+   532→        {currentStep === 5 && (
+   533→          <div className="space-y-6">
+   534→            <div>
+   535→              <h2 className="text-lg font-semibold text-ink">Assessment review</h2>
+   536→              <p className="mt-1 text-sm text-ink/60">
+   537→                Review the assessment results before finalising. Verify the key indicators and evidence below.
+   538→              </p>
+   539→            </div>
+   540→
+   541→            {/* Assessment summary */}
+   542→            <div className="border border-sand-300 rounded-md divide-y divide-sand-300">
+   543→              <div className="p-4 flex items-center justify-between">
+   544→                <span className="text-sm font-medium text-ink">Income floor</span>
+   545→                <span className="text-sm text-ink">NAD 8,200 / month</span>
+   546→              </div>
+   547→              <div className="p-4 flex items-center justify-between">
+   548→                <span className="text-sm font-medium text-ink">Consistency score</span>
+   549→                <span className="text-sm font-medium text-success">High</span>
+   550→              </div>
+   551→              <div className="p-4 flex items-center justify-between">
+   552→                <span className="text-sm font-medium text-ink">Income volatility</span>
+   553→                <span className="text-sm font-medium text-warning">Moderate</span>
+   554→              </div>
+   555→              <div className="p-4 flex items-center justify-between">
+   556→                <span className="text-sm font-medium text-ink">Flags</span>
+   557→                <span className="text-sm text-alert">2 items need attention</span>
+   558→              </div>
+   559→              <div className="p-4 flex items-center justify-between">
+   560→                <span className="text-sm font-medium text-ink">Evidence strength</span>
+   561→                <span className="text-sm font-medium text-ink/60">3 months of statements</span>
+   562→              </div>
+   563→            </div>
+   564→
+   565→            {/* Flags detail */}
+   566→            <div>
+   567→              <h3 className="text-sm font-semibold text-ink mb-3">Flagged items</h3>
+   568→              <div className="space-y-2">
+   569→                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-warning/20 rounded-md">
+   570→                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-warning mt-0.5 flex-shrink-0">
+   571→                    <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+   572→                  </svg>
+   573→                  <div>
+   574→                    <p className="text-sm font-medium text-ink">Irregular deposit pattern detected</p>
+   575→                    <p className="text-xs text-ink/60 mt-0.5">Three deposits in January exceed the average monthly income by more than 40%. This may indicate irregular income or non-recurring deposits.</p>
+   576→                  </div>
+   577→                </div>
+   578→                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-warning/20 rounded-md">
+   579→                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-warning mt-0.5 flex-shrink-0">
+   580→                    <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+   581→                  </svg>
+   582→                  <div>
+   583→                    <p className="text-sm font-medium text-ink">Short statement history</p>
+   584→                    <p className="text-xs text-ink/60 mt-0.5">Only 3 months of statements were provided. A minimum of 6 months is recommended for a more reliable assessment of income patterns.</p>
+   585→                  </div>
+   586→                </div>
+   587→              </div>
+   588→            </div>
+   589→          </div>
+   590→        )}
+   591→      </div>
+   592→
+   593→      {/* Navigation */}
+   594→      <div className="flex items-center justify-between">
+   595→        <div>
+   596→          {currentStep > 1 && (
+   597→            <button
+   598→              type="button"
+   599→              onClick={() => setCurrentStep((prev) => (prev - 1) as Step)}
+   600→              className="inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors duration-ui"
+   601→            >
+   602→              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+   603→                <path d="M15 18l-6-6 6-6" />
+   604→              </svg>
+   605→              Back
+   606→            </button>
+   607→          )}
+   608→        </div>
+   609→        <div className="flex items-center gap-3">
+   610→          <Link
+   611→            href="/app/applications"
+   612→            className="px-4 py-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors duration-ui"
+   613→          >
+   614→            Cancel
+   615→          </Link>
+   616→          {currentStep < 5 && (
+   617→            <button
+   618→              type="button"
+   619→              onClick={() => setCurrentStep((prev) => (prev + 1) as Step)}
+   620→              disabled={
+   621→                (currentStep === 1 && !caseDetailsValid) ||
+   622→                (currentStep === 2 && !allConsentAccepted)
+   623→              }
+   624→              className="inline-flex items-center gap-1 px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
+   625→            >
+   626→              Continue
+   627→              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+   628→                <path d="M9 18l6-6-6-6" />
+   629→              </svg>
+   630→            </button>
+   631→          )}
+   632→          {currentStep === 5 && (
+   633→            <button
+   634→              type="button"
+   635→              className="inline-flex items-center gap-1 px-4 py-2 bg-success text-white rounded-md text-sm font-medium hover:bg-success/90 transition-colors duration-ui"
+   636→            >
+   637→              Submit assessment
+   638→            </button>
+   639→          )}
+   640→        </div>
+   641→      </div>
+   642→    </div>
+   643→  );
+   644→}
+   645→

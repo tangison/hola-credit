@@ -1,37 +1,13 @@
 "use client";
 
 import { useState } from "react";
-
-type TeamRole = "admin" | "loan_officer" | "reviewer" | "viewer";
-type MemberStatus = "active" | "invited" | "suspended";
-
-interface TeamMember {
-  id: string;
-  name: string;
-  email: string;
-  role: TeamRole;
-  status: MemberStatus;
-  mfaEnabled: boolean;
-  joinedAt: string;
-}
-
-const roleLabels: Record<TeamRole, string> = {
-  admin: "Admin",
-  loan_officer: "Loan officer",
-  reviewer: "Reviewer",
-  viewer: "Viewer",
-};
+import { demoTeamMembers, roleDescriptions, type TeamRole, type MemberStatus } from "@/lib/demo-data";
 
 const statusConfig: Record<MemberStatus, { label: string; className: string }> = {
-  active: { label: "Active", className: "bg-emerald-50 text-success" },
-  invited: { label: "Invited", className: "bg-teal-50 text-teal-500" },
+  active: { label: "Active", className: "bg-teal-50 text-teal-500" },
+  invited: { label: "Invited", className: "bg-amber-50 text-warning" },
   suspended: { label: "Suspended", className: "bg-red-50 text-alert" },
 };
-
-const teamMembers: TeamMember[] = [
-  { id: "tm_001", name: "Loan Officer", email: "officer@demo.na", role: "loan_officer", status: "active", mfaEnabled: true, joinedAt: "2024-01-10" },
-  { id: "tm_002", name: "Admin User", email: "admin@demo.na", role: "admin", status: "active", mfaEnabled: true, joinedAt: "2024-01-05" },
-];
 
 export default function TeamPage() {
   const [showInviteForm, setShowInviteForm] = useState(false);
@@ -43,7 +19,12 @@ export default function TeamPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-ink">Team</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-bold text-ink">Team</h1>
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-teal-50 text-teal-500 border border-teal-200">
+              Demo
+            </span>
+          </div>
           <p className="mt-1 text-sm text-ink/60">
             Manage team members and their roles within your organisation. Role changes are recorded in the audit log.
           </p>
@@ -88,16 +69,14 @@ export default function TeamPage() {
                 onChange={(e) => setInviteRole(e.target.value as TeamRole)}
                 className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
               >
-                <option value="loan_officer">Loan officer</option>
-                <option value="reviewer">Reviewer</option>
-                <option value="admin">Admin</option>
-                <option value="viewer">Viewer</option>
+                {Object.entries(roleDescriptions).map(([key, { label }]) => (
+                  <option key={key} value={key}>{label}</option>
+                ))}
               </select>
               <div className="mt-2 space-y-1 text-xs text-ink/50">
-                <p><strong className="text-ink/70">Admin:</strong> Full access to all features, team management, and settings.</p>
-                <p><strong className="text-ink/70">Loan officer:</strong> Create and manage applications, view assessments.</p>
-                <p><strong className="text-ink/70">Reviewer:</strong> Review applications, approve or decline assessments.</p>
-                <p><strong className="text-ink/70">Viewer:</strong> Read-only access to applications and reports.</p>
+                {Object.entries(roleDescriptions).map(([key, { label, description }]) => (
+                  <p key={key}><strong className="text-ink/70">{label}:</strong> {description}</p>
+                ))}
               </div>
             </div>
             <div className="flex items-center gap-3 justify-end">
@@ -135,8 +114,9 @@ export default function TeamPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-sand-300">
-              {teamMembers.map((member) => {
+              {demoTeamMembers.map((member) => {
                 const statusInfo = statusConfig[member.status];
+                const roleLabel = roleDescriptions[member.role]?.label ?? member.role;
                 return (
                   <tr key={member.id} className="hover:bg-sand-50 transition-colors duration-ui">
                     <td className="px-4 py-3">
@@ -150,14 +130,14 @@ export default function TeamPage() {
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-sm text-ink">{roleLabels[member.role]}</td>
+                    <td className="px-4 py-3 text-sm text-ink">{roleLabel}</td>
                     <td className="px-4 py-3">
                       <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${statusInfo.className}`}>
                         {statusInfo.label}
                       </span>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`text-xs font-medium ${member.mfaEnabled ? "text-success" : "text-ink/40"}`}>
+                      <span className={`text-xs font-medium ${member.mfaEnabled ? "text-teal-500" : "text-ink/40"}`}>
                         {member.mfaEnabled ? "Enabled" : "Disabled"}
                       </span>
                     </td>
@@ -171,8 +151,9 @@ export default function TeamPage() {
 
         {/* Mobile cards */}
         <div className="sm:hidden divide-y divide-sand-300">
-          {teamMembers.map((member) => {
+          {demoTeamMembers.map((member) => {
             const statusInfo = statusConfig[member.status];
+            const roleLabel = roleDescriptions[member.role]?.label ?? member.role;
             return (
               <div key={member.id} className="p-4">
                 <div className="flex items-center gap-3">
@@ -190,12 +171,27 @@ export default function TeamPage() {
                   </div>
                 </div>
                 <div className="mt-2 flex items-center gap-4 text-xs text-ink/50">
-                  <span>{roleLabels[member.role]}</span>
+                  <span>{roleLabel}</span>
                   <span>MFA: {member.mfaEnabled ? "Enabled" : "Disabled"}</span>
                 </div>
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* Role descriptions */}
+      <div className="bg-white border border-sand-300 rounded-lg p-6">
+        <h2 className="text-lg font-semibold text-ink mb-4">Role descriptions</h2>
+        <div className="space-y-4">
+          {Object.entries(roleDescriptions).map(([key, { label, description }]) => (
+            <div key={key} className="flex items-start gap-3">
+              <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-sand-100 text-ink whitespace-nowrap mt-0.5">
+                {label}
+              </span>
+              <p className="text-sm text-ink/60">{description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

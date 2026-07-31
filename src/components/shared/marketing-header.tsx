@@ -42,7 +42,7 @@ export function MarketingHeader() {
       } ${scrolled ? "bg-sand/95 backdrop-blur-sm border-b border-sand-300 shadow-sm" : "bg-transparent"}`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Primary navigation">
-        <Logo />
+        <Logo variant="horizontal" />
 
         <div className="hidden lg:flex items-center gap-6">
           {mainNav.map((item) => (
@@ -61,7 +61,7 @@ export function MarketingHeader() {
             href="/app"
             className="text-sm font-medium text-ink/70 hover:text-ink transition-colors duration-ui"
           >
-            Try the demo
+            Explore the demo
           </Link>
           <Link
             href="/waitlist"
@@ -111,7 +111,7 @@ export function MarketingHeader() {
                 onClick={() => setMobileOpen(false)}
                 className="block py-2 text-base font-medium text-ink/70 hover:text-ink"
               >
-                Try the demo
+                Explore the demo
               </Link>
               <Link
                 href="/waitlist"

@@ -1,29 +1,33 @@
 "use client";
 
 import Link from "next/link";
-import { WaitingListForm } from "@/components/shared/waiting-list-form";
+import { demoApplications, demoBorrowers, applicationStatusConfig, demoOrganisation } from "@/lib/demo-data";
 
 export default function DashboardPage() {
-  const organisationName = "Demo Lender";
-  const activeApplications = 0;
-  const pendingReview = 0;
-  const completedThisMonth = 0;
+  const activeApplications = demoApplications.filter(
+    (a) => a.status === "processing" || a.status === "needs_review" || a.status === "consented"
+  ).length;
+  const pendingReview = demoApplications.filter((a) => a.status === "needs_review").length;
+  const completedThisMonth = demoApplications.filter(
+    (a) => a.status === "ready" || a.status === "reviewed"
+  ).length;
+  const recentApplications = demoApplications.slice(0, 5);
 
   return (
     <div className="space-y-8">
-      {/* Welcome + MVP badge */}
+      {/* Welcome + Demo badge */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3 mb-1">
             <h1 className="text-2xl font-bold text-ink">
-              Welcome back, {organisationName}
+              Welcome back, {demoOrganisation.name}
             </h1>
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-50 text-teal-500 border border-teal-200">
-              MVP Demo
+              Demo environment
             </span>
           </div>
           <p className="mt-1 text-sm text-ink/60">
-            This is a demo environment. No real signup is required — explore the full assessment flow freely.
+            This is a demo environment with synthetic data. No real financial processing occurs.
           </p>
         </div>
         <Link
@@ -52,22 +56,7 @@ export default function DashboardPage() {
         <div className="bg-white border border-sand-300 rounded-lg p-5">
           <p className="text-sm font-medium text-ink/60">Completed this month</p>
           <p className="mt-1 text-3xl font-bold text-ink">{completedThisMonth}</p>
-          <p className="mt-1 text-xs text-ink/50">Assessments finalised this month</p>
-        </div>
-      </div>
-
-      {/* Waitlist CTA */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
-        <div className="flex flex-col sm:flex-row sm:items-start gap-6">
-          <div className="flex-1">
-            <h2 className="text-lg font-semibold text-ink">Join the waitlist for full access</h2>
-            <p className="mt-1 text-sm text-ink/60 max-w-lg">
-              The demo lets you explore the assessment flow. When you&apos;re ready for real organisation setup, team management, and production data — join the waitlist and we&apos;ll get you set up.
-            </p>
-          </div>
-          <div className="flex-1 max-w-sm">
-            <WaitingListForm compact />
-          </div>
+          <p className="mt-1 text-xs text-ink/50">Assessments finalised</p>
         </div>
       </div>
 
@@ -82,23 +71,68 @@ export default function DashboardPage() {
             View all
           </Link>
         </div>
-        <div className="bg-white border border-sand-300 rounded-lg">
-          <div className="flex flex-col items-center justify-center py-16 px-6 text-center">
-            <div className="w-12 h-12 rounded-full bg-sand-100 flex items-center justify-center mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-ink/40">
-                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </div>
-            <p className="text-sm font-medium text-ink">No applications yet</p>
-            <p className="mt-1 text-sm text-ink/50 max-w-sm">
-              Start your first credit assessment by creating a new application. You will need borrower details and bank statements.
-            </p>
-            <Link
-              href="/app/applications/new"
-              className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-teal-50 text-teal-500 rounded-md text-sm font-medium hover:bg-teal-100 transition-colors duration-ui"
-            >
-              Create first application
-            </Link>
+        <div className="bg-white border border-sand-300 rounded-lg overflow-hidden">
+          {/* Desktop table */}
+          <div className="hidden sm:block overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-sand-300">
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-ink/60 uppercase tracking-wider">Reference</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-ink/60 uppercase tracking-wider">Borrower</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-ink/60 uppercase tracking-wider">Status</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-ink/60 uppercase tracking-wider">Product</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-ink/60 uppercase tracking-wider">Date</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-sand-300">
+                {recentApplications.map((app) => {
+                  const borrower = demoBorrowers.find((b) => b.id === app.borrowerId);
+                  const statusInfo = applicationStatusConfig[app.status];
+                  return (
+                    <tr key={app.id} className="hover:bg-sand-50 transition-colors duration-ui">
+                      <td className="px-4 py-3">
+                        <Link href={`/app/applications/${app.id}`} className="text-sm font-medium text-teal-500 hover:text-teal-600">
+                          {app.reference}
+                        </Link>
+                      </td>
+                      <td className="px-4 py-3 text-sm text-ink">{borrower?.displayName ?? "—"}</td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium ${statusInfo.className}`}>
+                          <span className={`w-1.5 h-1.5 rounded-full ${statusInfo.dotClassName}`} />
+                          {statusInfo.label}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-sm text-ink/60">{app.productType}</td>
+                      <td className="px-4 py-3 text-sm text-ink/60">{app.createdAt}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          {/* Mobile cards */}
+          <div className="sm:hidden divide-y divide-sand-300">
+            {recentApplications.map((app) => {
+              const borrower = demoBorrowers.find((b) => b.id === app.borrowerId);
+              const statusInfo = applicationStatusConfig[app.status];
+              return (
+                <Link key={app.id} href={`/app/applications/${app.id}`} className="block p-4 hover:bg-sand-50 transition-colors duration-ui">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-medium text-teal-500">{app.reference}</p>
+                    <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium ${statusInfo.className}`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${statusInfo.dotClassName}`} />
+                      {statusInfo.label}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm text-ink">{borrower?.displayName}</p>
+                  <div className="mt-2 flex items-center gap-3 text-xs text-ink/50">
+                    <span>{app.productType}</span>
+                    <span>&middot;</span>
+                    <span>{app.createdAt}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -163,6 +197,29 @@ export default function DashboardPage() {
               <p className="text-xs text-ink/50">Get full access when ready</p>
             </div>
           </Link>
+        </div>
+      </div>
+
+      {/* Inline waitlist CTA */}
+      <div className="bg-white border border-sand-300 rounded-lg p-6">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+          <div className="flex-1">
+            <h2 className="text-lg font-semibold text-ink">Join the waitlist for full access</h2>
+            <p className="mt-1 text-sm text-ink/60 max-w-lg">
+              The demo lets you explore the assessment flow with synthetic data. When you&apos;re ready for real organisation setup, team management, and production data — join the waitlist and we&apos;ll get you set up.
+            </p>
+          </div>
+          <div className="flex-shrink-0">
+            <Link
+              href="/waitlist"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-teal-50 text-teal-500 rounded-md text-sm font-medium hover:bg-teal-100 transition-colors duration-ui border border-teal-200"
+            >
+              Join the waitlist
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
