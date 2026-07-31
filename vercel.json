@@ -1,0 +1,11 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "regions": ["cdg1"],
+  "env": {
+    "OPENROUTER_API_KEY": "@openrouter-api-key",
+    "NEXT_PUBLIC_APP_URL": "https://hola.tangison.com"
+  }
+}
