@@ -6,6 +6,8 @@
  * A conversational AI endpoint that lets loan officers ask questions
  * about a specific application's assessment. Uses the same system prompt
  * constraints as the assessment endpoint.
+ *
+ * Uses automatic free model fallback for reliability.
  */
 
 import { NextResponse } from "next/server";
@@ -48,7 +50,7 @@ export async function POST(request: Request) {
       ? `\n\nCurrent context: You are discussing application ${body.context.applicationReference ?? "unknown"} for ${body.context.borrowerName ?? "an applicant"}. The product type is ${body.context.productType ?? "not specified"}. Assessment summary: ${body.context.assessmentSummary ?? "not available"}.`
       : "";
 
-    const systemPrompt = CASH_FLOW_SYSTEM_PROMPT + contextPrompt + "\n\nYou are now in a conversational mode. Answer the user's question about the cash-flow assessment clearly and honestly. Use plain language. No em dashes. If you are uncertain, say so. Do not make lending decisions.";
+    const systemPrompt = CASH_FLOW_SYSTEM_PROMPT + contextPrompt + "\n\nYou are now in a conversational mode. Answer the user's question about the cash-flow assessment clearly and honestly. Use plain language. No em dashes. If you are uncertain, say so. Do not make lending decisions. Refer to specific transactions or patterns when possible rather than giving generic advice.";
 
     const result = await chatCompletion(
       [
@@ -56,7 +58,6 @@ export async function POST(request: Request) {
         { role: "user", content: body.message },
       ],
       {
-        model: "openrouter/free",
         temperature: 0.4,
         max_tokens: 2048,
       }
@@ -78,6 +79,17 @@ export async function POST(request: Request) {
       return NextResponse.json(
         { error: "AI service unavailable", fallback: true },
         { status: 503 }
+      );
+    }
+
+    if (message.includes("All free models failed") || message.includes("OpenRouter API error")) {
+      return NextResponse.json(
+        {
+          error: "AI service temporarily unavailable",
+          detail: "All free model tiers may be rate-limited. Please try again in a moment.",
+          fallback: true,
+        },
+        { status: 502 }
       );
     }
 
