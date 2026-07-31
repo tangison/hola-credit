@@ -54,3 +54,4 @@ server.log
 /skills/
 # clerk configuration (can include secrets)
 /.clerk/
+tool-results/

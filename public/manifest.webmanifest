@@ -8,6 +8,11 @@
   "theme_color": "#16B8A6",
   "icons": [
     {
+      "src": "/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
       "src": "/logos/hola-credit-favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
@@ -17,6 +22,12 @@
       "src": "/logos/hola-credit-symbol.svg",
       "sizes": "any",
       "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

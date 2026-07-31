@@ -11,6 +11,7 @@ import {
   type DemoApplication,
   type DemoAssessment,
 } from "@/lib/demo-data";
+import { AiChatPanel } from "@/components/shared/ai-chat-panel";
 
 function AssessmentView({ assessment, transactions }: { assessment: DemoAssessment; transactions: DemoApplication["transactions"] }) {
   const tierLabel = assessment.tier
@@ -486,6 +487,16 @@ export default function ApplicationDetailPage({ params }: { params: Promise<{ ap
                 <p className="text-xs text-ink/50">Assigned reviewer</p>
               </div>
             </div>
+          </section>
+
+          {/* AI chat panel */}
+          <section className="bg-white border border-sand-300 rounded-lg overflow-hidden">
+            <AiChatPanel
+              applicationReference={application.reference}
+              assessmentSummary={application.assessment ? `Score: ${application.assessment.score ?? "N/A"}, Consistency: ${Math.round(application.assessment.consistency * 100)}%, Income floor: ${formatNADShort(application.assessment.incomeFloorMinor)}, Trend: ${application.assessment.trend}` : undefined}
+              borrowerName={borrower?.displayName}
+              productType={application.productType}
+            />
           </section>
 
           {/* Demo notice */}
