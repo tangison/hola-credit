@@ -3,11 +3,5 @@
   "buildCommand": "next build",
   "outputDirectory": ".next",
   "installCommand": "npm install",
-  "regions": ["cdg1"],
-  "env": {
-    "OPENROUTER_API_KEY": "@openrouter-api-key",
-    "CONVEX_DEPLOY_KEY": "@convex-deploy-key",
-    "NEXT_PUBLIC_CONVEX_URL": "https://dynamic-hummingbird-293.convex.cloud",
-    "NEXT_PUBLIC_APP_URL": "https://hola.tangison.com"
-  }
+  "regions": ["cdg1"]
 }
