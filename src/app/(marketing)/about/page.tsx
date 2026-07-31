@@ -12,14 +12,17 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <div className="mb-8">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 176" role="img" aria-label="Hola Credit" className="h-28 w-auto sm:h-36">
-                  <g transform="translate(42 4)">
+                {/* Stacked logo — pure paths + HTML text, renders on all devices */}
+                <div className="inline-flex flex-col items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" className="h-16 w-24 sm:h-20 sm:w-30" aria-hidden="true">
                     <path fill="#16B8A6" d="M8 8h30v14c0 8-6 14-14 14H8V8Zm80 0H58v14c0 8 6 14 14 14h16V8Z" />
                     <path fill="#111512" d="M8 56h30V42c0-8-6-14-14-14H8v28Zm80 0H58V42c0-8 6-14 14-14h16v28Z" />
-                  </g>
-                  <text x="90" y="113" textAnchor="middle" fill="#111512" fontFamily="Manrope, system-ui, sans-serif" fontSize="38" fontWeight="550" letterSpacing="-1.4">hola</text>
-                  <text x="90" y="151" textAnchor="middle" fill="#111512" fontFamily="Manrope, system-ui, sans-serif" fontSize="38" fontWeight="550" letterSpacing="-1.4">credit</text>
-                </svg>
+                  </svg>
+                  <span className="text-center">
+                    <span className="block font-sans text-2xl sm:text-3xl font-semibold tracking-tight text-ink leading-none">hola</span>
+                    <span className="block font-sans text-2xl sm:text-3xl font-semibold tracking-tight text-ink leading-none mt-0.5">credit</span>
+                  </span>
+                </div>
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
                 Cash flow made legible.

@@ -18,14 +18,15 @@ export function AppSidebar() {
   return (
     <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-white border-r border-sand-300 h-screen sticky top-0">
       <div className="p-6 border-b border-sand-300">
-        <Link href="/" aria-label="Hola Credit home">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 84" role="img" aria-label="Hola Credit" className="h-8 w-auto">
-            <g transform="translate(0 10)">
-              <path fill="#16B8A6" d="M8 8h30v14c0 8-6 14-14 14H8V8Zm80 0H58v14c0 8 6 14 14 14h16V8Z" />
-              <path fill="#111512" d="M8 56h30V42c0-8-6-14-14-14H8v28Zm80 0H58V42c0-8 6-14 14-14h16v28Z" />
-            </g>
-            <text x="112" y="57" fill="#111512" fontFamily="Manrope, system-ui, sans-serif" fontSize="44" fontWeight="550" letterSpacing="-1.8">hola credit</text>
+        <Link href="/" aria-label="Hola Credit home" className="inline-flex items-center gap-2">
+          {/* Symbol mark — pure paths, always renders */}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" className="h-8 w-12" aria-hidden="true">
+            <path fill="#16B8A6" d="M8 8h30v14c0 8-6 14-14 14H8V8Zm80 0H58v14c0 8 6 14 14 14h16V8Z" />
+            <path fill="#111512" d="M8 56h30V42c0-8-6-14-14-14H8v28Zm80 0H58V42c0-8 6-14 14-14h16v28Z" />
           </svg>
+          <span className="font-sans text-lg font-semibold tracking-tight text-ink whitespace-nowrap">
+            hola credit
+          </span>
         </Link>
         <div className="mt-3 px-2 py-1 bg-teal-50 rounded-md text-xs text-teal-500 border border-teal-200">
           MVP Demo — no account needed

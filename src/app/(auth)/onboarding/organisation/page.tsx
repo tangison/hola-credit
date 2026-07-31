@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { AuthLogo } from "@/components/shared/auth-logo";
 
 const businessTypes = [
   "Microfinance institution",
@@ -35,13 +36,9 @@ export default function OnboardingOrganisationPage() {
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="text-center mb-8">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 84" role="img" aria-label="Hola Credit" className="h-10 w-auto mx-auto mb-4">
-          <g transform="translate(0 10)">
-            <path fill="#16B8A6" d="M8 8h30v14c0 8-6 14-14 14H8V8Zm80 0H58v14c0 8 6 14 14 14h16V8Z" />
-            <path fill="#111512" d="M8 56h30V42c0-8-6-14-14-14H8v28Zm80 0H58V42c0-8 6-14 14-14h16v28Z" />
-          </g>
-          <text x="112" y="57" fill="#111512" fontFamily="Manrope, system-ui, sans-serif" fontSize="44" fontWeight="550" letterSpacing="-1.8">hola credit</text>
-        </svg>
+        <div className="flex justify-center mb-4">
+          <AuthLogo />
+        </div>
         <h1 className="text-2xl font-bold text-ink">Set up your organisation</h1>
         <p className="mt-2 text-sm text-ink/60">
           Tell us about your organisation. This is saved locally for the demo — no account needed.
