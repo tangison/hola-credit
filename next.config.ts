@@ -40,12 +40,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/verify",
-        destination: "/sign-in",
+        destination: "/app",
         permanent: false,
       },
       {
         source: "/accept-invitation",
-        destination: "/sign-up",
+        destination: "/waitlist",
         permanent: false,
       },
     ];

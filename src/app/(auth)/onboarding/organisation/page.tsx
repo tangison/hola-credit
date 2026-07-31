@@ -24,9 +24,11 @@ export default function OnboardingOrganisationPage() {
     e.preventDefault();
     if (!isValid) return;
     setIsSubmitting(true);
-    // In production, this would call an API to create the organisation
+    // MVP: Save to localStorage, skip real org creation
+    const orgData = { orgName, businessType, createdAt: new Date().toISOString() };
+    localStorage.setItem("hola_org", JSON.stringify(orgData));
     setTimeout(() => {
-      router.push("/onboarding/compliance");
+      router.push("/app");
     }, 800);
   };
 
@@ -42,14 +44,14 @@ export default function OnboardingOrganisationPage() {
         </svg>
         <h1 className="text-2xl font-bold text-ink">Set up your organisation</h1>
         <p className="mt-2 text-sm text-ink/60">
-          Tell us about your organisation so we can configure your credit assessment portal.
+          Tell us about your organisation. This is saved locally for the demo — no account needed.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="bg-white border border-sand-300 rounded-lg p-6 space-y-5">
         <div>
           <label htmlFor="orgName" className="block text-sm font-medium text-ink mb-1.5">
-            Organisation name <span className="text-alert">*</span>
+            Organisation name <span className="text-red-500">*</span>
           </label>
           <input
             id="orgName"
@@ -65,7 +67,7 @@ export default function OnboardingOrganisationPage() {
 
         <div>
           <label htmlFor="businessType" className="block text-sm font-medium text-ink mb-1.5">
-            Business type <span className="text-alert">*</span>
+            Business type <span className="text-red-500">*</span>
           </label>
           <select
             id="businessType"
@@ -87,13 +89,13 @@ export default function OnboardingOrganisationPage() {
             disabled={!isValid || isSubmitting}
             className="w-full px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? "Creating organisation..." : "Continue to compliance"}
+            {isSubmitting ? "Setting up..." : "Go to the demo"}
           </button>
         </div>
       </form>
 
       <p className="mt-4 text-center text-xs text-ink/50">
-        You can update these details later in your organisation settings.
+        No account is created. This info is stored locally in your browser for the demo.
       </p>
     </div>
   );

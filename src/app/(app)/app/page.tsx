@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { WaitingListForm } from "@/components/shared/waiting-list-form";
 
 export default function DashboardPage() {
   const organisationName = "Demo Lender";
@@ -8,14 +11,19 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      {/* Welcome */}
+      {/* Welcome + MVP badge */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-ink">
-            Welcome back, {organisationName}
-          </h1>
+          <div className="flex items-center gap-3 mb-1">
+            <h1 className="text-2xl font-bold text-ink">
+              Welcome back, {organisationName}
+            </h1>
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-50 text-teal-500 border border-teal-200">
+              MVP Demo
+            </span>
+          </div>
           <p className="mt-1 text-sm text-ink/60">
-            Manage credit assessments and track application progress from your organisation dashboard.
+            This is a demo environment. No real signup is required — explore the full assessment flow freely.
           </p>
         </div>
         <Link
@@ -44,7 +52,22 @@ export default function DashboardPage() {
         <div className="bg-white border border-sand-300 rounded-lg p-5">
           <p className="text-sm font-medium text-ink/60">Completed this month</p>
           <p className="mt-1 text-3xl font-bold text-ink">{completedThisMonth}</p>
-          <p className="mt-1 text-xs text-ink/50">Assessments finalised in March</p>
+          <p className="mt-1 text-xs text-ink/50">Assessments finalised this month</p>
+        </div>
+      </div>
+
+      {/* Waitlist CTA */}
+      <div className="bg-white border border-sand-300 rounded-lg p-6">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+          <div className="flex-1">
+            <h2 className="text-lg font-semibold text-ink">Join the waitlist for full access</h2>
+            <p className="mt-1 text-sm text-ink/60 max-w-lg">
+              The demo lets you explore the assessment flow. When you&apos;re ready for real organisation setup, team management, and production data — join the waitlist and we&apos;ll get you set up.
+            </p>
+          </div>
+          <div className="flex-1 max-w-sm">
+            <WaitingListForm compact />
+          </div>
         </div>
       </div>
 
@@ -127,17 +150,17 @@ export default function DashboardPage() {
             </div>
           </Link>
           <Link
-            href="/app/team"
+            href="/waitlist"
             className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-lg hover:border-teal-400 transition-colors duration-ui group"
           >
-            <div className="w-10 h-10 rounded-md bg-sand-100 flex items-center justify-center flex-shrink-0">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-ink/60">
-                <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+            <div className="w-10 h-10 rounded-md bg-teal-50 flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
+                <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-medium text-ink group-hover:text-teal-500 transition-colors duration-ui">Team</p>
-              <p className="text-xs text-ink/50">Manage team members</p>
+              <p className="text-sm font-medium text-ink group-hover:text-teal-500 transition-colors duration-ui">Join waitlist</p>
+              <p className="text-xs text-ink/50">Get full access when ready</p>
             </div>
           </Link>
         </div>

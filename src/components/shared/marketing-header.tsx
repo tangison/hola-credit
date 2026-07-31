@@ -58,16 +58,16 @@ export function MarketingHeader() {
 
         <div className="hidden lg:flex items-center gap-3">
           <Link
-            href="/sign-in"
+            href="/app"
             className="text-sm font-medium text-ink/70 hover:text-ink transition-colors duration-ui"
           >
-            Sign in
+            Try the demo
           </Link>
           <Link
-            href="/contact"
+            href="/waitlist"
             className="inline-flex items-center justify-center rounded-md bg-ink text-sand-50 px-4 py-2 text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
           >
-            Request pilot access
+            Join waitlist
           </Link>
         </div>
 
@@ -107,18 +107,18 @@ export function MarketingHeader() {
             ))}
             <div className="pt-4 border-t border-sand-300 space-y-2">
               <Link
-                href="/sign-in"
+                href="/app"
                 onClick={() => setMobileOpen(false)}
                 className="block py-2 text-base font-medium text-ink/70 hover:text-ink"
               >
-                Sign in
+                Try the demo
               </Link>
               <Link
-                href="/contact"
+                href="/waitlist"
                 onClick={() => setMobileOpen(false)}
                 className="block py-2 text-base font-medium text-teal-500 hover:text-teal-600"
               >
-                Request pilot access
+                Join waitlist
               </Link>
             </div>
           </div>

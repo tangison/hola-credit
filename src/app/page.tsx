@@ -21,16 +21,16 @@ export default function HomePage() {
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   <Link
-                    href="/contact"
+                    href="/app"
                     className="inline-flex items-center justify-center rounded-md bg-ink text-sand-50 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
                   >
-                    Request pilot access
+                    Try the demo
                   </Link>
                   <Link
-                    href="/how-scoring-works"
+                    href="/waitlist"
                     className="inline-flex items-center justify-center rounded-md border border-sand-300 text-ink px-6 py-3 text-base font-medium hover:bg-sand-100 transition-colors duration-ui"
                   >
-                    See how scoring works
+                    Join the waitlist
                   </Link>
                 </div>
               </div>
@@ -229,21 +229,21 @@ export default function HomePage() {
               Help shape a more useful way to review cash flow.
             </h2>
             <p className="mt-4 text-lg text-sand-300">
-              Qualified organisations are invited to request pilot access.
+              Try the demo now — no account needed. Join the waitlist for full production access.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Link
-                href="/contact"
+                href="/app"
                 className="inline-flex items-center justify-center rounded-md bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui"
               >
-                Request pilot access
+                Try the demo
               </Link>
-              <a
-                href="mailto:hola@tangison.com"
+              <Link
+                href="/waitlist"
                 className="inline-flex items-center justify-center rounded-md border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
               >
-                hola@tangison.com
-              </a>
+                Join the waitlist
+              </Link>
             </div>
           </div>
         </section>

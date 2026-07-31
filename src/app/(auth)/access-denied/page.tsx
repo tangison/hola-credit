@@ -11,50 +11,30 @@ export default function AccessDeniedPage() {
         <text x="112" y="57" fill="#111512" fontFamily="Manrope, system-ui, sans-serif" fontSize="44" fontWeight="550" letterSpacing="-1.8">hola credit</text>
       </svg>
 
-      <div className="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-6">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-alert">
+      <div className="w-16 h-16 rounded-full bg-sand-100 flex items-center justify-center mx-auto mb-6">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-ink/50">
           <circle cx="12" cy="12" r="10" />
           <path d="M4.93 4.93l14.14 14.14M14.828 9.172a4 4 0 010 5.656M9.172 14.828a4 4 0 010-5.656" />
         </svg>
       </div>
 
-      <h1 className="text-2xl font-bold text-ink">Access denied</h1>
+      <h1 className="text-2xl font-bold text-ink">No account needed yet</h1>
       <p className="mt-3 text-sm text-ink/60 max-w-sm mx-auto">
-        You do not have permission to access the Hola Credit portal. This may be because your account has not been added to an organisation, or your access has been revoked.
+        Hola Credit is in early access. You can explore the demo freely — no signup required. Full accounts with organisation setup will be available at launch.
       </p>
 
-      <div className="mt-6 bg-white border border-sand-300 rounded-lg p-5 text-left space-y-3">
-        <h3 className="text-sm font-semibold text-ink">Possible reasons</h3>
-        <ul className="space-y-2 text-sm text-ink/60">
-          <li className="flex items-start gap-2">
-            <span className="w-1 h-1 rounded-full bg-ink/30 mt-2 flex-shrink-0" />
-            Your organisation&apos;s account has been suspended or is under review.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="w-1 h-1 rounded-full bg-ink/30 mt-2 flex-shrink-0" />
-            Your team membership has been removed by an administrator.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="w-1 h-1 rounded-full bg-ink/30 mt-2 flex-shrink-0" />
-            You are trying to access a resource that belongs to a different organisation.
-          </li>
-        </ul>
-      </div>
-
-      <p className="mt-6 text-sm text-ink/50">
-        If you believe this is an error, please{" "}
-        <a href="mailto:support@holacredit.na" className="text-teal-500 hover:text-teal-600 underline underline-offset-2">
-          contact support
-        </a>{" "}
-        for assistance.
-      </p>
-
-      <div className="mt-6 flex items-center justify-center gap-3">
+      <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
         <Link
-          href="/sign-in"
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
+          href="/app"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
         >
-          Sign in with a different account
+          Try the demo
+        </Link>
+        <Link
+          href="/waitlist"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-sand-300 text-ink rounded-md text-sm font-medium hover:bg-sand-100 transition-colors duration-ui"
+        >
+          Join the waitlist
         </Link>
       </div>
     </div>
