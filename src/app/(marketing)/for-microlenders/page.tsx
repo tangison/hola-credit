@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Underwriting support for Namibian microlenders reviewing irregular-income applicants. See income patterns, consistency, and red flags from bank statements.",
+};
 
 export default function ForMicrolendersPage() {
   return (

@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Resources for Namibian lenders using cash-flow assessment. Guides on statement readiness, responsible credit, and understanding the scoring methodology.",
+};
 
 const clusters = [
   {

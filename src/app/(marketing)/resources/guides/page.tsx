@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Practical guides for Namibian lenders on cash-flow assessment. Statement preparation, scoring interpretation, and responsible lending for credit teams.",
+};
 
 const guides = [
   {
@@ -65,7 +70,7 @@ export default function GuidesPage() {
                   <div>
                     <div className="flex items-start gap-4 mb-3">
                       <h2 className="text-xl font-semibold text-ink">{guide.title}</h2>
-                      <span className="shrink-0 inline-block text-xs font-medium tracking-wide uppercase px-2 py-0.5 rounded border border-sand-300 text-stone bg-sand-100">
+                      <span className="shrink-0 inline-block text-xs font-medium tracking-wide uppercase px-2 py-0.5 rounded border border-sand-300 text-ink/60 bg-sand-100">
                         {guide.status}
                       </span>
                     </div>

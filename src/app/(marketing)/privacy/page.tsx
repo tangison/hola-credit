@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Hola Credit privacy policy. How we collect, use, and protect borrower and lender data. Namibian POPIA-compliant data processing and retention practices.",
+};
 
 export default function PrivacyPage() {
   return (

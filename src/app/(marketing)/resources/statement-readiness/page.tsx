@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Prepare bank statements for cash-flow assessment. Accepted formats, Namibian bank compatibility, and tips for complete three-month statement submissions.",
+};
 
 export default function StatementReadinessPage() {
   return (

@@ -69,7 +69,7 @@ export default function ContactPage() {
                         id="organisation"
                         name="organisation"
                         required
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-stone focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                         placeholder="Registered organisation name"
                       />
                     </div>
@@ -100,7 +100,7 @@ export default function ContactPage() {
                         id="email"
                         name="email"
                         required
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-stone focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                         placeholder="you@organisation.com"
                       />
                     </div>
@@ -114,7 +114,7 @@ export default function ContactPage() {
                         id="role"
                         name="role"
                         required
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-stone focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                         placeholder="e.g. Risk Manager, Loan Officer, Compliance Lead"
                       />
                     </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                         type="text"
                         id="assessments"
                         name="assessments"
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-stone focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                         placeholder="Approximate number per month"
                       />
                     </div>
@@ -140,7 +140,7 @@ export default function ContactPage() {
                         id="intended-use"
                         name="intended-use"
                         rows={4}
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-stone focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui resize-y"
+                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui resize-y"
                         placeholder="Briefly describe how your organisation would use Hola Credit alongside your existing assessment process."
                       />
                     </div>

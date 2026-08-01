@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Responsible credit practices for Namibian lenders. How cash-flow assessment supports fair lending, avoids over-indebtedness, and respects borrower dignity.",
+};
 
 export default function ResponsibleCreditPage() {
   return (

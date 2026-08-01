@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "How Hola Credit protects borrower data. Encryption at rest and in transit, consent-gated access, Namibian POPIA compliance, and secure statement processing.",
+};
 
 export default function SecurityPage() {
   return (

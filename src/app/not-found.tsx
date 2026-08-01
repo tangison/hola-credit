@@ -23,7 +23,7 @@ export default function NotFound() {
             strokeWidth="1.75"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-ink/40"
+            className="text-ink/60"
             aria-hidden="true"
           >
             <circle cx="12" cy="12" r="10" />
@@ -53,7 +53,7 @@ export default function NotFound() {
       </div>
 
       <footer className="mt-auto py-6 text-center">
-        <p className="text-sm text-ink/50">
+        <p className="text-sm text-ink/60">
           <a
             href="https://tangison.com"
             target="_blank"

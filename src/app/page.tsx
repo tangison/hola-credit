@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Cash-flow assessment for Namibian microlenders and retailers. Structure evidence from bank statements to support lending for irregular-income applicants.",
+};
 
 export default function HomePage() {
   return (
@@ -123,10 +128,10 @@ export default function HomePage() {
               ].map((item) => (
                 <div key={item.step} className="relative">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="flex items-center justify-center w-10 h-10 rounded-md bg-teal-50 text-teal-400">
+                    <span className="flex items-center justify-center w-10 h-10 rounded-md bg-teal-50 text-teal-600">
                       {item.icon}
                     </span>
-                    <span className="text-sm font-semibold text-stone">{item.step}</span>
+                    <span className="text-sm font-semibold text-ink/60">{item.step}</span>
                   </div>
                   <h3 className="text-lg font-semibold text-ink mb-2">{item.title}</h3>
                   <p className="text-ink/70 leading-relaxed">{item.description}</p>
@@ -163,7 +168,7 @@ export default function HomePage() {
                   Review applicants whose income patterns do not fit salary-only underwriting. Hola Credit structures the cash-flow evidence from borrower-consented bank statements, so loan officers can see income patterns, consistency and red flags alongside their existing policies and formal bureau checks.
                 </p>
                 <Link href="/for-microlenders" className="inline-flex items-center mt-4 text-sm font-medium text-teal-500 hover:text-teal-600 transition-colors duration-ui">
-                  Learn more
+                  Learn more about microlender underwriting
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
@@ -178,7 +183,7 @@ export default function HomePage() {
                   Evaluate customers applying to purchase goods on credit without forcing every case into a payslip model. Hola Credit helps retail credit teams understand real customer cash flow from bank statements, supporting informed decisions at the point of sale.
                 </p>
                 <Link href="/for-retailers" className="inline-flex items-center mt-4 text-sm font-medium text-teal-500 hover:text-teal-600 transition-colors duration-ui">
-                  Learn more
+                  Learn more about retail credit assessment
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>

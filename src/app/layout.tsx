@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | Hola Credit",
   },
   description:
-    "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns.",
+    "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns. Structure evidence from bank statements to support informed lending decisions.",
   metadataBase: new URL("https://hola.tangison.com"),
   icons: {
     icon: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hola Credit",
     description:
-      "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns.",
+      "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns. Structure evidence from bank statements to support informed lending decisions.",
     url: "https://hola.tangison.com",
     siteName: "Hola Credit",
     locale: "en_NA",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Hola Credit",
     description:
-      "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns.",
+      "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns. Structure evidence from bank statements to support informed lending decisions.",
   },
   robots: {
     index: true,
@@ -54,6 +54,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/logos/hola-credit-favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="preload" as="image" href="/images/cash-flow-to-clear-signal-1280.webp" type="image/webp" fetchPriority="high" />
       </head>
       <body className="min-h-screen flex flex-col bg-sand text-ink font-sans antialiased">
         {children}

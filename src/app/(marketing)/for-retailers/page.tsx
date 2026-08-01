@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Retail credit assessment for Namibian stores. Evaluate customers for goods on credit using cash-flow data from bank statements instead of payslip-only models.",
+};
 
 export default function ForRetailersPage() {
   return (

@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Complete sitemap of Hola Credit. All pages, resources, and documentation for the Namibian cash-flow assessment platform by Tangison Technologies in Windhoek.",
+};
 
 const siteSections = [
   {
@@ -143,7 +148,7 @@ export default function SitemapPage() {
                         </Link>
                       </td>
                       <td className="py-3 pr-4 text-ink/70">{page.title}</td>
-                      <td className="py-3 text-stone text-sm">{page.category}</td>
+                      <td className="py-3 text-ink/60 text-sm">{page.category}</td>
                     </tr>
                   ))}
                 </tbody>

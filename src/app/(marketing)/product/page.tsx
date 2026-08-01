@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "How Hola Credit structures cash-flow evidence from statements. AI-assisted categorisation, income floor, and consistency scoring for Namibian lenders.",
+};
 
 export default function ProductPage() {
   return (

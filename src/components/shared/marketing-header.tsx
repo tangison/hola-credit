@@ -16,11 +16,13 @@ const mainNav = [
 
 export function MarketingHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [lastY, setLastY] = useState(0);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 10);
@@ -31,15 +33,18 @@ export function MarketingHeader() {
       }
       setLastY(y);
     };
+    // Check initial scroll position on mount
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [lastY]);
 
   return (
     <header
+      suppressHydrationWarning
       className={`fixed top-0 inset-x-0 z-50 transition-transform duration-ui ease-entrance ${
-        hidden ? "-translate-y-full" : "translate-y-0"
-      } ${scrolled ? "bg-sand/95 backdrop-blur-sm border-b border-sand-300 shadow-sm" : "bg-transparent"}`}
+        mounted && hidden ? "-translate-y-full" : "translate-y-0"
+      } ${mounted && scrolled ? "bg-sand/95 backdrop-blur-sm border-b border-sand-300 shadow-sm" : "bg-transparent"}`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Primary navigation">
         <Logo variant="horizontal" />

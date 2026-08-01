@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Built by Tangison Technologies in Windhoek, Namibia. We serve authorised lenders and retailers needing structured cash-flow evidence for applicant review.",
+};
 
 export default function AboutPage() {
   return (
@@ -124,13 +129,13 @@ export default function AboutPage() {
                 </p>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-sm font-medium text-stone mb-1">Email</p>
+                    <p className="text-sm font-medium text-ink/60 mb-1">Email</p>
                     <a href="mailto:hola@tangison.com" className="text-lg text-ink hover:text-teal-500 transition-colors duration-ui">
                       hola@tangison.com
                     </a>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-stone mb-1">Product domain</p>
+                    <p className="text-sm font-medium text-ink/60 mb-1">Product domain</p>
                     <p className="text-lg text-ink">hola.tangison.com</p>
                   </div>
                 </div>
