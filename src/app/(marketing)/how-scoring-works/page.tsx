@@ -132,7 +132,7 @@ export default function HowScoringWorksPage() {
             <p className="text-ink/70 leading-relaxed max-w-3xl mb-8">
               Every Hola Credit assessment produces a structured summary that the lender can review, question, and use alongside their own policies. The schema below shows the fields included in the assessment output. This is a contract example, not application code — it describes the shape of the data, not the implementation.
             </p>
-            <div className="bg-white rounded-md border border-sand-300 overflow-x-auto">
+            <div className="bg-white rounded-xl border border-sand-300 overflow-x-auto">
               <pre className="p-6 text-sm text-ink/80 leading-relaxed font-mono whitespace-pre"><code>{`type Assessment = {
   scoreRunId: string
   statementPeriod: { from: string; to: string }
@@ -197,10 +197,10 @@ export default function HowScoringWorksPage() {
               The assessment is designed to be explainable. If you want to understand how it would apply to your lending or retail credit workflow, pilot access includes full visibility into the evidence, confidence, and policy versions behind each assessment.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-md bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">
+              <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">
                 Request pilot access
               </Link>
-              <Link href="/security" className="inline-flex items-center justify-center rounded-md border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui">
+              <Link href="/security" className="inline-flex items-center justify-center rounded-full border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui">
                 Security and data handling
               </Link>
             </div>

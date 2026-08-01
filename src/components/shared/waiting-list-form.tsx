@@ -343,7 +343,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
         </p>
         <Link
           href="/app"
-          className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 bg-teal-50 text-teal-500 rounded-md text-sm font-medium hover:bg-teal-100 transition-colors duration-ui"
+          className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 bg-teal-50 text-teal-500 rounded-full text-sm font-medium hover:bg-teal-100 transition-colors duration-ui"
         >
           Try the demo while you wait
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -382,14 +382,14 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
         <div className="mt-4 flex flex-col sm:flex-row gap-2 justify-center">
           <Link
             href="/app"
-            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
           >
             Try the demo
           </Link>
           <button
             type="button"
             onClick={() => setSubmissionStatus("idle")}
-            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-sand-300 text-ink rounded-md text-sm font-medium hover:bg-sand-100 transition-colors duration-ui"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-sand-300 text-ink rounded-full text-sm font-medium hover:bg-sand-100 transition-colors duration-ui"
           >
             Use a different email
           </button>
@@ -430,13 +430,13 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
               setSubmissionStatus("idle");
               handleSubmit(new Event("submit") as unknown as React.FormEvent);
             }}
-            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
           >
             Try again
           </button>
           <Link
             href="/app"
-            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-sand-300 text-ink rounded-md text-sm font-medium hover:bg-sand-100 transition-colors duration-ui"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-sand-300 text-ink rounded-full text-sm font-medium hover:bg-sand-100 transition-colors duration-ui"
           >
             Try the demo
           </Link>
@@ -472,7 +472,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
         <button
           type="button"
           onClick={() => setSubmissionStatus("idle")}
-          className="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
+          className="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
         >
           Try again
         </button>
@@ -499,14 +499,14 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
                 value={captchaInput}
                 onChange={(e) => setCaptchaInput(e.target.value)}
                 placeholder="Your answer"
-                className="flex-1 px-3 py-2.5 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+                className="flex-1 px-3 py-2.5 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
                 autoFocus
                 required
                 aria-describedby={captchaError ? "captcha-error" : undefined}
               />
               <button
                 type="submit"
-                className="px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2"
+                className="px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2"
               >
                 Check
               </button>
@@ -560,7 +560,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
             onChange={(e) => handleFieldChange("organisationName", e.target.value)}
             onBlur={() => handleBlur("organisationName")}
             placeholder="e.g. Sunshine Microfinance"
-            className={`w-full px-3 py-2.5 border rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui ${
+            className={`w-full px-3 py-2.5 border rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui ${
               touched.organisationName && fieldErrors.organisationName
                 ? "border-alert"
                 : "border-sand-300"
@@ -590,7 +590,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
             value={formData.businessType}
             onChange={(e) => handleFieldChange("businessType", e.target.value)}
             onBlur={() => handleBlur("businessType")}
-            className={`w-full px-3 py-2.5 border rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white ${
+            className={`w-full px-3 py-2.5 border rounded-xl text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white ${
               touched.businessType && fieldErrors.businessType
                 ? "border-alert"
                 : "border-sand-300"
@@ -627,7 +627,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
             onChange={(e) => handleFieldChange("contactName", e.target.value)}
             onBlur={() => handleBlur("contactName")}
             placeholder="Your full name"
-            className={`w-full px-3 py-2.5 border rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui ${
+            className={`w-full px-3 py-2.5 border rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui ${
               touched.contactName && fieldErrors.contactName
                 ? "border-alert"
                 : "border-sand-300"
@@ -659,7 +659,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
             onChange={(e) => handleFieldChange("workEmail", e.target.value)}
             onBlur={() => handleBlur("workEmail")}
             placeholder="you@organisation.com"
-            className={`w-full px-3 py-2.5 border rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui ${
+            className={`w-full px-3 py-2.5 border rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui ${
               touched.workEmail && fieldErrors.workEmail
                 ? "border-alert"
                 : "border-sand-300"
@@ -691,7 +691,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
             value={formData.role}
             onChange={(e) => handleFieldChange("role", e.target.value)}
             placeholder="e.g. Credit Manager, COO"
-            className="w-full px-3 py-2.5 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+            className="w-full px-3 py-2.5 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
           />
         </div>
 
@@ -704,7 +704,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
             id="waitlist-assessments"
             value={formData.estimatedAssessments}
             onChange={(e) => handleFieldChange("estimatedAssessments", e.target.value)}
-            className="w-full px-3 py-2.5 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
+            className="w-full px-3 py-2.5 border border-sand-300 rounded-xl text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
           >
             <option value="">Select a range</option>
             {ESTIMATED_ASSESSMENTS.map((range) => (
@@ -724,7 +724,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
             onChange={(e) => handleFieldChange("intendedUse", e.target.value)}
             placeholder="Tell us about your use case..."
             rows={3}
-            className="w-full px-3 py-2.5 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui resize-none"
+            className="w-full px-3 py-2.5 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui resize-none"
           />
         </div>
 
@@ -765,7 +765,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2"
+          className="w-full px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2"
         >
           {isSubmitting ? "Submitting\u2026" : "Join the waitlist"}
         </button>

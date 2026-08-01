@@ -181,10 +181,10 @@ export default function SecurityPage() {
               If your organisation needs to evaluate Hola Credit&apos;s security controls as part of your pilot assessment, contact us to discuss the threat model, audit capabilities, and retention policies in detail.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-md bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">
+              <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">
                 Request pilot access
               </Link>
-              <Link href="/how-scoring-works" className="inline-flex items-center justify-center rounded-md border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui">
+              <Link href="/how-scoring-works" className="inline-flex items-center justify-center rounded-full border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui">
                 How scoring works
               </Link>
             </div>

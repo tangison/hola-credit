@@ -32,7 +32,7 @@ export default function DashboardPage() {
         </div>
         <Link
           href="/app/applications/new"
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui whitespace-nowrap"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui whitespace-nowrap"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 5v14M5 12h14" />
@@ -43,17 +43,17 @@ export default function DashboardPage() {
 
       {/* Quick stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white border border-sand-300 rounded-lg p-5">
+        <div className="bg-white border border-sand-300 rounded-2xl p-5">
           <p className="text-sm font-medium text-ink/60">Active applications</p>
           <p className="mt-1 text-3xl font-bold text-ink">{activeApplications}</p>
           <p className="mt-1 text-xs text-ink/50">Applications currently in progress</p>
         </div>
-        <div className="bg-white border border-sand-300 rounded-lg p-5">
+        <div className="bg-white border border-sand-300 rounded-2xl p-5">
           <p className="text-sm font-medium text-ink/60">Pending review</p>
           <p className="mt-1 text-3xl font-bold text-ink">{pendingReview}</p>
           <p className="mt-1 text-xs text-ink/50">Awaiting your assessment</p>
         </div>
-        <div className="bg-white border border-sand-300 rounded-lg p-5">
+        <div className="bg-white border border-sand-300 rounded-2xl p-5">
           <p className="text-sm font-medium text-ink/60">Completed this month</p>
           <p className="mt-1 text-3xl font-bold text-ink">{completedThisMonth}</p>
           <p className="mt-1 text-xs text-ink/50">Assessments finalised</p>
@@ -71,7 +71,7 @@ export default function DashboardPage() {
             View all
           </Link>
         </div>
-        <div className="bg-white border border-sand-300 rounded-lg overflow-hidden">
+        <div className="bg-white border border-sand-300 rounded-2xl overflow-hidden">
           {/* Desktop table */}
           <div className="hidden sm:block overflow-x-auto">
             <table className="w-full">
@@ -143,9 +143,9 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <Link
             href="/app/applications/new"
-            className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-lg hover:border-teal-400 transition-colors duration-ui group"
+            className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-2xl hover:border-teal-400 transition-colors duration-ui group"
           >
-            <div className="w-10 h-10 rounded-md bg-teal-50 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center flex-shrink-0">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                 <path d="M12 5v14M5 12h14" />
               </svg>
@@ -157,9 +157,9 @@ export default function DashboardPage() {
           </Link>
           <Link
             href="/app/borrowers"
-            className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-lg hover:border-teal-400 transition-colors duration-ui group"
+            className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-2xl hover:border-teal-400 transition-colors duration-ui group"
           >
-            <div className="w-10 h-10 rounded-md bg-sand-100 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-sand-100 flex items-center justify-center flex-shrink-0">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-ink/60">
                 <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
@@ -171,9 +171,9 @@ export default function DashboardPage() {
           </Link>
           <Link
             href="/app/consents"
-            className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-lg hover:border-teal-400 transition-colors duration-ui group"
+            className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-2xl hover:border-teal-400 transition-colors duration-ui group"
           >
-            <div className="w-10 h-10 rounded-md bg-sand-100 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-sand-100 flex items-center justify-center flex-shrink-0">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-ink/60">
                 <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
@@ -185,9 +185,9 @@ export default function DashboardPage() {
           </Link>
           <Link
             href="/waitlist"
-            className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-lg hover:border-teal-400 transition-colors duration-ui group"
+            className="flex items-center gap-3 p-4 bg-white border border-sand-300 rounded-2xl hover:border-teal-400 transition-colors duration-ui group"
           >
-            <div className="w-10 h-10 rounded-md bg-teal-50 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center flex-shrink-0">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                 <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
@@ -201,7 +201,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Inline waitlist CTA */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6">
         <div className="flex flex-col sm:flex-row sm:items-start gap-6">
           <div className="flex-1">
             <h2 className="text-lg font-semibold text-ink">Join the waitlist for full access</h2>
@@ -212,7 +212,7 @@ export default function DashboardPage() {
           <div className="flex-shrink-0">
             <Link
               href="/waitlist"
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-teal-50 text-teal-500 rounded-md text-sm font-medium hover:bg-teal-100 transition-colors duration-ui border border-teal-200"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-teal-50 text-teal-500 rounded-full text-sm font-medium hover:bg-teal-100 transition-colors duration-ui border border-teal-200"
             >
               Join the waitlist
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

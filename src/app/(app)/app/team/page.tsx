@@ -32,7 +32,7 @@ export default function TeamPage() {
         <button
           type="button"
           onClick={() => setShowInviteForm(!showInviteForm)}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui whitespace-nowrap"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui whitespace-nowrap"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 5v14M5 12h14" />
@@ -43,7 +43,7 @@ export default function TeamPage() {
 
       {/* Invite form */}
       {showInviteForm && (
-        <div className="bg-white border border-sand-300 rounded-lg p-6">
+        <div className="bg-white border border-sand-300 rounded-2xl p-6">
           <h2 className="text-lg font-semibold text-ink mb-4">Invite a team member</h2>
           <div className="space-y-4">
             <div>
@@ -56,7 +56,7 @@ export default function TeamPage() {
                 value={inviteEmail}
                 onChange={(e) => setInviteEmail(e.target.value)}
                 placeholder="colleague@organisation.na"
-                className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+                className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
               />
             </div>
             <div>
@@ -67,7 +67,7 @@ export default function TeamPage() {
                 id="inviteRole"
                 value={inviteRole}
                 onChange={(e) => setInviteRole(e.target.value as TeamRole)}
-                className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
+                className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
               >
                 {Object.entries(roleDescriptions).map(([key, { label }]) => (
                   <option key={key} value={key}>{label}</option>
@@ -90,7 +90,7 @@ export default function TeamPage() {
               <button
                 type="button"
                 disabled={!inviteEmail.trim()}
-                className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Send invitation
               </button>
@@ -100,7 +100,7 @@ export default function TeamPage() {
       )}
 
       {/* Team list */}
-      <div className="bg-white border border-sand-300 rounded-lg overflow-hidden">
+      <div className="bg-white border border-sand-300 rounded-2xl overflow-hidden">
         {/* Desktop table */}
         <div className="hidden sm:block overflow-x-auto">
           <table className="w-full">
@@ -181,7 +181,7 @@ export default function TeamPage() {
       </div>
 
       {/* Role descriptions */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6">
         <h2 className="text-lg font-semibold text-ink mb-4">Role descriptions</h2>
         <div className="space-y-4">
           {Object.entries(roleDescriptions).map(([key, { label, description }]) => (

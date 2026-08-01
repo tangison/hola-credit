@@ -52,7 +52,7 @@ export default function OrganisationSettingsPage() {
       </div>
 
       {/* Status */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-sm font-semibold text-ink">Organisation status</h2>
@@ -66,7 +66,7 @@ export default function OrganisationSettingsPage() {
       </div>
 
       {/* Organisation details */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6">
         <h2 className="text-lg font-semibold text-ink mb-4">Organisation details</h2>
         <div className="space-y-4 max-w-lg">
           <div>
@@ -78,7 +78,7 @@ export default function OrganisationSettingsPage() {
               type="text"
               value={orgName}
               onChange={(e) => setOrgName(e.target.value)}
-              className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+              className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
             />
           </div>
 
@@ -90,7 +90,7 @@ export default function OrganisationSettingsPage() {
               id="businessType"
               value={businessType}
               onChange={(e) => setBusinessType(e.target.value)}
-              className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
+              className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
             >
               {businessTypes.map((type) => (
                 <option key={type} value={type}>{type}</option>
@@ -103,7 +103,7 @@ export default function OrganisationSettingsPage() {
               type="button"
               onClick={handleSave}
               disabled={isSaving}
-              className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40"
+              className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40"
             >
               {isSaving ? "Saving..." : "Save changes"}
             </button>
@@ -112,7 +112,7 @@ export default function OrganisationSettingsPage() {
       </div>
 
       {/* Compliance profile */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6">
         <h2 className="text-lg font-semibold text-ink mb-4">Compliance profile</h2>
         <div className="space-y-3">
           <div className="flex items-center justify-between py-2 border-b border-sand-300">
@@ -138,7 +138,7 @@ export default function OrganisationSettingsPage() {
       </div>
 
       {/* Demo notice */}
-      <div className="p-4 bg-sand-50 border border-sand-300 rounded-lg">
+      <div className="p-4 bg-sand-50 border border-sand-300 rounded-2xl">
         <p className="text-xs text-ink/50">
           This is a demo environment. Organisation settings changes are not persisted. All data shown is synthetic.
         </p>

@@ -33,7 +33,7 @@ export default function BorrowersPage() {
         </div>
         <Link
           href="/app/applications/new"
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui whitespace-nowrap"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui whitespace-nowrap"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 5v14M5 12h14" />
@@ -53,12 +53,12 @@ export default function BorrowersPage() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by name, reference, or occupation..."
-          className="w-full pl-10 pr-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui bg-white"
+          className="w-full pl-10 pr-3 py-2 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui bg-white"
         />
       </div>
 
       {/* Borrowers list */}
-      <div className="bg-white border border-sand-300 rounded-lg overflow-hidden">
+      <div className="bg-white border border-sand-300 rounded-2xl overflow-hidden">
         {/* Desktop table */}
         <div className="hidden sm:block overflow-x-auto">
           <table className="w-full">

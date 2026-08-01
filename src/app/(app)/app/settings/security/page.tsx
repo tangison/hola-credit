@@ -38,7 +38,7 @@ export default function SecuritySettingsPage() {
       </div>
 
       {/* MFA */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-lg font-semibold text-ink">Multi-factor authentication</h2>
@@ -64,7 +64,7 @@ export default function SecuritySettingsPage() {
             <button
               type="button"
               onClick={() => setMfaEnabled(false)}
-              className="px-4 py-2 border border-sand-300 text-sm font-medium text-ink/60 hover:text-alert hover:border-alert transition-colors duration-ui rounded-md"
+              className="px-4 py-2 border border-sand-300 text-sm font-medium text-ink/60 hover:text-alert hover:border-alert transition-colors duration-ui rounded-full"
             >
               Disable MFA
             </button>
@@ -76,7 +76,7 @@ export default function SecuritySettingsPage() {
             <button
               type="button"
               onClick={() => setShowMfaSetup(true)}
-              className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
+              className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
             >
               Enable MFA
             </button>
@@ -84,7 +84,7 @@ export default function SecuritySettingsPage() {
         )}
 
         {showMfaSetup && !mfaEnabled && (
-          <div className="mt-4 p-4 bg-sand-50 border border-sand-300 rounded-md">
+          <div className="mt-4 p-4 bg-sand-50 border border-sand-300 rounded-xl">
             <h3 className="text-sm font-semibold text-ink mb-2">Set up authenticator</h3>
             <ol className="list-decimal list-inside space-y-2 text-sm text-ink/60">
               <li>Install an authenticator app on your phone (Google Authenticator, Authy, or similar).</li>
@@ -98,7 +98,7 @@ export default function SecuritySettingsPage() {
                   setMfaEnabled(true);
                   setShowMfaSetup(false);
                 }}
-                className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
+                className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
               >
                 Continue setup
               </button>
@@ -115,14 +115,14 @@ export default function SecuritySettingsPage() {
       </div>
 
       {/* Session management */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6">
         <h2 className="text-lg font-semibold text-ink mb-4">Active sessions</h2>
         <p className="text-sm text-ink/60 mb-4">
           These are the devices currently signed in to your account. Revoke any session you do not recognise.
         </p>
         <div className="space-y-3">
           {sessions.map((session) => (
-            <div key={session.id} className="flex items-center justify-between p-3 border border-sand-300 rounded-md">
+            <div key={session.id} className="flex items-center justify-between p-3 border border-sand-300 rounded-xl">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-sand-100 flex items-center justify-center flex-shrink-0">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-ink/50">
@@ -154,7 +154,7 @@ export default function SecuritySettingsPage() {
       </div>
 
       {/* Password policy */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6">
         <h2 className="text-lg font-semibold text-ink mb-4">Password policy</h2>
         <p className="text-sm text-ink/60 mb-4">
           Your organisation&apos;s password policy is enforced by your identity provider. The following requirements are active:
@@ -179,7 +179,7 @@ export default function SecuritySettingsPage() {
         <div className="mt-4 pt-4 border-t border-sand-300">
           <button
             type="button"
-            className="px-4 py-2 border border-sand-300 text-sm font-medium text-ink hover:bg-sand-50 transition-colors duration-ui rounded-md"
+            className="px-4 py-2 border border-sand-300 text-sm font-medium text-ink hover:bg-sand-50 transition-colors duration-ui rounded-full"
           >
             Change password
           </button>
@@ -187,7 +187,7 @@ export default function SecuritySettingsPage() {
       </div>
 
       {/* Demo notice */}
-      <div className="p-4 bg-sand-50 border border-sand-300 rounded-lg">
+      <div className="p-4 bg-sand-50 border border-sand-300 rounded-2xl">
         <p className="text-xs text-ink/50">
           This is a demo environment. Security settings changes are not persisted. All data shown is synthetic.
         </p>

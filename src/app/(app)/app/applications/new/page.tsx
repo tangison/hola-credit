@@ -436,7 +436,7 @@ export default function NewApplicationPage() {
       </nav>
 
       {/* Step content */}
-      <div className="bg-white border border-sand-300 rounded-lg p-6 sm:p-8">
+      <div className="bg-white border border-sand-300 rounded-2xl p-6 sm:p-8">
         {/* Step 1: Case details */}
         {currentStep === 1 && (
           <div className="space-y-6">
@@ -455,7 +455,7 @@ export default function NewApplicationPage() {
                   value={caseDetails.lenderReference}
                   onChange={(e) => setCaseDetails((prev) => ({ ...prev, lenderReference: e.target.value }))}
                   placeholder="e.g. LN-2024-00142"
-                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+                  className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
                 />
               </div>
               <div>
@@ -468,7 +468,7 @@ export default function NewApplicationPage() {
                   value={caseDetails.applicantDisplayName}
                   onChange={(e) => setCaseDetails((prev) => ({ ...prev, applicantDisplayName: e.target.value }))}
                   placeholder="e.g. Maria K."
-                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+                  className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
                 />
                 <p className="mt-1 text-xs text-ink/50">A display name is used instead of the full legal name to protect borrower privacy.</p>
               </div>
@@ -480,7 +480,7 @@ export default function NewApplicationPage() {
                   id="productType"
                   value={caseDetails.productType}
                   onChange={(e) => setCaseDetails((prev) => ({ ...prev, productType: e.target.value }))}
-                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
+                  className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
                 >
                   <option value="">Select a product type</option>
                   {productTypes.map((type) => (
@@ -498,7 +498,7 @@ export default function NewApplicationPage() {
                   value={caseDetails.requestedAmount}
                   onChange={(e) => setCaseDetails((prev) => ({ ...prev, requestedAmount: e.target.value }))}
                   placeholder="e.g. 15000"
-                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
+                  className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui"
                 />
               </div>
               <div>
@@ -509,7 +509,7 @@ export default function NewApplicationPage() {
                   id="assessmentPurpose"
                   value={caseDetails.assessmentPurpose}
                   onChange={(e) => setCaseDetails((prev) => ({ ...prev, assessmentPurpose: e.target.value }))}
-                  className="w-full px-3 py-2 border border-sand-300 rounded-md text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
+                  className="w-full px-3 py-2 border border-sand-300 rounded-xl text-sm text-ink focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui appearance-none bg-white"
                 >
                   <option value="">Select an assessment purpose</option>
                   {assessmentPurposes.map((purpose) => (
@@ -523,7 +523,7 @@ export default function NewApplicationPage() {
                 type="button"
                 disabled={!caseDetailsValid}
                 onClick={() => setCurrentStep(2)}
-                className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Continue
               </button>
@@ -549,7 +549,7 @@ export default function NewApplicationPage() {
                 { key: "sharingScopeAccepted" as const, id: "consentSharing", label: "Sharing scope", desc: "Assessment results will be shared only with authorised members of your organisation. Hola Credit will not share results with third parties without your consent." },
                 { key: "expiryAccepted" as const, id: "consentExpiry", label: "Consent expiry", desc: "This consent expires 90 days from capture. If the assessment is not completed within this period, the data will be deleted and a new consent will be required." },
               ].map((item) => (
-                <div key={item.key} className="border border-sand-300 rounded-md p-4">
+                <div key={item.key} className="border border-sand-300 rounded-xl p-4">
                   <div className="flex items-start gap-3">
                     <input
                       id={item.id}
@@ -578,7 +578,7 @@ export default function NewApplicationPage() {
                 type="button"
                 disabled={!allConsentAccepted}
                 onClick={() => setCurrentStep(3)}
-                className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Continue
               </button>
@@ -601,7 +601,7 @@ export default function NewApplicationPage() {
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
-              className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors duration-ui ${
+              className={`border-2 border-dashed rounded-2xl p-8 text-center transition-colors duration-ui ${
                 isDragging ? "border-teal-400 bg-teal-50/50" : "border-sand-300 hover:border-sand-400"
               }`}
             >
@@ -638,7 +638,7 @@ export default function NewApplicationPage() {
               <div className="space-y-2">
                 <h3 className="text-sm font-medium text-ink">Uploaded files</h3>
                 {uploadedFiles.map((file, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-sand-50 border border-sand-300 rounded-md">
+                  <div key={index} className="flex items-center justify-between p-3 bg-sand-50 border border-sand-300 rounded-xl">
                     <div className="flex items-center gap-3">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
@@ -674,7 +674,7 @@ export default function NewApplicationPage() {
                 type="button"
                 disabled={uploadedFiles.length === 0 || isUploading}
                 onClick={() => { setCurrentStep(4); setProcessingStage(0); setProcessingComplete(false); setAiAssessment(null); setProcessingError(null); }}
-                className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Submit for processing
               </button>
@@ -743,7 +743,7 @@ export default function NewApplicationPage() {
                 type="button"
                 disabled={!processingComplete}
                 onClick={() => setCurrentStep(5)}
-                className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 View results
               </button>
@@ -763,7 +763,7 @@ export default function NewApplicationPage() {
 
             {/* AI badge */}
             {aiAssessment?.aiGenerated && (
-              <div className="flex items-center gap-2 p-3 bg-teal-50 border border-teal-200 rounded-md">
+              <div className="flex items-center gap-2 p-3 bg-teal-50 border border-teal-200 rounded-xl">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                   <path d="M12 2a4 4 0 014 4v1a4 4 0 01-8 0V6a4 4 0 014-4zM9 17l-2 4h10l-2-4M7 13h10" />
                 </svg>
@@ -774,7 +774,7 @@ export default function NewApplicationPage() {
             )}
 
             {!aiAssessment?.aiGenerated && (
-              <div className="p-4 bg-sand-50 border border-sand-300 rounded-md">
+              <div className="p-4 bg-sand-50 border border-sand-300 rounded-xl">
                 <p className="text-xs text-ink/50">This is simulated demo data. The AI service is not configured. Results are illustrative only.</p>
               </div>
             )}
@@ -783,21 +783,21 @@ export default function NewApplicationPage() {
               <>
                 {/* Key metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <div className="text-center p-4 bg-sand-50 rounded-md">
+                  <div className="text-center p-4 bg-sand-50 rounded-xl">
                     <p className="text-2xl font-bold text-ink">
                       {aiAssessment.consistency > 0.7 ? "Good" : aiAssessment.consistency > 0.4 ? "Fair" : "Limited"}
                     </p>
                     <p className="mt-1 text-xs text-ink/50">Cash-flow tier</p>
                   </div>
-                  <div className="text-center p-4 bg-sand-50 rounded-md">
+                  <div className="text-center p-4 bg-sand-50 rounded-xl">
                     <p className="text-2xl font-bold text-ink">{Math.round(aiAssessment.consistency * 100)}</p>
                     <p className="mt-1 text-xs text-ink/50">Assessment score</p>
                   </div>
-                  <div className="text-center p-4 bg-sand-50 rounded-md">
+                  <div className="text-center p-4 bg-sand-50 rounded-xl">
                     <p className="text-2xl font-bold text-ink">{formatNAD(aiAssessment.incomeFloorMinor)}</p>
                     <p className="mt-1 text-xs text-ink/50">Income floor</p>
                   </div>
-                  <div className="text-center p-4 bg-sand-50 rounded-md">
+                  <div className="text-center p-4 bg-sand-50 rounded-xl">
                     <p className="text-2xl font-bold text-ink">{Math.round(aiAssessment.consistency * 100)}%</p>
                     <p className="mt-1 text-xs text-ink/50">Consistency</p>
                   </div>
@@ -805,7 +805,7 @@ export default function NewApplicationPage() {
 
                 {/* Detailed metrics */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex items-center justify-between p-4 bg-sand-50 rounded-md">
+                  <div className="flex items-center justify-between p-4 bg-sand-50 rounded-xl">
                     <div>
                       <p className="text-sm text-ink/60">Volatility</p>
                       <p className="text-lg font-bold text-ink">{Math.round(aiAssessment.volatility * 100)}%</p>
@@ -817,7 +817,7 @@ export default function NewApplicationPage() {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-sand-50 rounded-md">
+                  <div className="flex items-center justify-between p-4 bg-sand-50 rounded-xl">
                     <div>
                       <p className="text-sm text-ink/60">Trend</p>
                       <p className="text-lg font-bold text-ink capitalize">{aiAssessment.trend}</p>
@@ -840,7 +840,7 @@ export default function NewApplicationPage() {
                     {aiAssessment.flags.map((flag, i) => (
                       <div
                         key={i}
-                        className={`flex items-start gap-3 p-3 rounded-md border ${
+                        className={`flex items-start gap-3 p-3 rounded-xl border ${
                           flag.severity === "material"
                             ? "bg-red-50/50 border-red-200"
                             : flag.severity === "review"
@@ -887,7 +887,7 @@ export default function NewApplicationPage() {
 
                 {/* Plain language summary */}
                 {aiAssessment.plainLanguageSummary && (
-                  <div className="p-4 bg-sand-50 border border-sand-300 rounded-md">
+                  <div className="p-4 bg-sand-50 border border-sand-300 rounded-xl">
                     <h3 className="text-sm font-semibold text-ink mb-2">Summary</h3>
                     <p className="text-sm text-ink/70 leading-relaxed">{aiAssessment.plainLanguageSummary}</p>
                   </div>
@@ -895,7 +895,7 @@ export default function NewApplicationPage() {
 
                 {/* Limitations */}
                 {aiAssessment.limitations.length > 0 && (
-                  <div className="p-4 bg-sand-50 border border-sand-300 rounded-md">
+                  <div className="p-4 bg-sand-50 border border-sand-300 rounded-xl">
                     <h3 className="text-sm font-semibold text-ink mb-2">Limitations</h3>
                     <ul className="space-y-1.5">
                       {aiAssessment.limitations.map((limitation, i) => (
@@ -910,7 +910,7 @@ export default function NewApplicationPage() {
               </>
             )}
 
-            <div className="p-4 bg-sand-50 border border-sand-300 rounded-md">
+            <div className="p-4 bg-sand-50 border border-sand-300 rounded-xl">
               <p className="text-sm text-ink/60">
                 This assessment is supplementary to formal bureau checks and human judgement. It does not constitute a lending decision. Predictive validity against repayment outcomes has not yet been established.
               </p>
@@ -925,7 +925,7 @@ export default function NewApplicationPage() {
               </Link>
               <Link
                 href="/app/applications/app_demo_001"
-                className="px-4 py-2 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
+                className="px-4 py-2 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui"
               >
                 View full assessment
               </Link>

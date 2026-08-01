@@ -33,7 +33,7 @@ export default function ConsentsPage() {
             key={filterType}
             type="button"
             onClick={() => setFilter(filterType)}
-            className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-ui ${
+            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-ui ${
               filter === filterType
                 ? "bg-ink text-sand-50"
                 : "bg-white border border-sand-300 text-ink/60 hover:text-ink hover:border-sand-400"
@@ -45,7 +45,7 @@ export default function ConsentsPage() {
       </div>
 
       {/* Consents list */}
-      <div className="bg-white border border-sand-300 rounded-lg overflow-hidden">
+      <div className="bg-white border border-sand-300 rounded-2xl overflow-hidden">
         {/* Desktop table */}
         <div className="hidden sm:block overflow-x-auto">
           <table className="w-full">

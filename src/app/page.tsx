@@ -27,13 +27,13 @@ export default function HomePage() {
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   <Link
                     href="/app"
-                    className="inline-flex items-center justify-center rounded-md bg-ink text-sand-50 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
+                    className="inline-flex items-center justify-center rounded-full bg-ink text-sand-50 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui shadow-sm"
                   >
                     Try the demo
                   </Link>
                   <Link
                     href="/waitlist"
-                    className="inline-flex items-center justify-center rounded-md border border-sand-300 text-ink px-6 py-3 text-base font-medium hover:bg-sand-100 transition-colors duration-ui"
+                    className="inline-flex items-center justify-center rounded-full border border-sand-300 text-ink px-6 py-3 text-base font-medium hover:bg-sand-100 transition-colors duration-ui"
                   >
                     Join the waitlist
                   </Link>
@@ -55,7 +55,7 @@ export default function HomePage() {
                     width={1672}
                     height={941}
                     loading="eager"
-                    className="rounded-lg shadow-lg w-full h-auto"
+                    className="rounded-2xl shadow-lg w-full h-auto"
                   />
                 </picture>
               </div>
@@ -128,7 +128,7 @@ export default function HomePage() {
               ].map((item) => (
                 <div key={item.step} className="relative">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="flex items-center justify-center w-10 h-10 rounded-md bg-teal-50 text-teal-600">
+                    <span className="flex items-center justify-center w-10 h-10 rounded-full bg-teal-50 text-teal-600">
                       {item.icon}
                     </span>
                     <span className="text-sm font-semibold text-ink/60">{item.step}</span>
@@ -159,7 +159,7 @@ export default function HomePage() {
         <section className="bg-sand py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-              <div className="bg-white rounded-lg p-8 lg:p-10 border border-sand-300">
+              <div className="bg-white rounded-2xl p-8 lg:p-10 border border-sand-300">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4">
                   <path d="M4 20h16M6 17h12M7 17V9m5 8V9m5 8V9M4 7l8-4 8 4z" />
                 </svg>
@@ -174,7 +174,7 @@ export default function HomePage() {
                   </svg>
                 </Link>
               </div>
-              <div className="bg-white rounded-lg p-8 lg:p-10 border border-sand-300">
+              <div className="bg-white rounded-2xl p-8 lg:p-10 border border-sand-300">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4">
                   <path d="M4 9h16l-2-5H6zM5 9v11h14V9M9 20v-6h6v6" />
                 </svg>
@@ -239,13 +239,13 @@ export default function HomePage() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/app"
-                className="inline-flex items-center justify-center rounded-md bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui"
+                className="inline-flex items-center justify-center rounded-full bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui shadow-sm"
               >
                 Try the demo
               </Link>
               <Link
                 href="/waitlist"
-                className="inline-flex items-center justify-center rounded-md border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
+                className="inline-flex items-center justify-center rounded-full border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
               >
                 Join the waitlist
               </Link>

@@ -46,7 +46,7 @@ export default function ApplicationsPage() {
         </div>
         <Link
           href="/app/applications/new"
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-md text-sm font-medium hover:bg-ink-50 transition-colors duration-ui whitespace-nowrap"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-sand-50 rounded-full text-sm font-medium hover:bg-ink-50 transition-colors duration-ui whitespace-nowrap"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 5v14M5 12h14" />
@@ -66,7 +66,7 @@ export default function ApplicationsPage() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by borrower name or reference..."
-          className="w-full pl-10 pr-3 py-2 border border-sand-300 rounded-md text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui bg-white"
+          className="w-full pl-10 pr-3 py-2 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui bg-white"
         />
       </div>
 
@@ -75,7 +75,7 @@ export default function ApplicationsPage() {
         <button
           type="button"
           onClick={() => setStatusFilter("all")}
-          className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-ui ${
+          className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-ui ${
             statusFilter === "all"
               ? "bg-ink text-sand-50"
               : "bg-white border border-sand-300 text-ink/60 hover:text-ink hover:border-sand-400"
@@ -92,7 +92,7 @@ export default function ApplicationsPage() {
               key={status}
               type="button"
               onClick={() => setStatusFilter(status)}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-ui ${
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-ui ${
                 statusFilter === status
                   ? "bg-ink text-sand-50"
                   : "bg-white border border-sand-300 text-ink/60 hover:text-ink hover:border-sand-400"
@@ -106,7 +106,7 @@ export default function ApplicationsPage() {
 
       {/* Applications list */}
       {filteredApplications.length === 0 ? (
-        <div className="bg-white border border-sand-300 rounded-lg">
+        <div className="bg-white border border-sand-300 rounded-2xl">
           <div className="flex flex-col items-center justify-center py-16 px-6 text-center">
             <div className="w-12 h-12 rounded-full bg-sand-100 flex items-center justify-center mb-4">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-ink/40">
@@ -118,7 +118,7 @@ export default function ApplicationsPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-white border border-sand-300 rounded-lg overflow-hidden">
+        <div className="bg-white border border-sand-300 rounded-2xl overflow-hidden">
           {/* Desktop table */}
           <div className="hidden sm:block overflow-x-auto">
             <table className="w-full">

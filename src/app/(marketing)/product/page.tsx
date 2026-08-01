@@ -57,7 +57,7 @@ export default function ProductPage() {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {["FNB Namibia", "Bank Windhoek", "Standard Bank Namibia", "Nedbank Namibia"].map((bank) => (
-                <div key={bank} className="bg-white rounded-md border border-sand-300 p-4 text-center">
+                <div key={bank} className="bg-white rounded-xl border border-sand-300 p-4 text-center">
                   <p className="font-medium text-ink">{bank}</p>
                 </div>
               ))}
@@ -69,7 +69,7 @@ export default function ProductPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold text-sand-100 tracking-tight">Ready to explore pilot access?</h2>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-md bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">Request pilot access</Link>
+              <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">Request pilot access</Link>
             </div>
           </div>
         </section>

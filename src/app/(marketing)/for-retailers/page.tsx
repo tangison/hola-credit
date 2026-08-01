@@ -56,7 +56,7 @@ export default function ForRetailersPage() {
                     alt="A retail credit conversation between staff and customer"
                     width={960}
                     height={640}
-                    className="w-full rounded-md border border-sand-300"
+                    className="w-full rounded-xl border border-sand-300"
                     loading="lazy"
                   />
                 </picture>
@@ -152,10 +152,10 @@ export default function ForRetailersPage() {
               Pilot access is available for authorised Namibian retailers who want to test structured cash-flow evidence alongside their existing credit assessment process.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-md bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">
+              <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">
                 Request pilot access
               </Link>
-              <Link href="/product" className="inline-flex items-center justify-center rounded-md border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui">
+              <Link href="/product" className="inline-flex items-center justify-center rounded-full border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui">
                 See how it works
               </Link>
             </div>

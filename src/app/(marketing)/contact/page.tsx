@@ -69,7 +69,7 @@ export default function ContactPage() {
                         id="organisation"
                         name="organisation"
                         required
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-xl border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                         placeholder="Registered organisation name"
                       />
                     </div>
@@ -82,7 +82,7 @@ export default function ContactPage() {
                         id="business-type"
                         name="business-type"
                         required
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-xl border border-sand-300 bg-white px-4 py-2.5 text-ink focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                       >
                         <option value="" disabled selected>Select your business type</option>
                         {businessTypes.map((type) => (
@@ -100,7 +100,7 @@ export default function ContactPage() {
                         id="email"
                         name="email"
                         required
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-xl border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                         placeholder="you@organisation.com"
                       />
                     </div>
@@ -114,7 +114,7 @@ export default function ContactPage() {
                         id="role"
                         name="role"
                         required
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-xl border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                         placeholder="e.g. Risk Manager, Loan Officer, Compliance Lead"
                       />
                     </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                         type="text"
                         id="assessments"
                         name="assessments"
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
+                        className="w-full rounded-xl border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui"
                         placeholder="Approximate number per month"
                       />
                     </div>
@@ -140,7 +140,7 @@ export default function ContactPage() {
                         id="intended-use"
                         name="intended-use"
                         rows={4}
-                        className="w-full rounded-md border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui resize-y"
+                        className="w-full rounded-xl border border-sand-300 bg-white px-4 py-2.5 text-ink placeholder:text-ink/40 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 transition-colors duration-ui resize-y"
                         placeholder="Briefly describe how your organisation would use Hola Credit alongside your existing assessment process."
                       />
                     </div>
@@ -153,7 +153,7 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center rounded-md bg-ink text-sand-50 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
+                      className="inline-flex items-center justify-center rounded-full bg-ink text-sand-50 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
                     >
                       Submit pilot request
                     </button>
@@ -207,13 +207,13 @@ export default function ContactPage() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/product"
-                className="inline-flex items-center justify-center rounded-md bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui"
+                className="inline-flex items-center justify-center rounded-full bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui"
               >
                 See how it works
               </Link>
               <Link
                 href="/how-scoring-works"
-                className="inline-flex items-center justify-center rounded-md border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
+                className="inline-flex items-center justify-center rounded-full border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui"
               >
                 How scoring works
               </Link>
