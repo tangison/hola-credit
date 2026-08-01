@@ -15,7 +15,7 @@ export default function BrandPage() {
         {/* Hero */}
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-sm font-medium text-teal-500 mb-4 tracking-wide uppercase">Brand</p>
+            <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Brand</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
               Hola Credit brand assets
             </h1>

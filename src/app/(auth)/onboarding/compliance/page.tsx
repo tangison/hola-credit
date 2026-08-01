@@ -107,7 +107,7 @@ export default function OnboardingCompliancePage() {
               className="mt-0.5 w-4 h-4 rounded border-sand-300 text-teal-400 focus:ring-teal-400"
             />
             <label htmlFor="termsAccepted" className="text-sm text-ink cursor-pointer">
-              I acknowledge the <a href="/terms" className="text-teal-500 hover:text-teal-600 underline underline-offset-2">Terms of Service</a> and confirm that the information provided is accurate and complete.
+              I acknowledge the <a href="/terms" className="text-teal-600 hover:text-teal-700 underline underline-offset-2">Terms of Service</a> and confirm that the information provided is accurate and complete.
             </label>
           </div>
           <div className="flex items-start gap-3">
@@ -119,7 +119,7 @@ export default function OnboardingCompliancePage() {
               className="mt-0.5 w-4 h-4 rounded border-sand-300 text-teal-400 focus:ring-teal-400"
             />
             <label htmlFor="dpaAccepted" className="text-sm text-ink cursor-pointer">
-              I acknowledge the <a href="/privacy" className="text-teal-500 hover:text-teal-600 underline underline-offset-2">Data Processing Agreement</a> and consent to Hola Credit processing data on behalf of my organisation under the specified terms.
+              I acknowledge the <a href="/privacy" className="text-teal-600 hover:text-teal-700 underline underline-offset-2">Data Processing Agreement</a> and consent to Hola Credit processing data on behalf of my organisation under the specified terms.
             </label>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function ForRetailersPage() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-8 h-8 text-teal-400">
                   <path d="M4 9h16l-2-5H6zM5 9v11h14V9M9 20v-6h6v6" />
                 </svg>
-                <p className="text-sm font-medium text-teal-500 tracking-wide uppercase">For Retailers</p>
+                <p className="text-sm font-medium text-teal-600 tracking-wide uppercase">For Retailers</p>
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
                 Credit checks built for how customers actually earn.

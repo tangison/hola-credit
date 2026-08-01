@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-medium text-teal-500 mb-4 tracking-wide uppercase">Legal</p>
+              <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Legal</p>
               <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
                 Privacy policy
               </h1>
@@ -159,7 +159,7 @@ export default function PrivacyPage() {
               </p>
               <p className="text-ink/70 leading-relaxed">
                 If the applicant wishes to exercise any of these rights and the controller is unable or unwilling to assist, the applicant may contact Hola Credit directly at{" "}
-                <a href="mailto:hola@tangison.com" className="text-teal-500 hover:text-teal-600 transition-colors duration-ui underline underline-offset-4">
+                <a href="mailto:hola@tangison.com" className="text-teal-600 hover:text-teal-700 transition-colors duration-ui underline underline-offset-4">
                   hola@tangison.com
                 </a>. Hola Credit will work with the controller to ensure that the applicant&apos;s rights are respected.
               </p>

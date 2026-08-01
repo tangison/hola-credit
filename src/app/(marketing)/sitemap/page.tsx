@@ -66,13 +66,13 @@ export default function SitemapPage() {
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-medium text-teal-500 mb-4 tracking-wide uppercase">Sitemap</p>
+              <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Sitemap</p>
               <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
                 Sitemap
               </h1>
               <p className="mt-6 text-lg text-ink/70 leading-relaxed">
                 A human-readable index of all public routes on the Hola Credit marketing site, organised by category. For a machine-readable version, see the{" "}
-                <Link href="/sitemap.xml" className="text-teal-500 hover:text-teal-600 transition-colors duration-ui underline underline-offset-4">
+                <Link href="/sitemap.xml" className="text-teal-600 hover:text-teal-700 transition-colors duration-ui underline underline-offset-4">
                   XML sitemap
                 </Link>.
               </p>
@@ -142,7 +142,7 @@ export default function SitemapPage() {
                       <td className="py-3 pr-4">
                         <Link
                           href={page.route}
-                          className="font-mono text-sm text-teal-500 hover:text-teal-600 transition-colors duration-ui"
+                          className="font-mono text-sm text-teal-600 hover:text-teal-700 transition-colors duration-ui"
                         >
                           {page.route}
                         </Link>

@@ -20,7 +20,7 @@ export default function ForMicrolendersPage() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-8 h-8 text-teal-400">
                   <path d="M4 20h16M6 17h12M7 17V9m5 8V9m5 8V9M4 7l8-4 8 4z" />
                 </svg>
-                <p className="text-sm font-medium text-teal-500 tracking-wide uppercase">For Microlenders</p>
+                <p className="text-sm font-medium text-teal-600 tracking-wide uppercase">For Microlenders</p>
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
                 Review more than a salary line.

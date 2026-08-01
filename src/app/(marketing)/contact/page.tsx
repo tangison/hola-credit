@@ -28,7 +28,7 @@ export default function ContactPage() {
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-medium text-teal-500 mb-4 tracking-wide uppercase">Contact</p>
+              <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Contact</p>
               <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
                 Request pilot access
               </h1>
@@ -53,7 +53,7 @@ export default function ContactPage() {
                     </p>
                     <p className="text-ink/70 leading-relaxed">
                       If you have an urgent question, contact us directly at{" "}
-                      <a href="mailto:hola@tangison.com" className="text-teal-500 hover:text-teal-600 transition-colors duration-ui underline underline-offset-4">
+                      <a href="mailto:hola@tangison.com" className="text-teal-600 hover:text-teal-700 transition-colors duration-ui underline underline-offset-4">
                         hola@tangison.com
                       </a>.
                     </p>
@@ -176,7 +176,7 @@ export default function ContactPage() {
                     <h3 className="text-lg font-semibold text-ink mb-2">Contact email</h3>
                     <a
                       href="mailto:hola@tangison.com"
-                      className="text-lg text-teal-500 hover:text-teal-600 transition-colors duration-ui underline underline-offset-4"
+                      className="text-lg text-teal-600 hover:text-teal-700 transition-colors duration-ui underline underline-offset-4"
                     >
                       hola@tangison.com
                     </a>

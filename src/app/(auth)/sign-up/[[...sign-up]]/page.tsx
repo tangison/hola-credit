@@ -24,7 +24,7 @@ export default function SignUpPage() {
       <div className="mt-6 text-center">
         <p className="text-sm text-ink/50">
           Want to explore the demo first?{" "}
-          <Link href="/app" className="text-teal-500 hover:text-teal-600 font-medium transition-colors duration-ui">
+          <Link href="/app" className="text-teal-600 hover:text-teal-700 font-medium transition-colors duration-ui">
             Try it now
           </Link>
         </p>

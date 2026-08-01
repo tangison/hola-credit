@@ -63,7 +63,7 @@ export default function ResourcesPage() {
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-medium text-teal-500 mb-4 tracking-wide uppercase">Resources</p>
+              <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Resources</p>
               <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
                 Resources for responsible cash-flow review
               </h1>
@@ -89,7 +89,7 @@ export default function ResourcesPage() {
                         <li key={j}>
                           <Link
                             href={link.href}
-                            className="text-teal-500 hover:text-teal-600 transition-colors duration-ui underline underline-offset-4"
+                            className="text-teal-600 hover:text-teal-700 transition-colors duration-ui underline underline-offset-4"
                           >
                             {link.label}
                           </Link>

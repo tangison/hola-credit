@@ -15,7 +15,7 @@ export default function ProductPage() {
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-medium text-teal-500 mb-4 tracking-wide uppercase">Product</p>
+              <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Product</p>
               <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
                 From statement to structured evidence.
               </h1>
