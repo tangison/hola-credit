@@ -56,3 +56,30 @@ Stage Summary:
 - Production deployment live at hola.tangison.com
 - All environment variables configured in Vercel
 - GitHub repo clean (no secrets in history)
+
+---
+Task ID: audit
+Agent: main
+Task: Web quality audit and fix loop for hola.tangison.com
+
+Work Log:
+- Ran Lighthouse v13 audit: Performance 93, Accessibility 96, SEO 92, Best Practices 96
+- Fixed contrast ratio: text-stone (#A8AAA3 ~2.1:1) → text-ink/60 (~4.5:1)
+- Fixed contrast ratio: text-teal-400 on bg-teal-50 (~2.2:1) → text-teal-600 (~5.5:1)
+- Fixed contrast ratio: text-teal-500 on white (~4.24:1) → text-teal-600 (~5.47:1) across all marketing pages
+- Fixed contrast ratio: text-ink/40 and text-ink/50 → text-ink/60 in not-found page
+- Fixed "Learn more" links: added descriptive text (WCAG 2.4.4)
+- Added LCP image preload for cash-flow-to-clear-signal-1280.webp
+- Expanded root meta description from 120 to 176 chars
+- Added unique meta descriptions (150-160 chars) to all 18 marketing pages
+- Fixed hydration mismatch in MarketingHeader (added mounted state + suppressHydrationWarning)
+- Fixed placeholder:text-stone → placeholder:text-ink/40 in contact form
+- Deployed fixes, re-audited
+
+Stage Summary:
+- Before: Performance 93, Accessibility 96, SEO 92, Best Practices 96 (avg 94)
+- After: Performance 93, Accessibility 100, SEO 100, Best Practices 96 (avg 97, Grade A+)
+- Accessibility: 0 issues remaining
+- SEO: 0 issues remaining
+- All Core Web Vitals pass except INP (N/A in Lighthouse headless)
+- 9 remaining issues are all low-impact performance warnings (unused JS, legacy JS, render-blocking CSS)
