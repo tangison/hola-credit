@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "Responsible Credit",
   description: "Responsible credit practices for Namibian lenders. How cash-flow assessment supports fair lending, avoids over-indebtedness, and respects borrower dignity.",
 };
 

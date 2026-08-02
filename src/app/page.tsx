@@ -80,7 +80,7 @@ export default function HomePage() {
                 <picture>
                   <source srcSet="/images/independent-transport-professional-640.webp 640w, /images/independent-transport-professional-960.webp 960w, /images/independent-transport-professional-1280.webp 1280w, /images/independent-transport-professional-1920.webp 1920w" type="image/webp" />
                   <source srcSet="/images/independent-transport-professional-master.png" type="image/png" />
-                  <img src="/images/independent-transport-professional-1280.webp" alt="Independent transport professional earning through irregular income" width={1672} height={941} loading="lazy" className="rounded-2xl shadow-lg w-full h-auto" />
+                  <img src="/images/independent-transport-professional-1280.webp" alt="Independent transport professional earning through irregular income" width={1672} height={941} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" className="rounded-2xl shadow-lg w-full h-auto" />
                 </picture>
               </div>
             </div>

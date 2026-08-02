@@ -3,6 +3,7 @@ import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "About",
   description: "Built by Tangison Technologies in Windhoek, Namibia. We serve authorised lenders and retailers needing structured cash-flow evidence for applicant review.",
 };
 

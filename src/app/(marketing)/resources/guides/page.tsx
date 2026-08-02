@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "Guides",
   description: "Practical guides for Namibian lenders on cash-flow assessment. Statement preparation, scoring interpretation, and responsible lending for credit teams.",
 };
 

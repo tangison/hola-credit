@@ -3,6 +3,7 @@ import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "For Microlenders",
   description: "Underwriting support for Namibian microlenders reviewing irregular-income applicants. See income patterns, consistency, and red flags from bank statements.",
 };
 

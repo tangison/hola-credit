@@ -3,6 +3,7 @@ import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "How Scoring Works",
   description: "How Hola Credit scores cash-flow reliability. Income floor, consistency, volatility, trend, and concentration. Deterministic scoring with full auditability.",
 };
 

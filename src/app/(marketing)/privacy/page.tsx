@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "Privacy",
   description: "Hola Credit privacy policy. How we collect, use, and protect borrower and lender data. Namibian POPIA-compliant data processing and retention practices.",
 };
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Logo } from "@/components/shared/logo";
 
 export const metadata: Metadata = {
+  title: "Brand",
   description: "Hola Credit brand assets and guidelines. Logo system, colour palette, typography, and icon usage for the Tangison Technologies cash-flow assessment product.",
 };
 

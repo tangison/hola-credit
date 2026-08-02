@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "Statement Readiness",
   description: "Prepare bank statements for cash-flow assessment. Accepted formats, Namibian bank compatibility, and tips for complete three-month statement submissions.",
 };
 

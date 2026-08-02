@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "Sitemap",
   description: "Complete sitemap of Hola Credit. All pages, resources, and documentation for the Namibian cash-flow assessment platform by Tangison Technologies in Windhoek.",
 };
 
