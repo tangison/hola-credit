@@ -123,3 +123,31 @@ Stage Summary:
 - All buttons now fully rounded (pill-shaped) across the entire app
 - Mobile sidebar visibility bug fixed
 - Premium minimalistic design throughout
+---
+Task ID: 3
+Agent: Main Agent
+Task: Update copy: remove em dashes, make minimalistic, add accordion widgets, fix off-canvas, hyper minimal footer
+
+Work Log:
+- Searched entire src/ directory for em dashes (—) and replaced all occurrences with commas
+- Updated 30+ files across the codebase to remove em dashes
+- Rewrote marketing-header.tsx: mobile off-canvas now uses bg-sand-950 (darker background), grouped navigation by category (Product/Solutions/Resources/Company), smaller link sizes, GSAP group stagger animation
+- Rewrote footer.tsx: hyper minimal single-row layout with logo, nav links, and email. Removed tagline, bottom bar, and "Made by Tangison Studio" line
+- Created new accordion.tsx component with GSAP-animated open/close and rotating chevron icon
+- Updated homepage (page.tsx): minimalistic copy, cold-start section now uses accordion
+- Updated product page: how-it-works steps now in accordion
+- Updated how-scoring-works page: 7 scoring components in accordion, versioned policy in accordion, cold-start disclosure in accordion
+- Updated security page: auditability in accordion, raw-file retention in accordion, threat model/compliance in accordion
+- Updated for-microlenders page: risk review in accordion, shortened operational speed section
+- Updated for-retailers page: staff roles in accordion, future API + claims in accordion
+- Updated about page: "What Hola Credit is not" in accordion
+- All copy shortened and made more punchy across all pages
+- Built successfully, committed, pushed to GitHub, deployed to production
+
+Stage Summary:
+- All em dashes removed from entire codebase (30+ files)
+- Mobile off-canvas menu: bg-sand-950, grouped navigation, GSAP stagger
+- Footer: hyper minimal single-row (logo + nav + email)
+- Accordion component created and used across 6 pages
+- Copy made minimalistic throughout
+- Deployed to hola.tangison.com
