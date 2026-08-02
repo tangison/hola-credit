@@ -12,19 +12,28 @@ export default function ForMicrolendersPage() {
         {/* Hero */}
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-8 h-8 text-teal-400">
-                  <path d="M4 20h16M6 17h12M7 17V9m5 8V9m5 8V9M4 7l8-4 8 4z" />
-                </svg>
-                <p className="text-sm font-medium text-teal-600 tracking-wide uppercase">For Microlenders</p>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-8 h-8 text-teal-400">
+                    <path d="M4 20h16M6 17h12M7 17V9m5 8V9m5 8V9M4 7l8-4 8 4z" />
+                  </svg>
+                  <p className="text-sm font-medium text-teal-600 tracking-wide uppercase">For Microlenders</p>
+                </div>
+                <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
+                  Review more than a salary line.
+                </h1>
+                <p className="mt-6 text-lg text-ink/70 leading-relaxed">
+                  Many Namibian microlenders work with applicants who earn consistently but not through a single employer deposit. Hola Credit provides structured cash-flow evidence from borrower-authorised bank statements, so loan officers can review irregular-income applicants with the same rigour they apply to salaried cases.
+                </p>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
-                Review more than a salary line.
-              </h1>
-              <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Many Namibian microlenders work with applicants who earn consistently but not through a single employer deposit. Hola Credit provides structured cash-flow evidence from borrower-authorised bank statements, so loan officers can review irregular-income applicants with the same rigour they apply to salaried cases.
-              </p>
+              <div className="relative">
+                <picture>
+                  <source srcSet="/images/freelance-professional-studio-640.webp 640w, /images/freelance-professional-studio-960.webp 960w, /images/freelance-professional-studio-1280.webp 1280w, /images/freelance-professional-studio-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/freelance-professional-studio-master.png" type="image/png" />
+                  <img src="/images/freelance-professional-studio-1280.webp" alt="Freelance professional working in a studio, representing irregular-income applicants" width={1672} height={941} loading="eager" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
             </div>
           </div>
         </section>

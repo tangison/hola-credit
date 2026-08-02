@@ -67,13 +67,22 @@ export default function HomePage() {
         {/* Product truth */}
         <section className="bg-white py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight">
-                Irregular does not mean invisible.
-              </h2>
-              <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Freelancers, contractors, traders, and other self-employed professionals earn consistently without a fixed salary deposit. Hola Credit makes that cash flow visible and assessable.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="max-w-xl">
+                <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight">
+                  Irregular does not mean invisible.
+                </h2>
+                <p className="mt-6 text-lg text-ink/70 leading-relaxed">
+                  Freelancers, contractors, traders, and other self-employed professionals earn consistently without a fixed salary deposit. Hola Credit makes that cash flow visible and assessable.
+                </p>
+              </div>
+              <div className="relative">
+                <picture>
+                  <source srcSet="/images/independent-transport-professional-640.webp 640w, /images/independent-transport-professional-960.webp 960w, /images/independent-transport-professional-1280.webp 1280w, /images/independent-transport-professional-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/independent-transport-professional-master.png" type="image/png" />
+                  <img src="/images/independent-transport-professional-1280.webp" alt="Independent transport professional earning through irregular income" width={1672} height={941} loading="lazy" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
             </div>
           </div>
         </section>
@@ -145,13 +154,22 @@ export default function HomePage() {
         {/* Human decision */}
         <section className="bg-white py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight">
-                Evidence for a decision. Not the decision itself.
-              </h2>
-              <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Hola Credit does not approve or decline an applicant. It supplies a supplementary assessment alongside the lender&apos;s policies, formal bureau checks, and human judgement.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="relative order-2 lg:order-1">
+                <picture>
+                  <source srcSet="/images/self-employed-studio-owner-640.webp 640w, /images/self-employed-studio-owner-960.webp 960w, /images/self-employed-studio-owner-1280.webp 1280w, /images/self-employed-studio-owner-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/self-employed-studio-owner-master.png" type="image/png" />
+                  <img src="/images/self-employed-studio-owner-1280.webp" alt="Self-employed studio owner whose cash flow Hola Credit makes assessable" width={1672} height={941} loading="lazy" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
+              <div className="order-1 lg:order-2">
+                <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight">
+                  Evidence for a decision. Not the decision itself.
+                </h2>
+                <p className="mt-6 text-lg text-ink/70 leading-relaxed">
+                  Hola Credit does not approve or decline an applicant. It supplies a supplementary assessment alongside the lender&apos;s policies, formal bureau checks, and human judgement.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -160,35 +178,53 @@ export default function HomePage() {
         <section className="bg-sand py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-              <div className="bg-white rounded-2xl p-8 lg:p-10 border border-sand-300">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4">
-                  <path d="M4 20h16M6 17h12M7 17V9m5 8V9m5 8V9M4 7l8-4 8 4z" />
-                </svg>
-                <h3 className="text-2xl font-bold text-ink mb-3">For Microlenders</h3>
-                <p className="text-ink/70 leading-relaxed">
-                  Review applicants whose income patterns do not fit salary-only underwriting. See income patterns, consistency, and red flags alongside existing policies and bureau checks.
-                </p>
-                <Link href="/for-microlenders" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
-                  Learn more
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
+              <div className="bg-white rounded-2xl overflow-hidden border border-sand-300">
+                <div className="relative h-48 overflow-hidden">
+                  <picture>
+                    <source srcSet="/images/freelance-professional-studio-640.webp" type="image/webp" />
+                    <source srcSet="/images/freelance-professional-studio-master.png" type="image/png" />
+                    <img src="/images/freelance-professional-studio-640.webp" alt="Freelance professional working with irregular income" className="w-full h-full object-cover" loading="lazy" />
+                  </picture>
+                </div>
+                <div className="p-8 lg:p-10">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4">
+                    <path d="M4 20h16M6 17h12M7 17V9m5 8V9m5 8V9M4 7l8-4 8 4z" />
                   </svg>
-                </Link>
+                  <h3 className="text-2xl font-bold text-ink mb-3">For Microlenders</h3>
+                  <p className="text-ink/70 leading-relaxed">
+                    Review applicants whose income patterns do not fit salary-only underwriting. See income patterns, consistency, and red flags alongside existing policies and bureau checks.
+                  </p>
+                  <Link href="/for-microlenders" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
+                    Learn more
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
-              <div className="bg-white rounded-2xl p-8 lg:p-10 border border-sand-300">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4">
-                  <path d="M4 9h16l-2-5H6zM5 9v11h14V9M9 20v-6h6v6" />
-                </svg>
-                <h3 className="text-2xl font-bold text-ink mb-3">For Retail Credit</h3>
-                <p className="text-ink/70 leading-relaxed">
-                  Evaluate customers applying to purchase goods on credit without forcing every case into a payslip model. Understand real cash flow from bank statements.
-                </p>
-                <Link href="/for-retailers" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
-                  Learn more
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
+              <div className="bg-white rounded-2xl overflow-hidden border border-sand-300">
+                <div className="relative h-48 overflow-hidden">
+                  <picture>
+                    <source srcSet="/images/retail-credit-conversation-640.webp" type="image/webp" />
+                    <source srcSet="/images/retail-credit-conversation-master.png" type="image/png" />
+                    <img src="/images/retail-credit-conversation-640.webp" alt="Retail credit conversation between staff and customer" className="w-full h-full object-cover" loading="lazy" />
+                  </picture>
+                </div>
+                <div className="p-8 lg:p-10">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4">
+                    <path d="M4 9h16l-2-5H6zM5 9v11h14V9M9 20v-6h6v6" />
                   </svg>
-                </Link>
+                  <h3 className="text-2xl font-bold text-ink mb-3">For Retail Credit</h3>
+                  <p className="text-ink/70 leading-relaxed">
+                    Evaluate customers applying to purchase goods on credit without forcing every case into a payslip model. Understand real cash flow from bank statements.
+                  </p>
+                  <Link href="/for-retailers" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
+                    Learn more
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

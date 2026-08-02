@@ -62,7 +62,29 @@ export default function AboutPage() {
                   Hola Credit is not a credit bureau. It does not maintain a database of borrower profiles, does not share information between lenders, and does not replace formal bureau checks. It is a supplementary tool that provides an additional source of evidence for lenders and retailers who are already conducting their own credit assessments. The decision itself always belongs to the lender, not to Hola Credit.
                 </p>
               </div>
-              <div>
+              <div className="relative">
+                <picture>
+                  <source srcSet="/images/cash-flow-to-clear-signal-640.webp 640w, /images/cash-flow-to-clear-signal-960.webp 960w, /images/cash-flow-to-clear-signal-1280.webp 1280w, /images/cash-flow-to-clear-signal-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/cash-flow-to-clear-signal-master.png" type="image/png" />
+                  <img src="/images/cash-flow-to-clear-signal-1280.webp" alt="Cash-flow data structured into a clear assessment signal" width={1672} height={941} loading="lazy" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Built for Namibia */}
+        <section className="bg-white py-20 lg:py-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+              <div className="relative order-2 lg:order-1">
+                <picture>
+                  <source srcSet="/images/freelance-professional-studio-640.webp 640w, /images/freelance-professional-studio-960.webp 960w, /images/freelance-professional-studio-1280.webp 1280w, /images/freelance-professional-studio-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/freelance-professional-studio-master.png" type="image/png" />
+                  <img src="/images/freelance-professional-studio-1280.webp" alt="Freelance professional in Namibia, representing the people Hola Credit serves" width={1672} height={941} loading="lazy" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
+              <div className="order-1 lg:order-2">
                 <h2 className="text-3xl font-bold text-ink tracking-tight mb-6">
                   Built for Namibia
                 </h2>

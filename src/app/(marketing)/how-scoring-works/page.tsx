@@ -12,14 +12,23 @@ export default function HowScoringWorksPage() {
         {/* Hero */}
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">How Scoring Works</p>
-              <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
-                How Hola Credit scoring works
-              </h1>
-              <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Every assessment is built from structured evidence, bounded by confidence limits, and produced by versioned deterministic code. Same inputs, same policy version, same result. Every time.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div>
+                <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">How Scoring Works</p>
+                <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
+                  How Hola Credit scoring works
+                </h1>
+                <p className="mt-6 text-lg text-ink/70 leading-relaxed">
+                  Every assessment is built from structured evidence, bounded by confidence limits, and produced by versioned deterministic code. Same inputs, same policy version, same result. Every time.
+                </p>
+              </div>
+              <div className="relative">
+                <picture>
+                  <source srcSet="/images/independent-transport-professional-640.webp 640w, /images/independent-transport-professional-960.webp 960w, /images/independent-transport-professional-1280.webp 1280w, /images/independent-transport-professional-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/independent-transport-professional-master.png" type="image/png" />
+                  <img src="/images/independent-transport-professional-1280.webp" alt="Independent transport professional, representing the irregular-income earners Hola Credit assesses" width={1672} height={941} loading="eager" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
             </div>
           </div>
         </section>

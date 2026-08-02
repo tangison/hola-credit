@@ -12,19 +12,28 @@ export default function ForRetailersPage() {
         {/* Hero */}
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-8 h-8 text-teal-400">
-                  <path d="M4 9h16l-2-5H6zM5 9v11h14V9M9 20v-6h6v6" />
-                </svg>
-                <p className="text-sm font-medium text-teal-600 tracking-wide uppercase">For Retailers</p>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-8 h-8 text-teal-400">
+                    <path d="M4 9h16l-2-5H6zM5 9v11h14V9M9 20v-6h6v6" />
+                  </svg>
+                  <p className="text-sm font-medium text-teal-600 tracking-wide uppercase">For Retailers</p>
+                </div>
+                <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
+                  Credit checks built for how customers actually earn.
+                </h1>
+                <p className="mt-6 text-lg text-ink/70 leading-relaxed">
+                  Retail credit teams regularly assess customers who want to purchase goods on credit but do not earn a fixed salary. Hola Credit helps those teams understand the cash-flow evidence in a borrower-authorised bank statement, so the assessment reflects how the customer actually earns.
+                </p>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
-                Credit checks built for how customers actually earn.
-              </h1>
-              <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Retail credit teams regularly assess customers who want to purchase goods on credit but do not earn a fixed salary. Hola Credit helps those teams understand the cash-flow evidence in a borrower-authorised bank statement, so the assessment reflects how the customer actually earns.
-              </p>
+              <div className="relative">
+                <picture>
+                  <source srcSet="/images/retail-credit-conversation-640.webp 640w, /images/retail-credit-conversation-960.webp 960w, /images/retail-credit-conversation-1280.webp 1280w, /images/retail-credit-conversation-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/retail-credit-conversation-master.png" type="image/png" />
+                  <img src="/images/retail-credit-conversation-1280.webp" alt="Retail credit conversation between staff and customer" width={1672} height={941} loading="eager" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
             </div>
           </div>
         </section>
