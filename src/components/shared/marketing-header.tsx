@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
-import gsap from "gsap";
 
 /* ─── Navigation Data ─── */
 
@@ -90,22 +89,24 @@ const mobileGroups = [
     label: "Product",
     items: [
       { href: "/product", label: "Overview" },
-      { href: "/how-scoring-works", label: "Scoring" },
+      { href: "/how-scoring-works", label: "How Scoring Works" },
       { href: "/security", label: "Security" },
     ],
   },
   {
     label: "Solutions",
     items: [
-      { href: "/for-microlenders", label: "Microlenders" },
-      { href: "/for-retailers", label: "Retailers" },
+      { href: "/for-microlenders", label: "For Microlenders" },
+      { href: "/for-retailers", label: "For Retailers" },
     ],
   },
   {
     label: "Resources",
     items: [
-      { href: "/resources", label: "Hub" },
+      { href: "/resources", label: "Resource Hub" },
       { href: "/resources/guides", label: "Guides" },
+      { href: "/resources/statement-readiness", label: "Statement Readiness" },
+      { href: "/resources/responsible-credit", label: "Responsible Credit" },
       { href: "/faq", label: "FAQ" },
     ],
   },
@@ -175,6 +176,18 @@ export function MarketingHeader() {
     }
   }, [searchOpen]);
 
+  /* Lock body scroll when mobile menu is open */
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   /* Close search on Escape */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -183,44 +196,14 @@ export function MarketingHeader() {
           setSearchOpen(false);
           setSearchQuery("");
         }
+        if (mobileOpen) {
+          setMobileOpen(false);
+        }
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [searchOpen]);
-
-  /* GSAP: animate mega-menu open/close */
-  useEffect(() => {
-    if (!menuRef.current || !menuContentRef.current) return;
-
-    if (activeMenu && menuVisible) {
-      const tl = gsap.timeline();
-      tl.fromTo(
-        menuRef.current,
-        { opacity: 0, y: -8 },
-        { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }
-      );
-      tl.fromTo(
-        menuContentRef.current.querySelectorAll(".mega-item"),
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.3, stagger: 0.06, ease: "power2.out" },
-        0.1
-      );
-      tl.fromTo(
-        menuContentRef.current.querySelectorAll(".mega-featured"),
-        { opacity: 0, x: 20 },
-        { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" },
-        0.15
-      );
-    } else if (!activeMenu && !menuVisible) {
-      gsap.to(menuRef.current, {
-        opacity: 0,
-        y: -8,
-        duration: 0.2,
-        ease: "power2.in",
-      });
-    }
-  }, [activeMenu, menuVisible]);
+  }, [searchOpen, mobileOpen]);
 
   /* Hover handlers with delay for accidental hover */
   const handleMouseEnter = useCallback((category: string) => {
@@ -262,7 +245,9 @@ export function MarketingHeader() {
       suppressHydrationWarning
       className={`fixed top-0 inset-x-0 z-50 transition-transform duration-ui ease-entrance ${
         mounted && hidden ? "-translate-y-full" : "translate-y-0"
-      } ${mounted && scrolled ? "bg-sand/95 backdrop-blur-md border-b border-sand-300/60 shadow-sm" : "bg-transparent"}`}
+      } ${mounted && scrolled ? "bg-sand/95 backdrop-blur-md border-b border-sand-300/60 shadow-sm" : "bg-transparent"} ${
+        mobileOpen ? "bg-transparent! border-b-transparent!" : ""
+      }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Primary navigation">
         {/* Logo */}
@@ -355,24 +340,27 @@ export function MarketingHeader() {
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
           </button>
-          {/* Two-line hamburger (Collins-style) */}
+
+          {/* Two-line hamburger (Collins-style) — morphs to X */}
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 -mr-2 text-ink rounded-full hover:bg-sand-200/40 transition-colors duration-ui"
+            className="p-2 -mr-2 text-ink rounded-full hover:bg-sand-200/40 transition-colors duration-ui relative w-10 h-10 flex items-center justify-center"
             aria-expanded={mobileOpen}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 6 6 18M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 7h16" />
-                <path d="M4 17h16" />
-              </svg>
-            )}
+            <span className="relative w-5 h-[14px] flex flex-col justify-between">
+              <span
+                className={`block w-full h-[1.5px] bg-current origin-center transition-all duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  mobileOpen ? "rotate-45 translate-y-[6.25px]" : ""
+                }`}
+              />
+              <span
+                className={`block w-full h-[1.5px] bg-current origin-center transition-all duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  mobileOpen ? "-rotate-45 -translate-y-[6.25px]" : ""
+                }`}
+              />
+            </span>
           </button>
         </div>
       </nav>
@@ -489,163 +477,150 @@ export function MarketingHeader() {
         </div>
       )}
 
-      {/* Mobile: Dark premium off-canvas menu */}
+      {/* Mobile: Full-screen overlay menu (Collins-inspired) */}
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </header>
   );
 }
 
 /* ─── Mobile Menu Component ─── */
+/* Collins-inspired full-screen overlay with staggered reveal */
 
 function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const navItemsRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchFocused, setSearchFocused] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
-  /* GSAP: slide-in animation with choreographed sequence */
+  /* Search results */
+  const searchResults = searchQuery.trim().length > 1
+    ? searchablePages.filter(
+        (p) =>
+          p.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.keywords.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
+
+  const handleSearchSelect = (href: string) => {
+    setSearchQuery("");
+    onClose();
+    router.push(href);
+  };
+
+  /* Reset search when menu closes */
   useEffect(() => {
-    if (!overlayRef.current || !panelRef.current) return;
-
-    /* Kill any running timeline */
-    if (tlRef.current) {
-      tlRef.current.kill();
+    if (!open) {
+      setSearchQuery("");
+      setSearchFocused(false);
     }
-
-    if (open) {
-      document.body.style.overflow = "hidden";
-
-      /* Make panel visible immediately (positioned off-screen by transform) */
-      gsap.set(panelRef.current, { visibility: "visible" });
-
-      const tl = gsap.timeline();
-      tlRef.current = tl;
-
-      /* 1. Backdrop fades in */
-      tl.fromTo(
-        overlayRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power2.out" },
-        0
-      );
-
-      /* 2. Panel slides in from right */
-      tl.fromTo(
-        panelRef.current,
-        { x: "100%" },
-        { x: "0%", duration: 0.4, ease: "power3.out" },
-        0
-      );
-
-      /* 3. Logo and close button fade in */
-      if (panelRef.current.querySelector(".mobile-header")) {
-        tl.fromTo(
-          panelRef.current.querySelectorAll(".mobile-header"),
-          { opacity: 0, y: -10 },
-          { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
-          0.15
-        );
-      }
-
-      /* 4. Nav groups stagger in from right */
-      if (navItemsRef.current) {
-        tl.fromTo(
-          navItemsRef.current.querySelectorAll(".mob-group"),
-          { opacity: 0, x: 24 },
-          { opacity: 1, x: 0, duration: 0.3, stagger: 0.06, ease: "power2.out" },
-          0.2
-        );
-      }
-
-      /* 5. CTA buttons slide up */
-      if (ctaRef.current) {
-        tl.fromTo(
-          ctaRef.current.querySelectorAll(".mob-cta"),
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, ease: "power2.out" },
-          0.5
-        );
-      }
-    } else {
-      document.body.style.overflow = "";
-
-      const tl = gsap.timeline();
-      tlRef.current = tl;
-
-      tl.to(panelRef.current, {
-        x: "100%",
-        duration: 0.28,
-        ease: "power3.in",
-      });
-      tl.to(overlayRef.current, {
-        opacity: 0,
-        duration: 0.22,
-        ease: "power2.in",
-      }, 0);
-
-      /* Hide panel after animation completes */
-      tl.set(panelRef.current, { visibility: "hidden" });
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [open]);
-
-  /* Close on Escape */
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && open) onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
 
   return (
     <div
-      ref={overlayRef}
-      className="lg:hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm"
-      style={{ opacity: 0, pointerEvents: open ? "auto" : "none" }}
-      onClick={onClose}
-      aria-hidden="true"
+      className={`lg:hidden fixed inset-0 z-[60] transition-all duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+      }`}
+      aria-hidden={!open}
     >
+      {/* Backdrop */}
       <div
-        ref={panelRef}
-        className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-ink flex flex-col"
-        style={{ visibility: "hidden", transform: "translateX(100%)" }}
-        onClick={(e) => e.stopPropagation()}
+        className={`absolute inset-0 bg-ink/70 backdrop-blur-sm transition-opacity duration-[420ms] ${
+          open ? "opacity-100" : "opacity-0"
+        }`}
+        onClick={onClose}
+      />
+
+      {/* Full-screen panel */}
+      <div
+        className={`absolute inset-0 bg-ink flex flex-col transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          open ? "translate-y-0" : "translate-y-full"
+        }`}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Panel header: logo + close */}
-        <div className="mobile-header flex items-center justify-between px-6 py-5 border-b border-sand-100/10">
+        <div className="flex items-center justify-between px-5 sm:px-8 h-16 flex-shrink-0">
           <Logo variant="reversed" />
           <button
             type="button"
             onClick={onClose}
-            className="p-2 -mr-2 text-sand-300 hover:text-white rounded-full hover:bg-sand-100/10 transition-colors duration-ui"
+            className="p-2 -mr-2 text-sand-300 hover:text-white rounded-full hover:bg-white/10 transition-colors duration-ui"
             aria-label="Close menu"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
+            <span className="relative w-5 h-[14px] flex flex-col justify-between">
+              <span className="block w-full h-[1.5px] bg-current origin-center rotate-45 translate-y-[6.25px]" />
+              <span className="block w-full h-[1.5px] bg-current origin-center -rotate-45 -translate-y-[6.25px]" />
+            </span>
           </button>
         </div>
 
-        {/* Navigation: grouped, minimal */}
-        <nav ref={navItemsRef} className="flex-1 overflow-y-auto px-6 pt-6 pb-4" aria-label="Mobile navigation">
-          {mobileGroups.map((group) => (
-            <div key={group.label} className="mob-group mb-6">
-              <p className="text-[11px] font-semibold text-sand-500 uppercase tracking-widest mb-2">{group.label}</p>
-              <div className="space-y-0.5">
-                {group.items.map((item) => (
+        {/* Search bar */}
+        <div className="px-5 sm:px-8 py-3 flex-shrink-0">
+          <div className="relative">
+            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-sand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+            </svg>
+            <input
+              ref={searchInputRef}
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setSearchFocused(true)}
+              placeholder="Search..."
+              className="w-full pl-10 pr-4 py-2.5 text-sm bg-white/8 border border-white/10 rounded-xl text-sand-100 placeholder:text-sand-500 focus:outline-none focus:ring-2 focus:ring-teal-400/50 focus:border-teal-400/50 transition-colors duration-ui"
+            />
+          </div>
+          {/* Search results */}
+          {searchResults.length > 0 && (
+            <div className="mt-2 bg-white/8 border border-white/10 rounded-xl overflow-hidden divide-y divide-white/5">
+              {searchResults.map((page) => (
+                <button
+                  key={page.href}
+                  type="button"
+                  onClick={() => handleSearchSelect(page.href)}
+                  className="w-full flex items-center gap-3 px-3.5 py-2.5 text-left hover:bg-white/8 transition-colors duration-ui"
+                >
+                  <svg className="w-4 h-4 text-sand-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                  </svg>
+                  <span className="text-sm font-medium text-sand-100">{page.label}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          {searchQuery.trim().length > 1 && searchResults.length === 0 && (
+            <p className="mt-2 text-sm text-sand-500 px-3.5">No results found.</p>
+          )}
+        </div>
+
+        {/* Navigation: scrollable content */}
+        <nav className="flex-1 overflow-y-auto px-5 sm:px-8 pt-2 pb-4" aria-label="Mobile navigation">
+          {mobileGroups.map((group, groupIndex) => (
+            <div
+              key={group.label}
+              className={`mb-7 transition-all duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: open ? `${150 + groupIndex * 70}ms` : "0ms" }}
+            >
+              <p className="text-[11px] font-semibold text-sand-500 uppercase tracking-[0.15em] mb-3">{group.label}</p>
+              <div className="space-y-0">
+                {group.items.map((item, itemIndex) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={onClose}
-                    className="block py-2.5 text-[17px] font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight"
+                    className={`block py-2 text-[22px] sm:text-2xl font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight leading-snug ${
+                      open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+                    }`}
+                    style={{
+                      transitionProperty: "color, opacity, transform",
+                      transitionDuration: "420ms",
+                      transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                      transitionDelay: open ? `${200 + groupIndex * 70 + itemIndex * 40}ms` : "0ms",
+                    }}
                   >
                     {item.label}
                   </Link>
@@ -656,21 +631,28 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         </nav>
 
         {/* CTA: two buttons */}
-        <div ref={ctaRef} className="px-6 py-5 border-t border-sand-100/10 space-y-2.5">
-          <Link
-            href="/app"
-            onClick={onClose}
-            className="mob-cta flex items-center justify-center rounded-full bg-teal-400 text-ink px-5 py-3 text-sm font-semibold hover:bg-teal-300 transition-colors duration-ui"
+        <div className="flex-shrink-0 px-5 sm:px-8 py-5 border-t border-white/10">
+          <div
+            className={`flex flex-col sm:flex-row gap-2.5 transition-all duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+            style={{ transitionDelay: open ? "500ms" : "0ms" }}
           >
-            Try the demo
-          </Link>
-          <Link
-            href="/waitlist"
-            onClick={onClose}
-            className="mob-cta flex items-center justify-center rounded-full border border-sand-100/20 text-sand-100 px-5 py-3 text-sm font-medium hover:bg-sand-100/10 transition-colors duration-ui"
-          >
-            Join waitlist
-          </Link>
+            <Link
+              href="/app"
+              onClick={onClose}
+              className="flex-1 flex items-center justify-center rounded-full bg-teal-400 text-ink px-5 py-3 text-sm font-semibold hover:bg-teal-300 transition-colors duration-ui"
+            >
+              Try the demo
+            </Link>
+            <Link
+              href="/waitlist"
+              onClick={onClose}
+              className="flex-1 flex items-center justify-center rounded-full border border-white/20 text-sand-100 px-5 py-3 text-sm font-medium hover:bg-white/8 transition-colors duration-ui"
+            >
+              Join waitlist
+            </Link>
+          </div>
         </div>
       </div>
     </div>

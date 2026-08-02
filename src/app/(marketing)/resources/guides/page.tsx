@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { MarketingHeader } from "@/components/shared/marketing-header";
-import { Footer } from "@/components/shared/footer";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -42,9 +40,7 @@ const guides = [
 
 export default function GuidesPage() {
   return (
-    <>
-      <MarketingHeader />
-      <main className="flex-1">
+    <main className="flex-1">
         {/* Hero */}
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,7 +138,5 @@ export default function GuidesPage() {
           </div>
         </section>
       </main>
-      <Footer />
-    </>
   );
 }
