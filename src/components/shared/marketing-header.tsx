@@ -62,6 +62,19 @@ const topLevelLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+/* ─── Flat mobile links (minimal, no descriptions) ─── */
+
+const mobileLinks = [
+  { href: "/product", label: "Product" },
+  { href: "/for-microlenders", label: "Microlenders" },
+  { href: "/for-retailers", label: "Retailers" },
+  { href: "/how-scoring-works", label: "Scoring" },
+  { href: "/security", label: "Security" },
+  { href: "/resources", label: "Resources" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 /* ─── Component ─── */
 
 export function MarketingHeader() {
@@ -324,7 +337,7 @@ export function MarketingHeader() {
         </div>
       )}
 
-      {/* Mobile: Full-screen overlay menu */}
+      {/* Mobile: Dark premium off-canvas menu */}
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </header>
   );
@@ -335,44 +348,92 @@ export function MarketingHeader() {
 function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const navItemsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
 
-  /* GSAP: slide-in animation */
+  /* GSAP: slide-in animation with choreographed sequence */
   useEffect(() => {
     if (!overlayRef.current || !panelRef.current) return;
 
+    /* Kill any running timeline */
+    if (tlRef.current) {
+      tlRef.current.kill();
+    }
+
     if (open) {
       document.body.style.overflow = "hidden";
+
+      /* Make panel visible immediately (positioned off-screen by transform) */
+      gsap.set(panelRef.current, { visibility: "visible" });
+
       const tl = gsap.timeline();
+      tlRef.current = tl;
+
+      /* 1. Backdrop fades in */
       tl.fromTo(
         overlayRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power2.out" }
+        { opacity: 1, duration: 0.3, ease: "power2.out" },
+        0
       );
+
+      /* 2. Panel slides in from right */
       tl.fromTo(
         panelRef.current,
         { x: "100%" },
-        { x: "0%", duration: 0.4, ease: "power3.out" },
+        { x: "0%", duration: 0.45, ease: "power3.out" },
         0
       );
-      tl.fromTo(
-        panelRef.current.querySelectorAll(".mobile-nav-item"),
-        { opacity: 0, x: 24 },
-        { opacity: 1, x: 0, duration: 0.3, stagger: 0.04, ease: "power2.out" },
-        0.15
-      );
+
+      /* 3. Logo and close button fade in */
+      if (panelRef.current.querySelector(".mobile-header")) {
+        tl.fromTo(
+          panelRef.current.querySelectorAll(".mobile-header"),
+          { opacity: 0, y: -10 },
+          { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+          0.2
+        );
+      }
+
+      /* 4. Nav links stagger in from right */
+      if (navItemsRef.current) {
+        tl.fromTo(
+          navItemsRef.current.querySelectorAll(".mob-link"),
+          { opacity: 0, x: 30 },
+          { opacity: 1, x: 0, duration: 0.35, stagger: 0.05, ease: "power2.out" },
+          0.25
+        );
+      }
+
+      /* 5. CTA buttons slide up */
+      if (ctaRef.current) {
+        tl.fromTo(
+          ctaRef.current.querySelectorAll(".mob-cta"),
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power2.out" },
+          0.55
+        );
+      }
     } else {
       document.body.style.overflow = "";
-      gsap.to(overlayRef.current, {
-        opacity: 0,
-        duration: 0.25,
-        ease: "power2.in",
-      });
-      gsap.to(panelRef.current, {
+
+      const tl = gsap.timeline();
+      tlRef.current = tl;
+
+      tl.to(panelRef.current, {
         x: "100%",
         duration: 0.3,
         ease: "power3.in",
       });
+      tl.to(overlayRef.current, {
+        opacity: 0,
+        duration: 0.25,
+        ease: "power2.in",
+      }, 0);
+
+      /* Hide panel after animation completes */
+      tl.set(panelRef.current, { visibility: "hidden" });
     }
 
     return () => {
@@ -389,30 +450,30 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  if (!open) return null;
-
   return (
     <div
       ref={overlayRef}
-      className="lg:hidden fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm"
+      className="lg:hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm"
+      style={{ opacity: 0, pointerEvents: open ? "auto" : "none" }}
       onClick={onClose}
       aria-hidden="true"
     >
       <div
         ref={panelRef}
-        className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-white shadow-2xl flex flex-col"
+        className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-ink flex flex-col"
+        style={{ visibility: "hidden", transform: "translateX(100%)" }}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
       >
-        {/* Panel header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-sand-300">
-          <Logo variant="horizontal" />
+        {/* Panel header: logo + close */}
+        <div className="mobile-header flex items-center justify-between px-6 py-5 border-b border-sand-100/10">
+          <Logo variant="reversed" />
           <button
             type="button"
             onClick={onClose}
-            className="p-2 -mr-2 text-ink/60 hover:text-ink rounded-full hover:bg-sand-100 transition-colors duration-ui"
+            className="p-2 -mr-2 text-sand-300 hover:text-white rounded-full hover:bg-sand-100/10 transition-colors duration-ui"
             aria-label="Close menu"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -421,90 +482,33 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           </button>
         </div>
 
-        {/* Featured hero image */}
-        <div className="mobile-nav-item relative h-36 overflow-hidden">
-          <img
-            src="/images/cash-flow-to-clear-signal-640.webp"
-            alt="Cash-flow underwriting"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
-          <div className="absolute bottom-3 left-5 right-5">
-            <p className="text-white text-xs font-medium tracking-wide uppercase opacity-80">Cash-flow underwriting</p>
-            <p className="text-white text-sm font-semibold mt-0.5">See the income a payslip misses</p>
-          </div>
-        </div>
-
-        {/* Navigation items */}
-        <nav className="flex-1 overflow-y-auto px-4 py-4" aria-label="Mobile navigation">
-          {/* Mega-menu categories as accordions */}
-          {megaMenuCategories.map((cat) => (
-            <div key={cat.trigger} className="mobile-nav-item">
-              <button
-                type="button"
-                onClick={() => setExpandedSection(expandedSection === cat.trigger ? null : cat.trigger)}
-                className="flex items-center justify-between w-full px-3 py-3 text-base font-semibold text-ink rounded-xl hover:bg-sand-100 transition-colors duration-ui"
-                aria-expanded={expandedSection === cat.trigger}
-              >
-                {cat.trigger}
-                <svg
-                  className={`w-4 h-4 text-ink/40 transition-transform duration-ui ${expandedSection === cat.trigger ? "rotate-180" : ""}`}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-              {expandedSection === cat.trigger && (
-                <div className="ml-2 mb-2 space-y-0.5">
-                  {cat.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={onClose}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-ink/60 hover:text-ink hover:bg-sand-100 transition-colors duration-ui"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0" />
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-
-          {/* Top-level links */}
-          {topLevelLinks.map((link) => (
-            <div key={link.href} className="mobile-nav-item">
-              <Link
-                href={link.href}
-                onClick={onClose}
-                className="block px-3 py-3 text-base font-semibold text-ink rounded-xl hover:bg-sand-100 transition-colors duration-ui"
-              >
-                {link.label}
-              </Link>
-            </div>
+        {/* Navigation: minimal big links */}
+        <nav ref={navItemsRef} className="flex-1 overflow-y-auto px-6 pt-8 pb-4" aria-label="Mobile navigation">
+          {mobileLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={onClose}
+              className="mob-link block py-3 text-2xl font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight"
+            >
+              {link.label}
+            </Link>
           ))}
         </nav>
 
-        {/* CTA buttons */}
-        <div className="mobile-nav-item px-5 py-5 border-t border-sand-300 space-y-2.5">
+        {/* CTA: two buttons */}
+        <div ref={ctaRef} className="px-6 py-6 border-t border-sand-100/10 space-y-2.5">
           <Link
             href="/app"
             onClick={onClose}
-            className="flex items-center justify-center rounded-full bg-ink text-sand-50 px-5 py-2.5 text-sm font-medium hover:bg-ink-50 transition-colors duration-ui shadow-sm"
+            className="mob-cta flex items-center justify-center rounded-full bg-teal-400 text-ink px-5 py-3 text-sm font-semibold hover:bg-teal-300 transition-colors duration-ui"
           >
             Try the demo
           </Link>
           <Link
             href="/waitlist"
             onClick={onClose}
-            className="flex items-center justify-center rounded-full border border-sand-300 text-ink px-5 py-2.5 text-sm font-medium hover:bg-sand-100 transition-colors duration-ui"
+            className="mob-cta flex items-center justify-center rounded-full border border-sand-100/20 text-sand-100 px-5 py-3 text-sm font-medium hover:bg-sand-100/10 transition-colors duration-ui"
           >
             Join waitlist
           </Link>

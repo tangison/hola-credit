@@ -14,18 +14,28 @@ export default function AppLayout({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
 
   /* GSAP: mobile drawer slide-in animation */
   useEffect(() => {
     if (!overlayRef.current || !panelRef.current) return;
 
+    if (tlRef.current) {
+      tlRef.current.kill();
+    }
+
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      gsap.set(panelRef.current, { visibility: "visible" });
+
       const tl = gsap.timeline();
+      tlRef.current = tl;
+
       tl.fromTo(
         overlayRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power2.out" }
+        { opacity: 1, duration: 0.3, ease: "power2.out" },
+        0
       );
       tl.fromTo(
         panelRef.current,
@@ -33,18 +43,34 @@ export default function AppLayout({
         { x: "0%", duration: 0.4, ease: "power3.out" },
         0
       );
+
+      /* Stagger sidebar items */
+      const sidebarItems = panelRef.current.querySelectorAll(".sidebar-item");
+      if (sidebarItems.length) {
+        tl.fromTo(
+          sidebarItems,
+          { opacity: 0, x: -16 },
+          { opacity: 1, x: 0, duration: 0.25, stagger: 0.03, ease: "power2.out" },
+          0.2
+        );
+      }
     } else {
       document.body.style.overflow = "";
-      gsap.to(overlayRef.current, {
-        opacity: 0,
-        duration: 0.25,
-        ease: "power2.in",
-      });
-      gsap.to(panelRef.current, {
+
+      const tl = gsap.timeline();
+      tlRef.current = tl;
+
+      tl.to(panelRef.current, {
         x: "-100%",
         duration: 0.3,
         ease: "power3.in",
       });
+      tl.to(overlayRef.current, {
+        opacity: 0,
+        duration: 0.25,
+        ease: "power2.in",
+      }, 0);
+      tl.set(panelRef.current, { visibility: "hidden" });
     }
 
     return () => {
@@ -78,26 +104,26 @@ export default function AppLayout({
       </div>
 
       {/* Mobile menu overlay */}
-      {mobileMenuOpen && (
+      <div
+        ref={overlayRef}
+        className="lg:hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm"
+        style={{ opacity: 0, pointerEvents: mobileMenuOpen ? "auto" : "none" }}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+      >
         <div
-          ref={overlayRef}
-          className="lg:hidden fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm"
-          onClick={() => setMobileMenuOpen(false)}
-          aria-hidden="true"
+          ref={panelRef}
+          className="absolute left-0 top-0 bottom-0 w-72 bg-white shadow-2xl"
+          style={{ visibility: "hidden", transform: "translateX(-100%)" }}
+          onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Application navigation"
         >
-          <div
-            ref={panelRef}
-            className="absolute left-0 top-0 bottom-0 w-72 bg-white shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Application navigation"
-          >
-            {/* Mobile sidebar - no hidden lg:flex, always visible in this panel */}
-            <AppSidebar className="flex" />
-          </div>
+          {/* Mobile sidebar - always visible in this panel */}
+          <AppSidebar className="flex" />
         </div>
-      )}
+      </div>
 
       <div className="flex-1 flex flex-col min-w-0">
         {/* Mobile top bar */}
