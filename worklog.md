@@ -151,3 +151,27 @@ Stage Summary:
 - Accordion component created and used across 6 pages
 - Copy made minimalistic throughout
 - Deployed to hola.tangison.com
+---
+Task ID: 4
+Agent: Main Agent
+Task: Redesign mobile nav with two-line hamburger, add search, add FAQ page, polish off-canvas
+
+Work Log:
+- Redesigned hamburger icon from three-line to two-line (Collins-style): M4 7h16 + M4 17h16
+- Added search system to navigation bar (desktop + mobile): search icon button, dropdown with input, keyword-based search across all site pages, results with navigation arrows
+- Search uses client-side filtering of all site pages with keyword matching
+- Search closes on Escape key, auto-focuses input on open
+- Added FAQ page at /faq with 5 sections: General, How it works, Scoring, Security and data, Access
+- FAQ uses Accordion component for progressive disclosure
+- FAQ includes 17 questions covering common queries
+- Added FAQ link to Resources mega-menu, mobile nav, and footer
+- Polished off-canvas menu: changed bg back to bg-ink (darker, richer), refined spacing, tighter typography, added FAQ to mobile Resources group
+- Desktop search overlay appears below header with search input and results
+- Build succeeded, committed, pushed, deployed to production
+
+Stage Summary:
+- Two-line hamburger icon (Collins-style) implemented
+- Search system added to nav bar (desktop + mobile)
+- FAQ page created at /faq with 17 questions in 5 sections
+- Off-canvas menu polished with bg-ink, tighter spacing
+- All deployed to hola.tangison.com
