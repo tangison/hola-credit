@@ -11,6 +11,7 @@ export function Footer() {
             <Link href="/product" className="text-sm text-sand-400 hover:text-sand-100 transition-colors duration-ui">Product</Link>
             <Link href="/for-microlenders" className="text-sm text-sand-400 hover:text-sand-100 transition-colors duration-ui">Microlenders</Link>
             <Link href="/for-retailers" className="text-sm text-sand-400 hover:text-sand-100 transition-colors duration-ui">Retailers</Link>
+            <Link href="/faq" className="text-sm text-sand-400 hover:text-sand-100 transition-colors duration-ui">FAQ</Link>
             <Link href="/about" className="text-sm text-sand-400 hover:text-sand-100 transition-colors duration-ui">About</Link>
             <Link href="/contact" className="text-sm text-sand-400 hover:text-sand-100 transition-colors duration-ui">Contact</Link>
             <Link href="/privacy" className="text-sm text-sand-400 hover:text-sand-100 transition-colors duration-ui">Privacy</Link>

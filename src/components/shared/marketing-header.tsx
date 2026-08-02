@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
 import gsap from "gsap";
 
@@ -50,6 +51,7 @@ const megaMenuCategories: MegaMenuCategory[] = [
       { href: "/resources/guides", label: "Guides", description: "Step-by-step instructions for loan officers" },
       { href: "/resources/statement-readiness", label: "Statement Readiness", description: "Preparing bank statements for assessment" },
       { href: "/resources/responsible-credit", label: "Responsible Credit", description: "Ethical lending principles and practices" },
+      { href: "/faq", label: "FAQ", description: "Frequently asked questions" },
     ],
     featuredImage: "/images/cash-flow-to-clear-signal-640.webp",
     featuredTitle: "Learn and improve",
@@ -62,7 +64,26 @@ const topLevelLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-/* ─── Mobile nav: grouped by category, minimal ─── */
+/* ─── All site pages for search ─── */
+
+const searchablePages = [
+  { href: "/product", label: "Product", keywords: "product overview how it works cash flow underwriting" },
+  { href: "/how-scoring-works", label: "How Scoring Works", keywords: "scoring income floor consistency volatility deterministic" },
+  { href: "/security", label: "Security", keywords: "security data protection consent retention encryption privacy" },
+  { href: "/for-microlenders", label: "For Microlenders", keywords: "microlenders underwriting irregular income loan officers" },
+  { href: "/for-retailers", label: "For Retailers", keywords: "retailers credit assessment point of sale store" },
+  { href: "/resources", label: "Resources", keywords: "resources guides documentation support hub" },
+  { href: "/resources/guides", label: "Guides", keywords: "guides instructions loan officers step by step" },
+  { href: "/resources/statement-readiness", label: "Statement Readiness", keywords: "statement readiness bank pdf upload format" },
+  { href: "/resources/responsible-credit", label: "Responsible Credit", keywords: "responsible credit ethical lending human oversight" },
+  { href: "/faq", label: "FAQ", keywords: "faq questions answers frequently asked" },
+  { href: "/about", label: "About", keywords: "about tangison namibia team" },
+  { href: "/contact", label: "Contact", keywords: "contact email pilot access request" },
+  { href: "/waitlist", label: "Join Waitlist", keywords: "waitlist join signup register" },
+  { href: "/app", label: "Try the Demo", keywords: "demo try app dashboard" },
+];
+
+/* ─── Mobile nav: grouped by category ─── */
 
 const mobileGroups = [
   {
@@ -85,6 +106,7 @@ const mobileGroups = [
     items: [
       { href: "/resources", label: "Hub" },
       { href: "/resources/guides", label: "Guides" },
+      { href: "/faq", label: "FAQ" },
     ],
   },
   {
@@ -106,11 +128,16 @@ export function MarketingHeader() {
   const [lastY, setLastY] = useState(0);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const menuRef = useRef<HTMLDivElement>(null);
   const menuContentRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchResultsRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   /* Scroll-aware hide/show */
   useEffect(() => {
@@ -140,6 +167,27 @@ export function MarketingHeader() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  /* Focus search input when opened */
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
+
+  /* Close search on Escape */
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (searchOpen) {
+          setSearchOpen(false);
+          setSearchQuery("");
+        }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [searchOpen]);
 
   /* GSAP: animate mega-menu open/close */
   useEffect(() => {
@@ -192,6 +240,21 @@ export function MarketingHeader() {
   }, []);
 
   const currentCategory = megaMenuCategories.find((c) => c.trigger === activeMenu);
+
+  /* Search results */
+  const searchResults = searchQuery.trim().length > 1
+    ? searchablePages.filter(
+        (p) =>
+          p.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.keywords.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
+
+  const handleSearchSelect = (href: string) => {
+    setSearchOpen(false);
+    setSearchQuery("");
+    router.push(href);
+  };
 
   return (
     <header
@@ -251,8 +314,20 @@ export function MarketingHeader() {
           ))}
         </div>
 
-        {/* Desktop: CTA buttons */}
+        {/* Desktop: Search + CTA buttons */}
         <div className="hidden lg:flex items-center gap-2.5">
+          {/* Search toggle */}
+          <button
+            type="button"
+            onClick={() => { setSearchOpen(!searchOpen); setSearchQuery(""); }}
+            className="p-2 text-ink/60 hover:text-ink rounded-full hover:bg-sand-200/40 transition-colors duration-ui"
+            aria-label="Search"
+            aria-expanded={searchOpen}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
           <Link
             href="/app"
             className="px-4 py-2 text-sm font-medium text-ink/70 hover:text-ink rounded-full hover:bg-sand-200/40 transition-colors duration-ui"
@@ -267,25 +342,81 @@ export function MarketingHeader() {
           </Link>
         </div>
 
-        {/* Mobile: Hamburger button */}
-        <button
-          type="button"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2 -mr-2 text-ink rounded-full hover:bg-sand-200/40 transition-colors duration-ui"
-          aria-expanded={mobileOpen}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 6 6 18M6 6l12 12" />
+        {/* Mobile: Search + Hamburger */}
+        <div className="flex lg:hidden items-center gap-1">
+          <button
+            type="button"
+            onClick={() => { setSearchOpen(!searchOpen); setSearchQuery(""); }}
+            className="p-2 text-ink/60 hover:text-ink rounded-full hover:bg-sand-200/40 transition-colors duration-ui"
+            aria-label="Search"
+            aria-expanded={searchOpen}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
-          ) : (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
+          </button>
+          {/* Two-line hamburger (Collins-style) */}
+          <button
+            type="button"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 -mr-2 text-ink rounded-full hover:bg-sand-200/40 transition-colors duration-ui"
+            aria-expanded={mobileOpen}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 7h16" />
+                <path d="M4 17h16" />
+              </svg>
+            )}
+          </button>
+        </div>
       </nav>
+
+      {/* Search overlay (desktop + mobile) */}
+      {searchOpen && (
+        <div className="absolute inset-x-0 top-full z-40 border-b border-sand-300 shadow-lg shadow-ink/5 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="relative">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+              </svg>
+              <input
+                ref={searchInputRef}
+                type="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search pages..."
+                className="w-full pl-10 pr-4 py-2.5 text-sm bg-sand-50 border border-sand-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition-colors duration-ui"
+              />
+            </div>
+            {searchResults.length > 0 && (
+              <div ref={searchResultsRef} className="mt-2 divide-y divide-sand-200">
+                {searchResults.map((page) => (
+                  <button
+                    key={page.href}
+                    type="button"
+                    onClick={() => handleSearchSelect(page.href)}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 text-left hover:bg-sand-100 rounded-lg transition-colors duration-ui"
+                  >
+                    <svg className="w-4 h-4 text-ink/30 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                    <span className="text-sm font-medium text-ink">{page.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+            {searchQuery.trim().length > 1 && searchResults.length === 0 && (
+              <p className="mt-3 text-sm text-ink/50 px-3">No results found.</p>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Desktop: Mega-menu dropdown */}
       {currentCategory && (
@@ -481,7 +612,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     >
       <div
         ref={panelRef}
-        className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-sand-950 flex flex-col"
+        className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-ink flex flex-col"
         style={{ visibility: "hidden", transform: "translateX(100%)" }}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
@@ -504,17 +635,17 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         </div>
 
         {/* Navigation: grouped, minimal */}
-        <nav ref={navItemsRef} className="flex-1 overflow-y-auto px-6 pt-8 pb-4" aria-label="Mobile navigation">
+        <nav ref={navItemsRef} className="flex-1 overflow-y-auto px-6 pt-6 pb-4" aria-label="Mobile navigation">
           {mobileGroups.map((group) => (
             <div key={group.label} className="mob-group mb-6">
-              <p className="text-xs font-semibold text-sand-400 uppercase tracking-wider mb-2">{group.label}</p>
-              <div className="space-y-1">
+              <p className="text-[11px] font-semibold text-sand-500 uppercase tracking-widest mb-2">{group.label}</p>
+              <div className="space-y-0.5">
                 {group.items.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={onClose}
-                    className="block py-2 text-lg font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight"
+                    className="block py-2.5 text-[17px] font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight"
                   >
                     {item.label}
                   </Link>
@@ -525,7 +656,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         </nav>
 
         {/* CTA: two buttons */}
-        <div ref={ctaRef} className="px-6 py-6 border-t border-sand-100/10 space-y-2.5">
+        <div ref={ctaRef} className="px-6 py-5 border-t border-sand-100/10 space-y-2.5">
           <Link
             href="/app"
             onClick={onClose}
