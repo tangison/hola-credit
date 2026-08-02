@@ -16,7 +16,7 @@ import { AiChatPanel } from "@/components/shared/ai-chat-panel";
 function AssessmentView({ assessment, transactions }: { assessment: DemoAssessment; transactions: DemoApplication["transactions"] }) {
   const tierLabel = assessment.tier
     ? assessment.tier.charAt(0).toUpperCase() + assessment.tier.slice(1)
-    : "—";
+    : ", ";
 
   return (
     <div className="space-y-6">
@@ -34,7 +34,7 @@ function AssessmentView({ assessment, transactions }: { assessment: DemoAssessme
             <p className="mt-1 text-xs text-ink/50">Cash-flow tier</p>
           </div>
           <div className="text-center p-4 bg-sand-50 rounded-md">
-            <p className="text-2xl font-bold text-ink">{assessment.score ?? "—"}</p>
+            <p className="text-2xl font-bold text-ink">{assessment.score ?? ", "}</p>
             <p className="mt-1 text-xs text-ink/50">Assessment score</p>
           </div>
           <div className="text-center p-4 bg-sand-50 rounded-md">
@@ -426,17 +426,17 @@ export default function ApplicationDetailPage({ params }: { params: Promise<{ ap
                 <p className="text-xs text-ink/50">Display name</p>
                 <p className="text-sm font-medium text-ink">
                   <Link href={`/app/borrowers/${application.borrowerId}`} className="text-teal-500 hover:text-teal-600">
-                    {borrower?.displayName ?? "—"}
+                    {borrower?.displayName ?? ", "}
                   </Link>
                 </p>
               </div>
               <div>
                 <p className="text-xs text-ink/50">Occupation</p>
-                <p className="text-sm text-ink">{borrower?.occupation ?? "—"}</p>
+                <p className="text-sm text-ink">{borrower?.occupation ?? ", "}</p>
               </div>
               <div>
                 <p className="text-xs text-ink/50">Bank</p>
-                <p className="text-sm text-ink">{borrower?.bank ?? "—"}</p>
+                <p className="text-sm text-ink">{borrower?.bank ?? ", "}</p>
               </div>
               <div>
                 <p className="text-xs text-ink/50">Product type</p>

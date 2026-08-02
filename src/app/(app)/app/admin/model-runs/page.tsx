@@ -24,7 +24,7 @@ const modelRuns: ModelRun[] = [
   { id: "mr_003", applicationReference: "LN-2024-00138", modelVersion: "v2.4.1", status: "completed", confidence: 0.72, duration: "2m 48s", timestamp: "2024-03-11 16:12" },
   { id: "mr_004", applicationReference: "LN-2024-00135", modelVersion: "v2.4.0", status: "failed", confidence: 0, duration: "0m 34s", timestamp: "2024-03-11 14:30" },
   { id: "mr_005", applicationReference: "LN-2024-00141", modelVersion: "v2.4.0", status: "completed", confidence: 0.81, duration: "1m 52s", timestamp: "2024-03-11 11:08" },
-  { id: "mr_006", applicationReference: "LN-2024-00140", modelVersion: "v2.4.1", status: "running", confidence: 0, duration: "—", timestamp: "2024-03-12 10:05" },
+  { id: "mr_006", applicationReference: "LN-2024-00140", modelVersion: "v2.4.1", status: "running", confidence: 0, duration: ", ", timestamp: "2024-03-12 10:05" },
 ];
 
 export default function ModelRunsPage() {
@@ -107,7 +107,7 @@ export default function ModelRunsPage() {
                           {Math.round(run.confidence * 100)}%
                         </span>
                       ) : (
-                        <span className="text-sm text-ink/40">—</span>
+                        <span className="text-sm text-ink/40">, </span>
                       )}
                     </td>
                     <td className="px-4 py-3 text-sm text-ink/60">{run.duration}</td>

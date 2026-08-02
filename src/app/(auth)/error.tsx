@@ -36,7 +36,7 @@ export default function AuthError({
 
         <h1 className="text-2xl font-bold text-ink mb-3">Something went wrong</h1>
         <p className="text-sm text-ink/60 mb-8 max-w-sm mx-auto">
-          We couldn&apos;t load this page. Please try again — you can also explore the demo without signing in.
+          We couldn&apos;t load this page. Please try again, you can also explore the demo without signing in.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">

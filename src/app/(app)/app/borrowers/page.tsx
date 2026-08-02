@@ -95,7 +95,7 @@ export default function BorrowersPage() {
                           {latestStatus.label}
                         </span>
                       ) : (
-                        <span className="text-sm text-ink/40">—</span>
+                        <span className="text-sm text-ink/40">, </span>
                       )}
                     </td>
                   </tr>

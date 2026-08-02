@@ -36,7 +36,7 @@ export default function MarketingError({
 
         <h1 className="text-2xl font-bold text-ink mb-3">This page didn&apos;t load</h1>
         <p className="text-sm text-ink/60 mb-8 max-w-sm mx-auto">
-          Something went wrong while loading this page. Please try again — if the problem persists, head back to the home page.
+          Something went wrong while loading this page. Please try again, if the problem persists, head back to the home page.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">

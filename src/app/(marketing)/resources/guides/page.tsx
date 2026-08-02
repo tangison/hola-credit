@@ -11,7 +11,7 @@ const guides = [
   {
     title: "What irregular income looks like on a bank statement",
     description:
-      "Many Namibians earn consistently without receiving a fixed salary. This guide explains the patterns that irregular income can produce on a bank statement: repeated deposits from the same client or platform, variable but consistent monthly inflows, seasonal peaks, and the difference between a genuine income pattern and a one-off transfer. It is written for loan officers who need to recognise legitimate cash-flow evidence without stereotyping applicants or forcing every case into a salary-only model. The guide does not define what counts as income — that remains the lender's policy decision — but it helps officers see the patterns that are already present in the data.",
+      "Many Namibians earn consistently without receiving a fixed salary. This guide explains the patterns that irregular income can produce on a bank statement: repeated deposits from the same client or platform, variable but consistent monthly inflows, seasonal peaks, and the difference between a genuine income pattern and a one-off transfer. It is written for loan officers who need to recognise legitimate cash-flow evidence without stereotyping applicants or forcing every case into a salary-only model. The guide does not define what counts as income, that remains the lender's policy decision, but it helps officers see the patterns that are already present in the data.",
     status: "Recommended",
   },
   {
@@ -29,7 +29,7 @@ const guides = [
   {
     title: "Cash-flow evidence for retail credit teams",
     description:
-      "Retail credit teams evaluate customers applying to purchase goods on credit, often at the point of sale. This guide translates the Hola Credit assessment into the language and workflow of store-credit operations: how to read the cash-flow evidence, what the confidence levels mean for a retail decision, how to handle low-confidence transactions, and how to record the final decision alongside the assessment. The guide does not claim instant approval — it is about giving the credit team a more complete picture of the applicant's cash flow, so that the decision is better informed even when it must be made quickly.",
+      "Retail credit teams evaluate customers applying to purchase goods on credit, often at the point of sale. This guide translates the Hola Credit assessment into the language and workflow of store-credit operations: how to read the cash-flow evidence, what the confidence levels mean for a retail decision, how to handle low-confidence transactions, and how to record the final decision alongside the assessment. The guide does not claim instant approval, it is about giving the credit team a more complete picture of the applicant's cash flow, so that the decision is better informed even when it must be made quickly.",
     status: "Recommended",
   },
   {

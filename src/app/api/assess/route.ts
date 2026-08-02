@@ -1,5 +1,5 @@
 /**
- * Hola Credit — AI Assessment API Route
+ * Hola Credit, AI Assessment API Route
  *
  * POST /api/assess
  *

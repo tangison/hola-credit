@@ -12,7 +12,7 @@ export default function SignInPage() {
         </div>
         <h1 className="text-2xl font-bold text-ink">No sign-in needed</h1>
         <p className="mt-2 text-sm text-ink/60">
-          Hola Credit is in early access. You can explore the demo right now — no account required.
+          Hola Credit is in early access. You can explore the demo right now, no account required.
         </p>
       </div>
 

@@ -62,17 +62,38 @@ const topLevelLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-/* ─── Flat mobile links (minimal, no descriptions) ─── */
+/* ─── Mobile nav: grouped by category, minimal ─── */
 
-const mobileLinks = [
-  { href: "/product", label: "Product" },
-  { href: "/for-microlenders", label: "Microlenders" },
-  { href: "/for-retailers", label: "Retailers" },
-  { href: "/how-scoring-works", label: "Scoring" },
-  { href: "/security", label: "Security" },
-  { href: "/resources", label: "Resources" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+const mobileGroups = [
+  {
+    label: "Product",
+    items: [
+      { href: "/product", label: "Overview" },
+      { href: "/how-scoring-works", label: "Scoring" },
+      { href: "/security", label: "Security" },
+    ],
+  },
+  {
+    label: "Solutions",
+    items: [
+      { href: "/for-microlenders", label: "Microlenders" },
+      { href: "/for-retailers", label: "Retailers" },
+    ],
+  },
+  {
+    label: "Resources",
+    items: [
+      { href: "/resources", label: "Hub" },
+      { href: "/resources/guides", label: "Guides" },
+    ],
+  },
+  {
+    label: "Company",
+    items: [
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
 ];
 
 /* ─── Component ─── */
@@ -382,7 +403,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
       tl.fromTo(
         panelRef.current,
         { x: "100%" },
-        { x: "0%", duration: 0.45, ease: "power3.out" },
+        { x: "0%", duration: 0.4, ease: "power3.out" },
         0
       );
 
@@ -391,18 +412,18 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         tl.fromTo(
           panelRef.current.querySelectorAll(".mobile-header"),
           { opacity: 0, y: -10 },
-          { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
-          0.2
+          { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
+          0.15
         );
       }
 
-      /* 4. Nav links stagger in from right */
+      /* 4. Nav groups stagger in from right */
       if (navItemsRef.current) {
         tl.fromTo(
-          navItemsRef.current.querySelectorAll(".mob-link"),
-          { opacity: 0, x: 30 },
-          { opacity: 1, x: 0, duration: 0.35, stagger: 0.05, ease: "power2.out" },
-          0.25
+          navItemsRef.current.querySelectorAll(".mob-group"),
+          { opacity: 0, x: 24 },
+          { opacity: 1, x: 0, duration: 0.3, stagger: 0.06, ease: "power2.out" },
+          0.2
         );
       }
 
@@ -411,8 +432,8 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         tl.fromTo(
           ctaRef.current.querySelectorAll(".mob-cta"),
           { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power2.out" },
-          0.55
+          { opacity: 1, y: 0, duration: 0.3, stagger: 0.08, ease: "power2.out" },
+          0.5
         );
       }
     } else {
@@ -423,12 +444,12 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
 
       tl.to(panelRef.current, {
         x: "100%",
-        duration: 0.3,
+        duration: 0.28,
         ease: "power3.in",
       });
       tl.to(overlayRef.current, {
         opacity: 0,
-        duration: 0.25,
+        duration: 0.22,
         ease: "power2.in",
       }, 0);
 
@@ -460,7 +481,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     >
       <div
         ref={panelRef}
-        className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-ink flex flex-col"
+        className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-sand-950 flex flex-col"
         style={{ visibility: "hidden", transform: "translateX(100%)" }}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
@@ -482,17 +503,24 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           </button>
         </div>
 
-        {/* Navigation: minimal big links */}
+        {/* Navigation: grouped, minimal */}
         <nav ref={navItemsRef} className="flex-1 overflow-y-auto px-6 pt-8 pb-4" aria-label="Mobile navigation">
-          {mobileLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={onClose}
-              className="mob-link block py-3 text-2xl font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight"
-            >
-              {link.label}
-            </Link>
+          {mobileGroups.map((group) => (
+            <div key={group.label} className="mob-group mb-6">
+              <p className="text-xs font-semibold text-sand-400 uppercase tracking-wider mb-2">{group.label}</p>
+              <div className="space-y-1">
+                {group.items.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onClose}
+                    className="block py-2 text-lg font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           ))}
         </nav>
 

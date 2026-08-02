@@ -95,7 +95,7 @@ export default function DashboardPage() {
                           {app.reference}
                         </Link>
                       </td>
-                      <td className="px-4 py-3 text-sm text-ink">{borrower?.displayName ?? "—"}</td>
+                      <td className="px-4 py-3 text-sm text-ink">{borrower?.displayName ?? ", "}</td>
                       <td className="px-4 py-3">
                         <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium ${statusInfo.className}`}>
                           <span className={`w-1.5 h-1.5 rounded-full ${statusInfo.dotClassName}`} />
@@ -206,7 +206,7 @@ export default function DashboardPage() {
           <div className="flex-1">
             <h2 className="text-lg font-semibold text-ink">Join the waitlist for full access</h2>
             <p className="mt-1 text-sm text-ink/60 max-w-lg">
-              The demo lets you explore the assessment flow with synthetic data. When you&apos;re ready for real organisation setup, team management, and production data — join the waitlist and we&apos;ll get you set up.
+              The demo lets you explore the assessment flow with synthetic data. When you&apos;re ready for real organisation setup, team management, and production data, join the waitlist and we&apos;ll get you set up.
             </p>
           </div>
           <div className="flex-shrink-0">

@@ -39,10 +39,10 @@ export default function StatementReadinessPage() {
                   Hola Credit accepts bank statements in three file formats: PDF, PNG, and JPEG. PDF is the preferred format because it preserves the original layout, text encoding, and page structure of the bank statement. Most Namibian banks allow customers to download their statements as PDFs from their online banking portals, and this is the most reliable way to produce a usable file.
                 </p>
                 <p className="text-ink/70 leading-relaxed mb-6">
-                  PNG and JPEG are supported for cases where the applicant does not have access to a PDF download — for example, when the statement is only available as a printed document that must be photographed. Image-based uploads go through OCR (optical character recognition) as a fallback, which is less reliable than direct PDF text extraction. If a PDF is available, it should always be preferred over a photograph.
+                  PNG and JPEG are supported for cases where the applicant does not have access to a PDF download, for example, when the statement is only available as a printed document that must be photographed. Image-based uploads go through OCR (optical character recognition) as a fallback, which is less reliable than direct PDF text extraction. If a PDF is available, it should always be preferred over a photograph.
                 </p>
                 <p className="text-ink/70 leading-relaxed">
-                  The system validates the file type on the server side. Files that are not PDF, PNG, or JPEG will be rejected at upload. Renaming a file extension does not change the actual file format — the system checks the file contents, not the extension. If a file is password-protected, the password must be removed before upload because the system cannot process encrypted files.
+                  The system validates the file type on the server side. Files that are not PDF, PNG, or JPEG will be rejected at upload. Renaming a file extension does not change the actual file format, the system checks the file contents, not the extension. If a file is password-protected, the password must be removed before upload because the system cannot process encrypted files.
                 </p>
               </div>
               <div>
@@ -72,7 +72,7 @@ export default function StatementReadinessPage() {
                 {
                   title: "Complete statement period",
                   description:
-                    "The statement must cover the full period required for assessment. Most cash-flow assessments require three to six months of transaction history. If the statement covers only a partial period, the assessment will have less data to work with, and the results may be flagged as insufficient. Check that the statement includes all pages — a missing page means missing transactions, and the assessment will not be able to account for the gap. Staff should verify that the statement period matches the required assessment window before submitting the file.",
+                    "The statement must cover the full period required for assessment. Most cash-flow assessments require three to six months of transaction history. If the statement covers only a partial period, the assessment will have less data to work with, and the results may be flagged as insufficient. Check that the statement includes all pages, a missing page means missing transactions, and the assessment will not be able to account for the gap. Staff should verify that the statement period matches the required assessment window before submitting the file.",
                 },
                 {
                   title: "Readable text and clear images",
@@ -120,7 +120,7 @@ export default function StatementReadinessPage() {
                   Hola Credit is designed to work with statements from Namibian banks. The initial launch supports statements from FNB Namibia, Bank Windhoek, Standard Bank Namibia, and Nedbank Namibia. The extraction and categorisation process is tuned for Namibian transaction patterns, currency, and banking formats, not adapted from a generic international template.
                 </p>
                 <p className="text-ink/70 leading-relaxed mb-6">
-                  Each bank formats its statements differently — different column layouts, different date formats, different transaction descriptions, and different page structures. The extraction system is trained to handle these variations, but format accuracy is measured separately for each bank. If a bank changes its statement format, the extraction may produce lower-confidence results until the system is updated to match the new format.
+                  Each bank formats its statements differently, different column layouts, different date formats, different transaction descriptions, and different page structures. The extraction system is trained to handle these variations, but format accuracy is measured separately for each bank. If a bank changes its statement format, the extraction may produce lower-confidence results until the system is updated to match the new format.
                 </p>
                 <p className="text-ink/70 leading-relaxed">
                   Statements from banks outside Namibia, or from banks not yet supported, may produce unreliable results. The system will attempt extraction, but the assessment will flag the data as coming from an unsupported format. Staff should check that the statement is from a supported bank before uploading, and contact Hola Credit if they need support for a bank that is not yet on the list.
@@ -136,13 +136,13 @@ export default function StatementReadinessPage() {
             <div className="max-w-3xl">
               <h2 className="text-3xl font-bold text-ink tracking-tight mb-6">Practical guidance for staff</h2>
               <p className="text-ink/70 leading-relaxed mb-6">
-                When collecting or preparing a bank statement for cash-flow assessment, follow these steps to give the assessment the best chance of producing reliable results. First, always prefer a PDF download from the bank's online portal over a photograph of a printed statement. The PDF preserves the original layout and text encoding, which makes extraction more reliable. Second, verify that the statement covers the full assessment period — typically three to six months — and that no pages are missing. Third, ensure the file is not password-protected, and do not crop, redact, or annotate the statement.
+                When collecting or preparing a bank statement for cash-flow assessment, follow these steps to give the assessment the best chance of producing reliable results. First, always prefer a PDF download from the bank's online portal over a photograph of a printed statement. The PDF preserves the original layout and text encoding, which makes extraction more reliable. Second, verify that the statement covers the full assessment period, typically three to six months, and that no pages are missing. Third, ensure the file is not password-protected, and do not crop, redact, or annotate the statement.
               </p>
               <p className="text-ink/70 leading-relaxed mb-6">
                 If a photograph is the only option, take it in good lighting with the camera directly above the document, avoiding shadows and glare. Ensure all four corners of the page are visible and the text is legible at normal viewing size. If the statement spans multiple pages, photograph each page separately and upload them as separate files. Do not combine multiple pages into a single image by stitching them together, as this can distort the layout and reduce OCR accuracy.
               </p>
               <p className="text-ink/70 leading-relaxed">
-                After upload, the system will process the file and report any issues. If the extraction encounters problems, the assessment will flag the affected transactions and report the confidence level. Staff should review the assessment, check the flagged transactions, and if necessary, request a better-quality statement from the applicant. The assessment is only as good as the data it receives — preparing a good statement is the most effective way to improve the result.
+                After upload, the system will process the file and report any issues. If the extraction encounters problems, the assessment will flag the affected transactions and report the confidence level. Staff should review the assessment, check the flagged transactions, and if necessary, request a better-quality statement from the applicant. The assessment is only as good as the data it receives, preparing a good statement is the most effective way to improve the result.
               </p>
             </div>
           </div>

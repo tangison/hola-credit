@@ -180,11 +180,11 @@ export default function BorrowerDetailPage({ params }: { params: Promise<{ borro
                 </div>
                 <div>
                   <p className="text-xs text-ink/50">Average income floor</p>
-                  <p className="text-sm font-medium text-ink">{avgIncomeFloor ? formatNADShort(avgIncomeFloor) : "—"}</p>
+                  <p className="text-sm font-medium text-ink">{avgIncomeFloor ? formatNADShort(avgIncomeFloor) : ", "}</p>
                 </div>
                 <div>
                   <p className="text-xs text-ink/50">Average consistency</p>
-                  <p className="text-sm font-medium text-ink">{avgConsistency !== null ? `${avgConsistency}%` : "—"}</p>
+                  <p className="text-sm font-medium text-ink">{avgConsistency !== null ? `${avgConsistency}%` : ", "}</p>
                 </div>
               </div>
               <p className="mt-3 text-xs text-ink/50">

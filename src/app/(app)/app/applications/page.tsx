@@ -143,7 +143,7 @@ export default function ApplicationsPage() {
                           {app.reference}
                         </Link>
                       </td>
-                      <td className="px-4 py-3 text-sm text-ink">{borrower?.displayName ?? "—"}</td>
+                      <td className="px-4 py-3 text-sm text-ink">{borrower?.displayName ?? ", "}</td>
                       <td className="px-4 py-3">
                         <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium ${config.className}`}>
                           <span className={`w-1.5 h-1.5 rounded-full ${config.dotClassName}`} />
@@ -174,7 +174,7 @@ export default function ApplicationsPage() {
                       {config.label}
                     </span>
                   </div>
-                  <p className="mt-1 text-sm text-ink">{borrower?.displayName ?? "—"}</p>
+                  <p className="mt-1 text-sm text-ink">{borrower?.displayName ?? ", "}</p>
                   <div className="mt-2 flex items-center gap-3 text-xs text-ink/50">
                     <span>{app.productType}</span>
                     <span>&middot;</span>

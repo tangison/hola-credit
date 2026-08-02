@@ -28,7 +28,7 @@ export default function AccessDeniedPage() {
 
       <h1 className="text-2xl font-bold text-ink">No account needed yet</h1>
       <p className="mt-3 text-sm text-ink/60 max-w-sm mx-auto">
-        Hola Credit is in early access. You can explore the full demo freely — no signup required. Full accounts with organisation setup and team management will be available at launch.
+        Hola Credit is in early access. You can explore the full demo freely, no signup required. Full accounts with organisation setup and team management will be available at launch.
       </p>
 
       <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">

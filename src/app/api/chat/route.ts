@@ -1,5 +1,5 @@
 /**
- * Hola Credit — AI Chat API Route
+ * Hola Credit, AI Chat API Route
  *
  * POST /api/chat
  *

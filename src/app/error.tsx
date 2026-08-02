@@ -37,7 +37,7 @@ export default function GlobalError({
 
           <h1 className="text-2xl font-bold text-ink mb-3">Something went wrong</h1>
           <p className="text-sm text-ink/60 mb-8 max-w-sm mx-auto">
-            We hit an unexpected problem loading this page. This is not your fault — please try again.
+            We hit an unexpected problem loading this page. This is not your fault, please try again.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

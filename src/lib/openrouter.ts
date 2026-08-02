@@ -1,5 +1,5 @@
 /**
- * Hola Credit — OpenRouter AI Client
+ * Hola Credit, OpenRouter AI Client
  *
  * Uses the free model tier from OpenRouter for cash-flow analysis.
  * All AI calls are supplementary: they structure evidence, never make lending decisions.

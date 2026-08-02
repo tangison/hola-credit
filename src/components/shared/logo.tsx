@@ -1,5 +1,5 @@
 /**
- * Hola Credit — Authoritative Logo System
+ * Hola Credit, Authoritative Logo System
  *
  * SymbolMark: Pure SVG paths only. No <text>. Renders on all devices.
  * Logo: SymbolMark + HTML wordmark. Supports all variants.

@@ -41,7 +41,7 @@ export default function OnboardingOrganisationPage() {
         </div>
         <h1 className="text-2xl font-bold text-ink">Set up your organisation</h1>
         <p className="mt-2 text-sm text-ink/60">
-          Tell us about your organisation. This is saved locally for the demo — no account needed.
+          Tell us about your organisation. This is saved locally for the demo, no account needed.
         </p>
       </div>
 

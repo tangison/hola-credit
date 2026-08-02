@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/shared/marketing-header";
 import { Footer } from "@/components/shared/footer";
+import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function HomePage() {
                   See the income a payslip misses.
                 </h1>
                 <p className="mt-6 text-lg text-ink/70 leading-relaxed max-w-lg">
-                  A payslip and three-month bank statement remain a common path to proving creditworthiness. Hola Credit helps Namibian lenders and retailers understand real cash flow when an applicant is self-employed or earns irregularly.
+                  Structure cash-flow evidence from bank statements. Support lending decisions for self-employed and irregular-income applicants in Namibia.
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   <Link
@@ -71,7 +72,7 @@ export default function HomePage() {
                 Irregular does not mean invisible.
               </h2>
               <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Freelancers, consultants, contractors, transport operators, traders, creators and other self-employed professionals may earn consistently without receiving one fixed salary deposit. Hola Credit structures the cash flow already visible in their statements, then shows the evidence, confidence and limitations behind each assessment.
+                Freelancers, contractors, traders, and other self-employed professionals earn consistently without a fixed salary deposit. Hola Credit makes that cash flow visible and assessable.
               </p>
             </div>
           </div>
@@ -108,7 +109,7 @@ export default function HomePage() {
                 {
                   step: "3",
                   title: "Extract and check",
-                  description: "The system identifies transactions, categorises cash flow and flags uncertain data for review.",
+                  description: "The system identifies transactions, categorises cash flow, and flags uncertain data for review.",
                   icon: (
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400">
                       <path d="M3 6h3c4 0 4 5 8 5h7" /><path d="M3 12h4c3 0 3-1 6-1" /><path d="M3 18h3c4 0 4-5 8-5h7" />
@@ -118,7 +119,7 @@ export default function HomePage() {
                 {
                   step: "4",
                   title: "Review the assessment",
-                  description: "The lender sees income floor, consistency, volatility, red flags, evidence and a plain-language explanation.",
+                  description: "The lender sees income floor, consistency, volatility, red flags, and a plain-language explanation.",
                   icon: (
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400">
                       <circle cx="10" cy="10" r="6" /><path d="m14.5 14.5 5 5M7 10h6M10 7v6" />
@@ -149,7 +150,7 @@ export default function HomePage() {
                 Evidence for a decision. Not the decision itself.
               </h2>
               <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Hola Credit does not approve or decline an applicant. It supplies a supplementary assessment alongside the lender&apos;s policies, formal credit-bureau checks and human judgement.
+                Hola Credit does not approve or decline an applicant. It supplies a supplementary assessment alongside the lender&apos;s policies, formal bureau checks, and human judgement.
               </p>
             </div>
           </div>
@@ -165,10 +166,10 @@ export default function HomePage() {
                 </svg>
                 <h3 className="text-2xl font-bold text-ink mb-3">For Microlenders</h3>
                 <p className="text-ink/70 leading-relaxed">
-                  Review applicants whose income patterns do not fit salary-only underwriting. Hola Credit structures the cash-flow evidence from borrower-consented bank statements, so loan officers can see income patterns, consistency and red flags alongside their existing policies and formal bureau checks.
+                  Review applicants whose income patterns do not fit salary-only underwriting. See income patterns, consistency, and red flags alongside existing policies and bureau checks.
                 </p>
                 <Link href="/for-microlenders" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
-                  Learn more about microlender underwriting
+                  Learn more
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
@@ -180,10 +181,10 @@ export default function HomePage() {
                 </svg>
                 <h3 className="text-2xl font-bold text-ink mb-3">For Retail Credit</h3>
                 <p className="text-ink/70 leading-relaxed">
-                  Evaluate customers applying to purchase goods on credit without forcing every case into a payslip model. Hola Credit helps retail credit teams understand real customer cash flow from bank statements, supporting informed decisions at the point of sale.
+                  Evaluate customers applying to purchase goods on credit without forcing every case into a payslip model. Understand real cash flow from bank statements.
                 </p>
                 <Link href="/for-retailers" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
-                  Learn more about retail credit assessment
+                  Learn more
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
@@ -193,16 +194,29 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Cold-start disclosure */}
+        {/* Cold-start disclosure: accordion */}
         <section className="bg-white py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight text-center mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight text-center mb-8">
                 Honest about what the first score can prove.
               </h2>
-              <p className="text-lg text-ink/70 leading-relaxed text-center">
-                At launch, extraction quality can be measured against labelled statements and assessments can be compared with experienced human review. Predictive accuracy against repayment outcomes can only be tested after real pilot loans have seasoned. Hola Credit does not make predictive claims before that evidence exists.
-              </p>
+              <Accordion
+                items={[
+                  {
+                    title: "What we can measure at launch",
+                    content: "Extraction quality can be measured against labelled statements and assessments can be compared with experienced human review. If the system extracts the same transactions a skilled loan officer would identify, and the assessment reflects the same cash-flow pattern, the system is working as designed.",
+                  },
+                  {
+                    title: "What we cannot prove yet",
+                    content: "Predictive accuracy against repayment outcomes can only be tested after real pilot loans have seasoned. This process takes six to twelve months before the results are statistically meaningful. Hola Credit does not claim predictive accuracy before that data exists.",
+                  },
+                  {
+                    title: "Why we state this explicitly",
+                    content: "The cold-start disclosure applies to any new credit assessment tool that has not yet been validated against actual repayment outcomes. Hola Credit states it explicitly rather than implying predictive validity from extraction quality alone. The assessment should be treated as supplementary evidence, not as a validated predictor of repayment, until real loans have seasoned.",
+                  },
+                ]}
+              />
             </div>
           </div>
         </section>
@@ -215,7 +229,7 @@ export default function HomePage() {
                 Financial data should have a short, accountable life.
               </h2>
               <p className="text-lg text-ink/70 leading-relaxed">
-                Access is restricted by organisation and role. Consent is recorded. Every material action is logged. Raw statement retention is intentionally limited and must be confirmed before production use.
+                Access is restricted by organisation and role. Consent is recorded. Every action is logged. Raw statement retention is intentionally limited.
               </p>
               <Link href="/security" className="inline-flex items-center mt-6 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
                 Learn about security
@@ -234,7 +248,7 @@ export default function HomePage() {
               Help shape a more useful way to review cash flow.
             </h2>
             <p className="mt-4 text-lg text-sand-300">
-              Try the demo now — no account needed. Join the waitlist for full production access.
+              Try the demo now. No account needed. Join the waitlist for full production access.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Link

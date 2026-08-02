@@ -45,7 +45,7 @@ const clusters = [
   {
     title: "Product transparency",
     description:
-      "Transparency means explaining what the product does, how it works, and what it cannot do. This cluster documents the scoring methodology, the extraction and categorisation process, the confidence and limitations that appear in every assessment, and the versioning that ensures reproducibility. It also covers the consent framework, the data-handling policies, and the retention schedule. The goal is to ensure that every stakeholder — lender, regulator, applicant, or auditor — can understand the product without relying on marketing claims.",
+      "Transparency means explaining what the product does, how it works, and what it cannot do. This cluster documents the scoring methodology, the extraction and categorisation process, the confidence and limitations that appear in every assessment, and the versioning that ensures reproducibility. It also covers the consent framework, the data-handling policies, and the retention schedule. The goal is to ensure that every stakeholder, lender, regulator, applicant, or auditor, can understand the product without relying on marketing claims.",
     links: [
       { href: "/how-scoring-works", label: "How scoring works" },
       { href: "/security", label: "Security and data handling" },

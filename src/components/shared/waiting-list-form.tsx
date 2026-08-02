@@ -232,7 +232,7 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
         setCaptchaPassed(true);
         setCaptchaError("");
       } else {
-        setCaptchaError("Not quite — try again or refresh for a new question.");
+        setCaptchaError("Not quite, try again or refresh for a new question.");
         setCaptcha(generateCaptcha());
         setCaptchaInput("");
       }
@@ -304,12 +304,12 @@ export function WaitingListForm({ compact = false }: { compact?: boolean }) {
         } else if (response.status === 409) {
           setSubmissionStatus("duplicate");
         } else {
-          // Server error — save locally for retry
+          // Server error, save locally for retry
           saveFailedSubmission(formData);
           setSubmissionStatus("server_error");
         }
       } catch {
-        // Network error — save locally for retry
+        // Network error, save locally for retry
         saveFailedSubmission(formData);
         setSubmissionStatus("server_error");
       }

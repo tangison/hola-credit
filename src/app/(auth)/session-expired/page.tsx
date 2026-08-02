@@ -28,7 +28,7 @@ export default function SessionExpiredPage() {
 
       <h1 className="text-2xl font-bold text-ink">No session needed</h1>
       <p className="mt-3 text-sm text-ink/60 max-w-sm mx-auto">
-        Hola Credit is in early access — no account or session is required. You can explore the full demo right now with synthetic data.
+        Hola Credit is in early access, no account or session is required. You can explore the full demo right now with synthetic data.
       </p>
 
       <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">

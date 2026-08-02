@@ -30,7 +30,7 @@ export default function BrandPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-ink mb-8">Logo variants</h2>
             <div className="grid gap-8">
-              {/* Horizontal — default */}
+              {/* Horizontal, default */}
               <div className="border border-sand-300 rounded-lg p-8">
                 <p className="text-sm font-medium text-ink/60 mb-4">Horizontal (default)</p>
                 <div className="flex items-center gap-4">
@@ -54,7 +54,7 @@ export default function BrandPage() {
                 </div>
               </div>
 
-              {/* Reversed — on dark */}
+              {/* Reversed, on dark */}
               <div className="border border-sand-300 rounded-lg p-8 bg-ink">
                 <p className="text-sm font-medium text-sand-300 mb-4">Reversed (on dark backgrounds)</p>
                 <div className="flex items-center gap-4">
