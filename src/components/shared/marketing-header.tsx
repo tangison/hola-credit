@@ -131,6 +131,7 @@ export function MarketingHeader() {
   const [menuVisible, setMenuVisible] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const mountedRef = useRef(false);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const menuContentRef = useRef<HTMLDivElement>(null);
@@ -140,9 +141,15 @@ export function MarketingHeader() {
   const searchResultsRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  /* Hydration-safe mounted flag */
+  useEffect(() => {
+    mountedRef.current = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- standard hydration guard pattern
+    setMounted(true);
+  }, []);
+
   /* Scroll-aware hide/show */
   useEffect(() => {
-    setMounted(true);
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 10);
@@ -507,13 +514,12 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     router.push(href);
   };
 
-  /* Reset search when menu closes */
-  useEffect(() => {
-    if (!open) {
-      setSearchQuery("");
-      setSearchFocused(false);
-    }
-  }, [open]);
+  /* Reset search when menu closes via close handler */
+  const handleClose = useCallback(() => {
+    setSearchQuery("");
+    setSearchFocused(false);
+    onClose();
+  }, [onClose]);
 
   return (
     <div
@@ -527,7 +533,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         className={`absolute inset-0 bg-ink/70 backdrop-blur-sm transition-opacity duration-[420ms] ${
           open ? "opacity-100" : "opacity-0"
         }`}
-        onClick={onClose}
+        onClick={handleClose}
       />
 
       {/* Full-screen panel */}
@@ -545,7 +551,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           <Logo variant="reversed" />
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
             className="p-2 -mr-2 text-sand-300 hover:text-white rounded-full hover:bg-white/10 transition-colors duration-ui"
             aria-label="Close menu"
           >
@@ -611,7 +617,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    onClick={onClose}
+                    onClick={handleClose}
                     className={`block py-2 text-[22px] sm:text-2xl font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight leading-snug ${
                       open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
                     }`}
@@ -640,14 +646,14 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           >
             <Link
               href="/app"
-              onClick={onClose}
+              onClick={handleClose}
               className="flex-1 flex items-center justify-center rounded-full bg-teal-400 text-ink px-5 py-3 text-sm font-semibold hover:bg-teal-300 transition-colors duration-ui"
             >
               Try the demo
             </Link>
             <Link
               href="/waitlist"
-              onClick={onClose}
+              onClick={handleClose}
               className="flex-1 flex items-center justify-center rounded-full border border-white/20 text-sand-100 px-5 py-3 text-sm font-medium hover:bg-white/8 transition-colors duration-ui"
             >
               Join waitlist
