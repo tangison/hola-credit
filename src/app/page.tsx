@@ -183,7 +183,7 @@ export default function HomePage() {
                   <picture>
                     <source srcSet="/images/freelance-professional-studio-640.webp" type="image/webp" />
                     <source srcSet="/images/freelance-professional-studio-master.png" type="image/png" />
-                    <img src="/images/freelance-professional-studio-640.webp" alt="Freelance professional working with irregular income" className="w-full h-full object-cover" loading="lazy" />
+                    <img src="/images/freelance-professional-studio-640.webp" alt="Freelance professional working with irregular income" width={640} height={360} className="w-full h-full object-cover" loading="lazy" />
                   </picture>
                 </div>
                 <div className="p-8 lg:p-10">
@@ -207,7 +207,7 @@ export default function HomePage() {
                   <picture>
                     <source srcSet="/images/retail-credit-conversation-640.webp" type="image/webp" />
                     <source srcSet="/images/retail-credit-conversation-master.png" type="image/png" />
-                    <img src="/images/retail-credit-conversation-640.webp" alt="Retail credit conversation between staff and customer" className="w-full h-full object-cover" loading="lazy" />
+                    <img src="/images/retail-credit-conversation-640.webp" alt="Retail credit conversation between staff and customer" width={640} height={360} className="w-full h-full object-cover" loading="lazy" />
                   </picture>
                 </div>
                 <div className="p-8 lg:p-10">

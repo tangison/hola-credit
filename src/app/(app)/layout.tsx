@@ -141,9 +141,10 @@ export default function AppLayout({
           <Logo variant="compact" />
           <Link
             href="/app/applications/new"
+            aria-label="New application"
             className="p-2 text-teal-500 rounded-full hover:bg-teal-50 transition-colors duration-ui"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M12 5v14M5 12h14" />
             </svg>
           </Link>

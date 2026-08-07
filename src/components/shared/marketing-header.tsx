@@ -387,6 +387,7 @@ export function MarketingHeader() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search pages..."
+                aria-label="Search pages"
                 className="w-full pl-10 pr-4 py-2.5 text-sm bg-sand-50 border border-sand-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition-colors duration-ui"
               />
             </div>
@@ -576,6 +577,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setSearchFocused(true)}
               placeholder="Search..."
+              aria-label="Search pages"
               className="w-full pl-10 pr-4 py-2.5 text-sm bg-white/8 border border-white/10 rounded-xl text-sand-100 placeholder:text-sand-500 focus:outline-none focus:ring-2 focus:ring-teal-400/50 focus:border-teal-400/50 transition-colors duration-ui"
             />
           </div>

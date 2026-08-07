@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useId } from "react";
 import gsap from "gsap";
 
 interface AccordionItem {
@@ -9,10 +9,11 @@ interface AccordionItem {
 }
 
 export function Accordion({ items }: { items: AccordionItem[] }) {
+  const instanceId = useId();
   return (
     <div className="space-y-0 divide-y divide-sand-300">
       {items.map((item, i) => (
-        <AccordionRow key={i} title={item.title} content={item.content} id={`accordion-${i}`} />
+        <AccordionRow key={i} title={item.title} content={item.content} id={`${instanceId}-accordion-${i}`} />
       ))}
     </div>
   );
@@ -76,6 +77,7 @@ function AccordionRow({ title, content, id }: { title: string; content: string; 
           strokeWidth="1.75"
           strokeLinecap="round"
           strokeLinejoin="round"
+          aria-hidden="true"
         >
           <path d="M6 9l6 6 6-6" />
         </svg>

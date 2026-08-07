@@ -56,7 +56,7 @@ export default function ForRetailersPage() {
                   <source srcSet="/images/retail-credit-conversation-640.webp 640w, /images/retail-credit-conversation-960.webp 960w, /images/retail-credit-conversation-1280.webp 1280w, /images/retail-credit-conversation-1920.webp 1920w" type="image/webp" />
                   <source srcSet="/images/retail-credit-conversation-master.png" type="image/png" />
                   <img
-                    src="/images/retail-credit-conversation-master.png"
+                    src="/images/retail-credit-conversation-960.webp"
                     alt="A retail credit conversation between staff and customer"
                     width={960}
                     height={640}
