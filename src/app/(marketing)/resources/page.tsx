@@ -59,14 +59,23 @@ export default function ResourcesPage() {
         {/* Hero */}
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Resources</p>
-              <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
-                Resources for responsible cash-flow review
-              </h1>
-              <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Practical guidance for lenders, retailers, and credit teams reviewing irregular income. These resources explain how to prepare statements, interpret assessments, and use structured cash-flow evidence alongside existing policies and formal bureau checks. They are written for the people doing the work, not for search engines.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div>
+                <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Resources</p>
+                <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
+                  Resources for responsible cash-flow review
+                </h1>
+                <p className="mt-6 text-lg text-ink/70 leading-relaxed">
+                  Practical guidance for lenders, retailers, and credit teams reviewing irregular income. These resources explain how to prepare statements, interpret assessments, and use structured cash-flow evidence alongside existing policies and formal bureau checks. They are written for the people doing the work, not for search engines.
+                </p>
+              </div>
+              <div className="relative">
+                <picture>
+                  <source srcSet="/images/self-employed-studio-owner-640.webp 640w, /images/self-employed-studio-owner-960.webp 960w, /images/self-employed-studio-owner-1280.webp 1280w, /images/self-employed-studio-owner-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/self-employed-studio-owner-master.png" type="image/png" />
+                  <img src="/images/self-employed-studio-owner-1280.webp" alt="Self-employed professional, representing the people these resources help lenders serve" width={1672} height={941} loading="eager" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
             </div>
           </div>
         </section>

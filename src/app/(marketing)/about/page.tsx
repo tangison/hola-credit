@@ -65,9 +65,9 @@ export default function AboutPage() {
               </div>
               <div className="relative">
                 <picture>
-                  <source srcSet="/images/cash-flow-to-clear-signal-640.webp 640w, /images/cash-flow-to-clear-signal-960.webp 960w, /images/cash-flow-to-clear-signal-1280.webp 1280w, /images/cash-flow-to-clear-signal-1920.webp 1920w" type="image/webp" />
-                  <source srcSet="/images/cash-flow-to-clear-signal-master.png" type="image/png" />
-                  <img src="/images/cash-flow-to-clear-signal-1280.webp" alt="Cash-flow data structured into a clear assessment signal" width={1672} height={941} loading="lazy" className="rounded-2xl shadow-lg w-full h-auto" />
+                  <source srcSet="/images/independent-transport-professional-640.webp 640w, /images/independent-transport-professional-960.webp 960w, /images/independent-transport-professional-1280.webp 1280w, /images/independent-transport-professional-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/independent-transport-professional-master.png" type="image/png" />
+                  <img src="/images/independent-transport-professional-1280.webp" alt="Independent transport professional, representing the irregular-income earners Hola Credit serves" width={1672} height={941} loading="lazy" className="rounded-2xl shadow-lg w-full h-auto" />
                 </picture>
               </div>
             </div>

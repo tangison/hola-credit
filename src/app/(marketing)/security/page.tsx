@@ -13,14 +13,23 @@ export default function SecurityPage() {
         {/* Hero */}
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Security</p>
-              <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
-                Security and data handling
-              </h1>
-              <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                Financial data should have a short, accountable life. Hola Credit is designed around consent, tenant isolation, auditability, and intentionally limited raw-file retention.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div>
+                <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Security</p>
+                <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
+                  Security and data handling
+                </h1>
+                <p className="mt-6 text-lg text-ink/70 leading-relaxed">
+                  Financial data should have a short, accountable life. Hola Credit is designed around consent, tenant isolation, auditability, and intentionally limited raw-file retention.
+                </p>
+              </div>
+              <div className="relative">
+                <picture>
+                  <source srcSet="/images/retail-credit-conversation-640.webp 640w, /images/retail-credit-conversation-960.webp 960w, /images/retail-credit-conversation-1280.webp 1280w, /images/retail-credit-conversation-1920.webp 1920w" type="image/webp" />
+                  <source srcSet="/images/retail-credit-conversation-master.png" type="image/png" />
+                  <img src="/images/retail-credit-conversation-1280.webp" alt="Secure handling of borrower data during a credit assessment conversation" width={1672} height={941} loading="eager" className="rounded-2xl shadow-lg w-full h-auto" />
+                </picture>
+              </div>
             </div>
           </div>
         </section>
