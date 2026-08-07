@@ -1,0 +1,36 @@
+# Hola Credit
+
+> Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns.
+
+## What it does
+
+Hola Credit structures cash-flow evidence from bank statements to support informed lending decisions for microlenders and retail credit providers in Namibia. It is built by Tangison Technologies in Windhoek.
+
+## Key pages
+
+- `/` — Homepage: how Hola Credit works, who it serves
+- `/product` — Product overview and features
+- `/how-scoring-works` — From statement to reviewable evidence
+- `/security` — Data protection, consent, and retention
+- `/for-microlenders` — Underwriting for irregular-income applicants
+- `/for-retailers` — Credit assessment at the point of sale
+- `/about` — Company background and team
+- `/contact` — Request pilot access
+- `/consent` — Consent framework and data governance
+- `/faq` — Frequently asked questions
+- `/privacy` — Privacy policy
+- `/terms` — Terms of service
+- `/brand` — Brand guidelines and assets
+- `/resources` — Guides on statement readiness, responsible credit, and irregular income
+- `/resources/statement-readiness` — Statement readiness guide
+- `/resources/responsible-credit` — Responsible credit review
+- `/waitlist` — Join the waitlist for early access
+
+## Access
+
+The product is in pilot evaluation for authorised Namibian lenders. Demo access is available at `/app` with synthetic data.
+
+## Contact
+
+Email: hola@tangison.com
+Domain: hola.tangison.com

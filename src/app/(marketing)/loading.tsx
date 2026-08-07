@@ -19,7 +19,7 @@ export default function MarketingLoading() {
       </header>
 
       {/* Content skeleton */}
-      <main className="flex-1 pt-16">
+      <div className="flex-1 pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
           {/* Hero skeleton */}
           <div className="space-y-4 max-w-2xl">
@@ -40,7 +40,7 @@ export default function MarketingLoading() {
             ))}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

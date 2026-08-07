@@ -5,6 +5,7 @@ import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "Cash-Flow Assessment for Namibian Lenders",
   description: "Cash-flow assessment for Namibian microlenders and retailers. Structure evidence from bank statements to support lending for irregular-income applicants.",
 };
 

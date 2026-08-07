@@ -12,6 +12,37 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        /* Cache static assets aggressively (1 year immutable) */
+        source: "/_next/static/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        /* Cache images for 1 year */
+        source: "/images/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        /* Cache fonts and static assets for 1 year */
+        source: "/(favicon.*|apple-touch-icon.*|manifest.*|logos/.*|social/.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        /* HTML pages: short cache, stale-while-revalidate for performance */
         source: "/(.*)",
         headers: [
           {
@@ -45,6 +76,11 @@ const nextConfig: NextConfig = {
           {
             key: "Strict-Transport-Security",
             value: "max-age=31536000; includeSubDomains; preload",
+          },
+          /* Cache HTML pages: 60s fresh, 300s stale-while-revalidate */
+          {
+            key: "Cache-Control",
+            value: "public, max-age=60, stale-while-revalidate=300",
           },
         ],
       },

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Consent",
+  title: "Consent Framework — Borrower Data Protection",
   description: "How Hola Credit handles borrower consent. Explicit permission for bank statement access, data categorisation, and assessment sharing with authorised lenders.",
 };
 

@@ -588,10 +588,11 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
       >
         {/* Panel header: logo + close */}
         <div className="flex items-center justify-between px-5 sm:px-8 h-16 flex-shrink-0">
-          <Logo variant="reversed" />
+          <Logo variant="reversed" tabIndex={open ? undefined : -1} />
           <button
             type="button"
             onClick={handleClose}
+            tabIndex={open ? undefined : -1}
             className="p-2 -mr-2 text-sand-300 hover:text-white rounded-full hover:bg-white/10 transition-colors duration-ui"
             aria-label="Close menu"
           >
@@ -616,6 +617,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
               onFocus={() => setSearchFocused(true)}
               placeholder="Search..."
               aria-label="Search pages"
+              tabIndex={open ? undefined : -1}
               className="w-full pl-10 pr-4 py-2.5 text-sm bg-white/8 border border-white/10 rounded-xl text-sand-100 placeholder:text-sand-500 focus:outline-none focus:ring-2 focus:ring-teal-400/50 focus:border-teal-400/50 transition-colors duration-ui"
             />
           </div>
@@ -627,6 +629,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                   key={page.href}
                   type="button"
                   onClick={() => handleSearchSelect(page.href)}
+                  tabIndex={open ? undefined : -1}
                   className="w-full flex items-center gap-3 px-3.5 py-2.5 text-left hover:bg-white/8 transition-colors duration-ui"
                 >
                   <svg className="w-4 h-4 text-sand-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -659,6 +662,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                     key={item.href}
                     href={item.href}
                     onClick={handleClose}
+                    tabIndex={open ? undefined : -1}
                     className={`block py-2 text-[22px] sm:text-2xl font-semibold text-sand-100 hover:text-teal-400 transition-colors duration-ui tracking-tight leading-snug ${
                       open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
                     }`}
@@ -688,6 +692,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             <Link
               href="/app"
               onClick={handleClose}
+              tabIndex={open ? undefined : -1}
               className="flex-1 flex items-center justify-center rounded-full bg-teal-400 text-ink px-5 py-3 text-sm font-semibold hover:bg-teal-300 transition-colors duration-ui"
             >
               Try the demo
@@ -695,6 +700,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             <Link
               href="/waitlist"
               onClick={handleClose}
+              tabIndex={open ? undefined : -1}
               className="flex-1 flex items-center justify-center rounded-full border border-white/20 text-sand-100 px-5 py-3 text-sm font-medium hover:bg-white/8 transition-colors duration-ui"
             >
               Join waitlist
