@@ -12,13 +12,13 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
   return (
     <div className="space-y-0 divide-y divide-sand-300">
       {items.map((item, i) => (
-        <AccordionRow key={i} title={item.title} content={item.content} />
+        <AccordionRow key={i} title={item.title} content={item.content} id={`accordion-${i}`} />
       ))}
     </div>
   );
 }
 
-function AccordionRow({ title, content }: { title: string; content: string }) {
+function AccordionRow({ title, content, id }: { title: string; content: string; id: string }) {
   const [open, setOpen] = useState(false);
   const bodyRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<SVGSVGElement>(null);
@@ -64,6 +64,7 @@ function AccordionRow({ title, content }: { title: string; content: string }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-4 text-left group"
         aria-expanded={open}
+        aria-controls={id}
       >
         <span className="text-lg font-semibold text-ink group-hover:text-teal-600 transition-colors duration-ui">{title}</span>
         <svg
@@ -79,7 +80,7 @@ function AccordionRow({ title, content }: { title: string; content: string }) {
           <path d="M6 9l6 6 6-6" />
         </svg>
       </button>
-      <div ref={bodyRef} className="overflow-hidden" style={{ height: 0, display: "none" }}>
+      <div ref={bodyRef} id={id} className="overflow-hidden" style={{ height: 0, display: "none" }}>
         <p className="text-ink/70 leading-relaxed pb-4 max-w-2xl">{content}</p>
       </div>
     </div>

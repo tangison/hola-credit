@@ -55,7 +55,7 @@ const clusters = [
 
 export default function ResourcesPage() {
   return (
-    <main className="flex-1">
+    <div className="flex-1">
         {/* Hero */}
         <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,6 +168,6 @@ export default function ResourcesPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
   );
 }

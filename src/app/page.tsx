@@ -100,7 +100,7 @@ export default function HomePage() {
                   title: "Record consent",
                   description: "The applicant authorises the organisation to process the statement for a defined credit assessment.",
                   icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400" aria-hidden="true">
                       <path d="M7 3h8l3 3v15H7z" /><path d="M15 3v4h4M10 12h5M10 16h3" /><path d="m3 13 2 2 3-4" />
                     </svg>
                   ),
@@ -110,7 +110,7 @@ export default function HomePage() {
                   title: "Upload securely",
                   description: "A loan officer submits a supported PDF or image through the secure portal.",
                   icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400" aria-hidden="true">
                       <path d="M6 3h8l4 4v14H6zM14 3v5h5" /><path d="M12 17V10m-3 3 3-3 3 3" />
                     </svg>
                   ),
@@ -120,7 +120,7 @@ export default function HomePage() {
                   title: "Extract and check",
                   description: "The system identifies transactions, categorises cash flow, and flags uncertain data for review.",
                   icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400" aria-hidden="true">
                       <path d="M3 6h3c4 0 4 5 8 5h7" /><path d="M3 12h4c3 0 3-1 6-1" /><path d="M3 18h3c4 0 4-5 8-5h7" />
                     </svg>
                   ),
@@ -130,7 +130,7 @@ export default function HomePage() {
                   title: "Review the assessment",
                   description: "The lender sees income floor, consistency, volatility, red flags, and a plain-language explanation.",
                   icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-teal-400" aria-hidden="true">
                       <circle cx="10" cy="10" r="6" /><path d="m14.5 14.5 5 5M7 10h6M10 7v6" />
                     </svg>
                   ),
@@ -187,16 +187,16 @@ export default function HomePage() {
                   </picture>
                 </div>
                 <div className="p-8 lg:p-10">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4" aria-hidden="true">
                     <path d="M4 20h16M6 17h12M7 17V9m5 8V9m5 8V9M4 7l8-4 8 4z" />
                   </svg>
                   <h3 className="text-2xl font-bold text-ink mb-3">For Microlenders</h3>
                   <p className="text-ink/70 leading-relaxed">
                     Review applicants whose income patterns do not fit salary-only underwriting. See income patterns, consistency, and red flags alongside existing policies and bureau checks.
                   </p>
-                  <Link href="/for-microlenders" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
+                  <Link href="/for-microlenders" aria-label="Learn more about microlender underwriting" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
                     Learn more
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1" aria-hidden="true">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </Link>
@@ -211,16 +211,16 @@ export default function HomePage() {
                   </picture>
                 </div>
                 <div className="p-8 lg:p-10">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-teal-400 mb-4" aria-hidden="true">
                     <path d="M4 9h16l-2-5H6zM5 9v11h14V9M9 20v-6h6v6" />
                   </svg>
                   <h3 className="text-2xl font-bold text-ink mb-3">For Retail Credit</h3>
                   <p className="text-ink/70 leading-relaxed">
                     Evaluate customers applying to purchase goods on credit without forcing every case into a payslip model. Understand real cash flow from bank statements.
                   </p>
-                  <Link href="/for-retailers" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
+                  <Link href="/for-retailers" aria-label="Learn more about retail credit assessment" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
                     Learn more
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1" aria-hidden="true">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </Link>
@@ -269,7 +269,7 @@ export default function HomePage() {
               </p>
               <Link href="/security" className="inline-flex items-center mt-6 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
                 Learn about security
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1" aria-hidden="true">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </Link>

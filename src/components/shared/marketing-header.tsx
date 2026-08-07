@@ -278,6 +278,7 @@ export function MarketingHeader() {
                 }`}
                 aria-expanded={activeMenu === cat.trigger}
                 aria-haspopup="true"
+                onClick={() => setActiveMenu(activeMenu === cat.trigger ? null : cat.trigger)}
               >
                 {cat.trigger}
                 <svg
