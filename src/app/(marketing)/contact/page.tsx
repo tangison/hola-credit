@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const businessTypes = [
   "Microlender",
@@ -10,11 +10,39 @@ const businessTypes = [
   "Other",
 ];
 
+/* ─── Math CAPTCHA ─── */
+function generateCaptcha() {
+  const a = Math.floor(Math.random() * 9) + 2; // 2-10
+  const b = Math.floor(Math.random() * 9) + 2; // 2-10
+  return { a, b, answer: a + b, question: `${a} + ${b} = ?` };
+}
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [captcha, setCaptcha] = useState(generateCaptcha());
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
+  const [formError, setFormError] = useState("");
+
+  /* Generate new CAPTCHA on mount */
+  useEffect(() => {
+    setCaptcha(generateCaptcha());
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormError("");
+    setCaptchaError(false);
+
+    /* Validate CAPTCHA */
+    if (parseInt(captchaInput, 10) !== captcha.answer) {
+      setCaptchaError(true);
+      setCaptcha(generateCaptcha());
+      setCaptchaInput("");
+      setFormError("Please solve the math challenge correctly.");
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -55,7 +83,13 @@ export default function ContactPage() {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                    {formError && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+                        {formError}
+                      </div>
+                    )}
+
                     <div>
                       <label htmlFor="organisation" className="block text-sm font-medium text-ink mb-1">
                         Organisation name
@@ -145,6 +179,35 @@ export default function ContactPage() {
                       <p className="text-sm text-ink/70 leading-relaxed">
                         This form collects organisational information only. Never submit borrower data, personal financial information, or bank statement details through this form. Borrower data is processed only through the secure application after consent is recorded.
                       </p>
+                    </div>
+
+                    {/* Math CAPTCHA */}
+                    <div>
+                      <label htmlFor="captcha" className="block text-sm font-medium text-ink mb-1">
+                        Verify you are human
+                      </label>
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm font-mono text-ink/70 whitespace-nowrap">{captcha.question}</span>
+                        <input
+                          type="text"
+                          id="captcha"
+                          name="captcha"
+                          inputMode="numeric"
+                          autoComplete="off"
+                          required
+                          value={captchaInput}
+                          onChange={(e) => { setCaptchaInput(e.target.value); setCaptchaError(false); }}
+                          className={`w-24 rounded-xl border px-4 py-2.5 text-ink text-center font-mono focus:outline-none focus:ring-1 transition-colors duration-ui ${
+                            captchaError
+                              ? "border-red-400 focus:border-red-400 focus:ring-red-400"
+                              : "border-sand-300 focus:border-teal-400 focus:ring-teal-400"
+                          }`}
+                          aria-label={`Solve ${captcha.question} to verify you are human`}
+                        />
+                      </div>
+                      {captchaError && (
+                        <p className="mt-1 text-xs text-red-600">Incorrect answer. A new challenge has been generated.</p>
+                      )}
                     </div>
 
                     <button

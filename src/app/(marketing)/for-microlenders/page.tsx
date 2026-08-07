@@ -32,7 +32,7 @@ export default function ForMicrolendersPage() {
                 <picture>
                   <source srcSet="/images/freelance-professional-studio-640.webp 640w, /images/freelance-professional-studio-960.webp 960w, /images/freelance-professional-studio-1280.webp 1280w, /images/freelance-professional-studio-1920.webp 1920w" type="image/webp" />
                   <source srcSet="/images/freelance-professional-studio-master.png" type="image/png" />
-                  <img src="/images/freelance-professional-studio-1280.webp" alt="Freelance professional working in a studio, representing irregular-income applicants" width={1672} height={941} loading="eager" className="rounded-2xl shadow-lg w-full h-auto" />
+                  <img src="/images/freelance-professional-studio-1280.webp" alt="Freelance professional working in a studio, representing irregular-income applicants" width={1672} height={941} loading="eager" fetchPriority="high" className="rounded-2xl shadow-lg w-full h-auto" />
                 </picture>
               </div>
             </div>

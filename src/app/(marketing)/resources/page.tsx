@@ -73,7 +73,7 @@ export default function ResourcesPage() {
                 <picture>
                   <source srcSet="/images/self-employed-studio-owner-640.webp 640w, /images/self-employed-studio-owner-960.webp 960w, /images/self-employed-studio-owner-1280.webp 1280w, /images/self-employed-studio-owner-1920.webp 1920w" type="image/webp" />
                   <source srcSet="/images/self-employed-studio-owner-master.png" type="image/png" />
-                  <img src="/images/self-employed-studio-owner-1280.webp" alt="Self-employed professional, representing the people these resources help lenders serve" width={1672} height={941} loading="eager" className="rounded-2xl shadow-lg w-full h-auto" />
+                  <img src="/images/self-employed-studio-owner-1280.webp" alt="Self-employed professional, representing the people these resources help lenders serve" width={1672} height={941} loading="eager" fetchPriority="high" className="rounded-2xl shadow-lg w-full h-auto" />
                 </picture>
               </div>
             </div>

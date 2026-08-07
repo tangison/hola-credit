@@ -3,6 +3,15 @@
 import { useState, useRef, useEffect, useId } from "react";
 import gsap from "gsap";
 
+/**
+ * Check if user prefers reduced motion.
+ * Used to skip GSAP animations when accessibility settings request it.
+ */
+function prefersReducedMotion(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 interface AccordionItem {
   title: string;
   content: string;
@@ -26,36 +35,54 @@ function AccordionRow({ title, content, id }: { title: string; content: string; 
 
   useEffect(() => {
     if (!bodyRef.current) return;
+    const reducedMotion = prefersReducedMotion();
 
     if (open) {
-      gsap.set(bodyRef.current, { display: "block" });
-      const h = bodyRef.current.scrollHeight;
-      gsap.fromTo(
-        bodyRef.current,
-        { height: 0 },
-        { height: h, duration: 0.3, ease: "power2.out", onComplete: () => {
-          if (bodyRef.current) gsap.set(bodyRef.current, { height: "auto" });
-        }}
-      );
+      if (reducedMotion) {
+        /* Instant show for reduced motion */
+        gsap.set(bodyRef.current, { display: "block", height: "auto" });
+      } else {
+        gsap.set(bodyRef.current, { display: "block" });
+        const h = bodyRef.current.scrollHeight;
+        gsap.fromTo(
+          bodyRef.current,
+          { height: 0 },
+          { height: h, duration: 0.3, ease: "power2.out", onComplete: () => {
+            if (bodyRef.current) gsap.set(bodyRef.current, { height: "auto" });
+          }}
+        );
+      }
     } else {
-      gsap.to(bodyRef.current, {
-        height: 0,
-        duration: 0.25,
-        ease: "power2.in",
-        onComplete: () => {
-          if (bodyRef.current) gsap.set(bodyRef.current, { display: "none" });
-        },
-      });
+      if (reducedMotion) {
+        /* Instant hide */
+        gsap.set(bodyRef.current, { display: "none", height: 0 });
+      } else {
+        gsap.to(bodyRef.current, {
+          height: 0,
+          duration: 0.25,
+          ease: "power2.in",
+          onComplete: () => {
+            if (bodyRef.current) gsap.set(bodyRef.current, { display: "none" });
+          },
+        });
+      }
     }
   }, [open]);
 
   useEffect(() => {
     if (!iconRef.current) return;
-    gsap.to(iconRef.current, {
-      rotate: open ? 180 : 0,
-      duration: 0.25,
-      ease: "power2.out",
-    });
+    const reducedMotion = prefersReducedMotion();
+
+    if (reducedMotion) {
+      /* Instant rotation for reduced motion */
+      gsap.set(iconRef.current, { rotate: open ? 180 : 0 });
+    } else {
+      gsap.to(iconRef.current, {
+        rotate: open ? 180 : 0,
+        duration: 0.25,
+        ease: "power2.out",
+      });
+    }
   }, [open]);
 
   return (

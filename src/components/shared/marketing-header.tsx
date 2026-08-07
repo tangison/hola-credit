@@ -499,6 +499,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   /* Search results */
@@ -523,6 +524,42 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     onClose();
   }, [onClose]);
 
+  /* Focus trapping for mobile menu dialog */
+  useEffect(() => {
+    if (!open || !panelRef.current) return;
+
+    const panel = panelRef.current;
+    const focusableSelector = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const focusableElements = panel.querySelectorAll<HTMLElement>(focusableSelector);
+
+    if (focusableElements.length === 0) return;
+
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    /* Focus the first focusable element when menu opens */
+    firstFocusable.focus();
+
+    const handleTabTrap = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    };
+
+    panel.addEventListener("keydown", handleTabTrap);
+    return () => panel.removeEventListener("keydown", handleTabTrap);
+  }, [open]);
+
   return (
     <div
       className={`lg:hidden fixed inset-0 z-[60] transition-all duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -540,6 +577,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
 
       {/* Full-screen panel */}
       <div
+        ref={panelRef}
         className={`absolute inset-0 bg-ink flex flex-col transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
           open ? "translate-y-0" : "translate-y-full"
         }`}

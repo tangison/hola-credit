@@ -6,6 +6,15 @@ import { Logo } from "@/components/shared/logo";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 
+/**
+ * Check if user prefers reduced motion.
+ * Used to skip GSAP animations when accessibility settings request it.
+ */
+function prefersReducedMotion(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 /* ─── Navigation Data ─── */
 
 const navItems = [
@@ -47,22 +56,34 @@ function CollapsibleSection({
   const [open, setOpen] = useState(defaultOpen);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  /* GSAP: smooth expand/collapse */
+  /* GSAP: smooth expand/collapse (respects prefers-reduced-motion) */
   useEffect(() => {
     if (!contentRef.current) return;
+    const reducedMotion = prefersReducedMotion();
+
     if (open) {
-      gsap.fromTo(
-        contentRef.current,
-        { height: 0, opacity: 0 },
-        { height: "auto", opacity: 1, duration: 0.3, ease: "power2.out" }
-      );
+      if (reducedMotion) {
+        /* Instant show for reduced motion */
+        gsap.set(contentRef.current, { height: "auto", opacity: 1 });
+      } else {
+        gsap.fromTo(
+          contentRef.current,
+          { height: 0, opacity: 0 },
+          { height: "auto", opacity: 1, duration: 0.3, ease: "power2.out" }
+        );
+      }
     } else {
-      gsap.to(contentRef.current, {
-        height: 0,
-        opacity: 0,
-        duration: 0.2,
-        ease: "power2.in",
-      });
+      if (reducedMotion) {
+        /* Instant hide */
+        gsap.set(contentRef.current, { height: 0, opacity: 0 });
+      } else {
+        gsap.to(contentRef.current, {
+          height: 0,
+          opacity: 0,
+          duration: 0.2,
+          ease: "power2.in",
+        });
+      }
     }
   }, [open]);
 
@@ -122,15 +143,21 @@ export function AppSidebar({ className = "" }: { className?: string }) {
   const pathname = usePathname();
   const sidebarRef = useRef<HTMLElement>(null);
 
-  /* GSAP: entrance animation */
+  /* GSAP: entrance animation (respects prefers-reduced-motion) */
   useEffect(() => {
     if (!sidebarRef.current) return;
     const items = sidebarRef.current.querySelectorAll(".sidebar-item");
-    gsap.fromTo(
-      items,
-      { opacity: 0, x: -12 },
-      { opacity: 1, x: 0, duration: 0.3, stagger: 0.04, ease: "power2.out", delay: 0.1 }
-    );
+
+    if (prefersReducedMotion()) {
+      /* Instant show for reduced motion */
+      gsap.set(items, { opacity: 1, x: 0 });
+    } else {
+      gsap.fromTo(
+        items,
+        { opacity: 0, x: -12 },
+        { opacity: 1, x: 0, duration: 0.3, stagger: 0.04, ease: "power2.out", delay: 0.1 }
+      );
+    }
   }, []);
 
   return (

@@ -27,7 +27,7 @@ export default function HowScoringWorksPage() {
                 <picture>
                   <source srcSet="/images/independent-transport-professional-640.webp 640w, /images/independent-transport-professional-960.webp 960w, /images/independent-transport-professional-1280.webp 1280w, /images/independent-transport-professional-1920.webp 1920w" type="image/webp" />
                   <source srcSet="/images/independent-transport-professional-master.png" type="image/png" />
-                  <img src="/images/independent-transport-professional-1280.webp" alt="Independent transport professional, representing the irregular-income earners Hola Credit assesses" width={1672} height={941} loading="eager" className="rounded-2xl shadow-lg w-full h-auto" />
+                  <img src="/images/independent-transport-professional-1280.webp" alt="Independent transport professional, representing the irregular-income earners Hola Credit assesses" width={1672} height={941} loading="eager" fetchPriority="high" className="rounded-2xl shadow-lg w-full h-auto" />
                 </picture>
               </div>
             </div>
