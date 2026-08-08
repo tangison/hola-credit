@@ -3,7 +3,7 @@ import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Product",
+  title: "Cash-Flow Underwriting Product — Hola Credit",
   description: "How Hola Credit structures cash-flow evidence from statements. AI-assisted categorisation, income floor, and consistency scoring for Namibian lenders.",
 };
 

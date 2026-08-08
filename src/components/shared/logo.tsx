@@ -100,7 +100,7 @@ export function Logo({ variant = "horizontal", className = "", href = "/", label
                 color: isReversed ? "#FFFFFF" : isMono ? "#111512" : undefined,
               }}
             >
-              hola
+              hola{" "}
             </span>
             <span
               className="block font-sans text-xl font-semibold tracking-tight leading-none mt-0.5"

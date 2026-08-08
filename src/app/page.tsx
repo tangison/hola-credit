@@ -195,8 +195,8 @@ export default function HomePage() {
                   <p className="text-ink/70 leading-relaxed">
                     Review applicants whose income patterns do not fit salary-only underwriting. See income patterns, consistency, and red flags alongside existing policies and bureau checks.
                   </p>
-                  <Link href="/for-microlenders" aria-label="Learn more about microlender underwriting" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
-                    Learn more
+                  <Link href="/for-microlenders" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
+                    Learn about microlending
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1" aria-hidden="true">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
@@ -219,8 +219,8 @@ export default function HomePage() {
                   <p className="text-ink/70 leading-relaxed">
                     Evaluate customers applying to purchase goods on credit without forcing every case into a payslip model. Understand real cash flow from bank statements.
                   </p>
-                  <Link href="/for-retailers" aria-label="Learn more about retail credit assessment" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
-                    Learn more
+                  <Link href="/for-retailers" className="inline-flex items-center mt-4 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-ui">
+                    Learn about retail credit
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1" aria-hidden="true">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
