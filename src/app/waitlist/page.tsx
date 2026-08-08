@@ -6,7 +6,10 @@ import { AuthLogo } from "@/components/shared/auth-logo";
 
 export default function WaitlistPage() {
   return (
-    <div className="min-h-screen bg-sand flex items-center justify-center p-4">
+    <main className="min-h-screen bg-sand flex items-center justify-center p-4" id="main-content">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-teal-400 focus:text-ink focus:rounded-lg focus:text-sm focus:font-medium">
+        Skip to main content
+      </a>
       <div className="w-full max-w-lg">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
@@ -38,6 +41,6 @@ export default function WaitlistPage() {
           </a>
         </p>
       </div>
-    </div>
+    </main>
   );
 }

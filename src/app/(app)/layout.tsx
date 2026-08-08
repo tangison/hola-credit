@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { AppShell } from "@/components/app/app-shell";
 
 export const metadata: Metadata = {
-  title: "App",
-  description: "Hola Credit application portal for credit assessments, borrower management, and team administration.",
+  title: "Dashboard — Credit Assessment Portal",
+  description: "Hola Credit application portal for managing credit assessments, reviewing borrower applications, tracking consents, and administering your organisation's team and security settings.",
   robots: { index: false, follow: false },
 };
 

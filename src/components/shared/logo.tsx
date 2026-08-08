@@ -131,7 +131,7 @@ export function Logo({ variant = "horizontal", className = "", href = "/", label
   return (
     <Link
       href={href}
-      aria-label={label}
+      aria-label={label !== "Hola Credit" ? label : undefined}
       tabIndex={tabIndex}
       className={`inline-block ${className}`}
     >
