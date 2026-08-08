@@ -565,8 +565,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
       className={`lg:hidden fixed inset-0 z-[60] transition-all duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
         open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}
-      aria-hidden={!open}
-      {...(!open ? { inert: true } : {})}
+      {...(!open ? { inert: true, "aria-hidden": true } : {})}
     >
       {/* Backdrop */}
       <div

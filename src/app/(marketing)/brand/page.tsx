@@ -129,6 +129,10 @@ export default function BrandPage() {
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
                     Use the symbol mark when space is limited (favicons, avatars)
                   </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
+                    Use Mineral Teal as the primary accent for interactive elements and links
+                  </li>
                 </ul>
               </div>
               <div className="bg-white border border-sand-300 rounded-lg p-6">
@@ -150,8 +154,33 @@ export default function BrandPage() {
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
                     Add effects, shadows, or outlines to the mark
                   </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
+                    Use the Alert red as a decorative colour — it is reserved for error and warning states only
+                  </li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Brand philosophy */}
+        <section className="bg-white py-20 lg:py-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-ink mb-8">Brand philosophy</h2>
+            <div className="max-w-3xl space-y-6">
+              <p className="text-lg text-ink/70 leading-relaxed">
+                The Hola Credit brand communicates clarity, restraint, and professional trust. Our visual identity is built around the idea that lending decisions deserve structured evidence — not guesswork. The brand avoids decorative excess in favour of functional precision, reflecting the product itself: deterministic scoring with full auditability.
+              </p>
+              <p className="text-lg text-ink/70 leading-relaxed">
+                The Ink and Sand palette grounds the identity in seriousness and warmth simultaneously. Ink conveys authority and permanence. Sand provides the approachable, human-quality surface. Mineral Teal signals progress and insight without the typical fintech saturation. Together, they create a visual system that feels neither corporate nor casual — appropriate for a product that sits between regulated financial services and modern developer tooling.
+              </p>
+              <p className="text-lg text-ink/70 leading-relaxed">
+                Typography follows the same principle. Manrope for headings provides geometric clarity at large sizes. Source Serif 4 for body text adds the editorial weight appropriate for content about financial assessment, consent, and legal obligations. The pairing balances modern interface expectations with the gravitas the subject matter requires.
+              </p>
+              <p className="text-lg text-ink/70 leading-relaxed">
+                When using these assets in partner materials, presentations, or regulatory submissions, maintain the tone the brand establishes: specific claims, transparent limitations, and evidence-first communication. Avoid superlatives, guarantees, or language that overstates what the assessment can prove.
+              </p>
             </div>
           </div>
         </section>
