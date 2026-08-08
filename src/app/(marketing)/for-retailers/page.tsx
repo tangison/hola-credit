@@ -3,7 +3,7 @@ import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Credit Assessment for Retailers — Hola Credit",
+  title: "Credit Assessment for Retailers",
   description: "Retail credit assessment for Namibian stores. Evaluate customers for goods on credit using cash-flow data from bank statements instead of payslip-only models.",
 };
 

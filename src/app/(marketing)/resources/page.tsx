@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Lender Resources & Guides — Hola Credit",
+  title: "Lender Resources & Guides",
   description: "Resources for Namibian lenders using cash-flow assessment. Guides on statement readiness, responsible credit, and understanding the scoring methodology.",
 };
 
