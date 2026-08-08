@@ -53,6 +53,7 @@ export default function BorrowersPage() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by name, reference, or occupation..."
+          aria-label="Search borrowers by name, reference, or occupation"
           className="w-full pl-10 pr-3 py-2 border border-sand-300 rounded-xl text-sm text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-colors duration-ui bg-white"
         />
       </div>

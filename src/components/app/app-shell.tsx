@@ -212,6 +212,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <main id="main-content" className="flex-1 p-4 sm:p-6 lg:p-8">
           {children}
         </main>
+
+        {/* App footer with legal links */}
+        <footer className="flex items-center justify-center gap-4 px-4 py-3 border-t border-sand-300/60 text-xs text-ink/40">
+          <Link href="/privacy" className="hover:text-ink/60 transition-colors duration-ui">Privacy</Link>
+          <Link href="/terms" className="hover:text-ink/60 transition-colors duration-ui">Terms</Link>
+          <span>&copy; {new Date().getFullYear()} Hola Credit</span>
+        </footer>
       </div>
     </div>
   );
