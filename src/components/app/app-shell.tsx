@@ -168,7 +168,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         className="lg:hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm"
         style={{ opacity: 0, pointerEvents: mobileMenuOpen ? "auto" : "none" }}
         onClick={closeMenu}
-        aria-hidden="true"
+        {...(!mobileMenuOpen ? { inert: true } : {})}
       >
         <div
           ref={panelRef}
