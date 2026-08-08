@@ -3,7 +3,7 @@ import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Security",
+  title: "Security & Data Handling — Hola Credit",
   description: "How Hola Credit protects borrower data. Encryption, consent-gated access, tenant isolation, and secure statement processing.",
 };
 

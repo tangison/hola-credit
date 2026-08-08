@@ -77,7 +77,7 @@ interface LogoProps {
   tabIndex?: number;
 }
 
-export function Logo({ variant = "horizontal", className = "", href = "/", label = "Hola Credit", tabIndex }: LogoProps) {
+export function Logo({ variant = "horizontal", className = "", href = "/", label = "hola credit", tabIndex }: LogoProps) {
   const isReversed = variant === "reversed";
   const isStacked = variant === "stacked";
   const isCompact = variant === "compact";
@@ -130,8 +130,8 @@ export function Logo({ variant = "horizontal", className = "", href = "/", label
 
   return (
     <Link
-      href={href}
-      aria-label={label !== "Hola Credit" ? label : undefined}
+      href={(href)}
+      aria-label={label}
       tabIndex={tabIndex}
       className={`inline-block ${className}`}
     >

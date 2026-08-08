@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms",
+  title: "Terms of Service — Hola Credit",
   description: "Hola Credit terms of service. Usage conditions for the cash-flow assessment platform, including borrower consent requirements and all lender obligations.",
 };
 
