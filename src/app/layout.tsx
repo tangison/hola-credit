@@ -73,14 +73,14 @@ export const metadata: Metadata = {
     siteName: "Hola Credit",
     locale: "en_NA",
     type: "website",
-    images: ["/social/hola-credit-social-en.svg"],
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Hola Credit" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Hola Credit",
     description:
       "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns. Structure evidence from bank statements to support informed lending decisions.",
-    images: ["/social/hola-credit-social-en.svg"],
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Hola Credit" }],
   },
   alternates: {
     canonical: "/",
