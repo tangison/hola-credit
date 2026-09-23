@@ -60,22 +60,47 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-b border-sand-300 bg-sand-50 py-24 lg:py-32">
+        {/* Dawn over the city it serves */}
+        <section className="border-b border-sand-300 bg-sand-100 py-24 lg:py-32">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <Reveal variant="clip">
+              <div className="overflow-hidden rounded-none border border-sand-300">
+                <img
+                  src="/images/landing/windhoek-dawn.webp"
+                  alt="Illustration of a man overlooking the Windhoek skyline at dawn"
+                  width={1280}
+                  height={640}
+                  loading="lazy"
+                  className="h-auto w-full"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <p className="mx-auto mt-8 max-w-2xl text-center text-[16.5px] leading-relaxed text-ink/70">
+                Built in Windhoek, for the lending desks of Windhoek, Oshakati, Walvis Bay and Swakopmund.
+                The problems Hola Credit works on are walked past every morning on the way to work.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="bg-ink py-24 text-sand-50 lg:py-32">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading
+              dark
               eyebrow="Product by Tangison Technologies"
               title="Sovereign infrastructure, built where it is used."
               lead="Tangison Technologies builds financial-tools software with a focus on explainability, auditability and responsible data handling, designed to serve the Namibian market first."
             />
             <Reveal delay={120}>
-              <div className="mt-12 flex flex-col items-start gap-6 rounded-none border border-sand-300 bg-sand-100 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+              <div className="mt-12 flex flex-col items-start gap-6 rounded-none border border-sand-50/15 bg-sand-50/[0.04] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
                 <div>
-                  <p className="font-serif text-2xl font-semibold tracking-tight text-ink">Tangison Technologies</p>
-                  <p className="mt-2 text-sm text-ink/60">Windhoek, Namibia · tangison.com</p>
+                  <p className="font-serif text-2xl font-semibold tracking-tight text-sand-50">Tangison Technologies</p>
+                  <p className="mt-2 text-sm text-sand-50/60">Windhoek, Namibia · tangison.com</p>
                 </div>
                 <a
                   href="https://tangison.com"
-                  className="group inline-flex items-center gap-2 rounded-none bg-ink px-6 py-3 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="press group inline-flex items-center gap-2 rounded-none bg-sand-50 px-6 py-3 text-sm font-bold text-ink hover:bg-sand-200"
                 >
                   Visit tangison.com
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
@@ -96,7 +121,7 @@ export default function AboutPage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
                 href="https://hola.tangison.com/waitlist"
-                className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                className="press group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 hover:bg-ink-50"
               >
                 Request pilot access
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />

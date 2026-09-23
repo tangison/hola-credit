@@ -36,13 +36,13 @@ export function SiteFooter() {
           <span className="py-1 text-sand-50/60">Windhoek, Namibia</span>
         </div>
 
-        <nav aria-label="Footer" className="mt-14 border-t border-sand-50/10 pt-8">
-          <ul className="grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-3 lg:grid-cols-5">
+        <nav aria-label="Footer" className="mt-14 border-t border-sand-50/10 pt-10">
+          <ul className="grid grid-cols-2 gap-x-8 gap-y-4 sm:grid-cols-3 lg:grid-cols-5">
             {LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-[13.5px] font-semibold text-sand-50/55 transition-colors hover:text-teal-300"
+                  className="py-1 text-[13.5px] font-semibold text-sand-50/55 transition-colors hover:text-teal-300"
                 >
                   {link.label}
                 </Link>
@@ -51,7 +51,7 @@ export function SiteFooter() {
           </ul>
         </nav>
 
-        <div className="mt-10 flex flex-col gap-5 border-t border-sand-50/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-5 border-t border-sand-50/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="py-1 text-[13px] text-sand-50/60">© 2026 Hola Credit, a product of Tangison Technologies.</p>
           <a
             href="https://tangison.com"

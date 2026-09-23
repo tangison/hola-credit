@@ -151,7 +151,7 @@ export default function FaqPage() {
             <div className="grid gap-6 lg:grid-cols-5 lg:gap-10">
               <Reveal className="lg:col-span-2">
                 <div className="relative h-full overflow-hidden rounded-none bg-ink p-7 text-sand-50 sm:p-8">
-                  <p className="font-serif text-lg italic leading-snug text-sand-50/90">
+                  <p className="font-serif text-lg font-semibold italic leading-snug text-sand-50/90">
                     We show our work, and we mark what is still pending.
                   </p>
                   <div className="mt-7 space-y-3">
@@ -254,14 +254,15 @@ export default function FaqPage() {
         </section>
 
         <section className="border-t border-sand-300 bg-sand-50 py-20 lg:py-28">
-          <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
-            <Reveal>
-              <h2 className="mx-auto max-w-xl font-serif text-3xl font-semibold leading-tight tracking-tight text-balance text-ink sm:text-4xl">
-                Still weighing a question we did not answer?
-              </h2>
-              <p className="mx-auto mt-5 max-w-md text-[16px] leading-relaxed text-ink/65">
-                Ask it directly. We answer questions about methodology, data handling and limits in full.
-              </p>
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+              <Reveal>
+                <h2 className="max-w-xl font-serif text-3xl font-semibold leading-[1.12] tracking-tight text-balance text-ink sm:text-4xl">
+                  Still weighing a question we did not answer?
+                </h2>
+                <p className="mt-5 max-w-md text-[16px] leading-relaxed text-ink/65">
+                  Ask it directly. We answer questions about methodology, data handling and limits in full.
+                </p>
               <Link
                 href="/contact"
                 className="group mt-8 inline-flex items-center gap-2 py-1.5 text-sm font-bold text-teal-600 transition-colors hover:text-ink"
@@ -269,7 +270,20 @@ export default function FaqPage() {
                 Talk to us
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
               </Link>
-            </Reveal>
+              </Reveal>
+              <Reveal delay={100} variant="clip" className="justify-self-center lg:justify-self-end">
+                <div className="w-full max-w-[300px] overflow-hidden rounded-none border border-sand-300">
+                  <img
+                    src="/images/landing/thinking-honesty.webp"
+                    alt="Illustration of a woman thinking a question through carefully"
+                    width={640}
+                    height={854}
+                    loading="lazy"
+                    className="h-auto w-full"
+                  />
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
       </main>

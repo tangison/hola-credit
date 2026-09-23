@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/landing/site-header";
 import { SiteFooter } from "@/components/landing/site-footer";
 import { SectionHeading } from "@/components/landing/section-heading";
 import { Reveal } from "@/components/landing/reveal";
+import { GhostNumeral } from "@/components/landing/ghost-numeral";
 
 export const metadata: Metadata = {
   title: "Hola Credit · Say hola to the income a payslip never shows",
@@ -103,7 +104,27 @@ export default function HomePage() {
                 Cash-flow underwriting for Namibia
               </p>
               <h1 className="mt-5 max-w-4xl font-serif text-[2.75rem] font-semibold leading-[1.02] tracking-tight text-balance text-ink sm:text-6xl lg:text-8xl">
-                Say hola to the income a payslip never shows.
+                Say hola to the{" "}
+                <span className="relative inline-block">
+                  income a payslip
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 100 10"
+                    preserveAspectRatio="none"
+                    className="absolute -bottom-2 left-0 h-[0.14em] w-full"
+                  >
+                    <path
+                      d="M1.5 7.5 C 25 3.5, 62 3, 98.5 6"
+                      fill="none"
+                      stroke="#16b8a6"
+                      strokeWidth="3.2"
+                      strokeLinecap="round"
+                      pathLength="1"
+                      className="draw-line"
+                    />
+                  </svg>
+                </span>{" "}
+                never shows.
               </h1>
               <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-ink/65 lg:text-lg">
                 Hola Credit turns a borrower-authorised bank statement into structured cash-flow evidence.
@@ -113,7 +134,7 @@ export default function HomePage() {
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <a
                   href={DEMO_URL}
-                  className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="press group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 hover:bg-ink-50"
                 >
                   Try the demo
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
@@ -178,13 +199,14 @@ export default function HomePage() {
               title="From statement to signal in four steps."
               lead="No black box. Every step leaves an auditable trace, and every assessment can be walked back to the transactions behind it."
             />
-            <div className="mt-20 border-t border-sand-300">
+            <div className="mt-14 border-t border-sand-300">
               {STEPS.map((step, i) => (
                 <Reveal key={step.n} delay={i * 60}>
                   <div className="relative border-b border-sand-300 py-12 lg:py-16">
-                    <span aria-hidden="true" className="pointer-events-none absolute -top-3 select-none font-serif text-[7rem] italic leading-none text-sand-300/70 sm:-left-14 sm:text-[9rem] lg:-left-24 lg:text-[11rem]">
-                      {step.n}
-                    </span>
+                    <GhostNumeral
+                      n={step.n}
+                      className="absolute -top-3 font-serif font-semibold text-[7rem] italic leading-none text-sand-300/70 sm:-left-14 sm:text-[9rem] lg:-left-24 lg:text-[11rem]"
+                    />
                     <div className="relative grid gap-4 sm:grid-cols-[minmax(200px,280px)_1fr] sm:gap-14 lg:grid-cols-[minmax(240px,320px)_1fr]">
                       <h3 className="relative font-serif text-[1.45rem] font-semibold leading-snug tracking-tight text-ink sm:translate-y-3 lg:translate-y-4">
                         {step.title}
@@ -210,7 +232,7 @@ export default function HomePage() {
         </section>
 
         {/* Four signals */}
-        <section id="signals" className="border-t border-sand-300 bg-sand-50 py-24 lg:py-32">
+        <section id="signals" className="border-t border-sand-300 bg-teal-50 py-24 lg:py-32">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading
               eyebrow="The assessment"
@@ -235,7 +257,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <Reveal>
-                <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-300">Honesty first</p>
+                <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-gold-400">Honesty first</p>
                 <p className="mt-6 font-serif text-3xl font-semibold italic leading-snug text-sand-50 sm:text-4xl">
                   Evidence for a decision, never the decision itself.
                 </p>
@@ -264,29 +286,57 @@ export default function HomePage() {
               title="The people behind the statements."
               lead="Illustrative personas of Namibian self-employed earners. Not real applicants, but the pattern is real: steady work, irregular deposits."
             />
-            <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
               {PEOPLE.map((person, i) => (
-                <Reveal key={person.name} delay={i * 60}>
-                  <figure>
-                    <div className="overflow-hidden rounded-none border border-sand-300">
-                      <img
-                        src={person.img}
-                        alt={`Illustration of ${person.name}, a ${person.role.toLowerCase()} in ${person.city}`}
-                        width={640}
-                        height={854}
-                        loading="lazy"
-                        className="h-auto w-full"
-                      />
-                    </div>
-                    <figcaption className="mt-4">
-                      <p className="font-serif text-lg font-semibold text-ink">{person.name}</p>
-                      <p className="mt-0.5 text-sm text-ink/60">
-                        {person.role} · {person.city}
-                      </p>
-                    </figcaption>
-                  </figure>
+                <Reveal
+                  key={person.name}
+                  delay={i * 60}
+                  variant="clip"
+                  className={i % 2 === 1 ? "lg:mt-12" : undefined}
+                >
+                  <div className="overflow-hidden rounded-none border border-sand-300">
+                    <img
+                      src={person.img}
+                      alt={`Illustration of ${person.name}, a ${person.role.toLowerCase()} in ${person.city}`}
+                      width={640}
+                      height={854}
+                      loading="lazy"
+                      className="h-auto w-full"
+                    />
+                  </div>
                 </Reveal>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* The real economy band */}
+        <section className="border-t border-sand-300 bg-sand-100 py-24 lg:py-32">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+              <Reveal variant="clip">
+                <div className="overflow-hidden rounded-none border border-sand-300">
+                  <img
+                    src="/images/landing/market-dawn.webp"
+                    alt="Illustration of a market vendor arranging her stall at first light"
+                    width={1280}
+                    height={640}
+                    loading="lazy"
+                    className="h-auto w-full"
+                  />
+                </div>
+              </Reveal>
+              <Reveal delay={120}>
+                <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-600">The real economy</p>
+                <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.12] tracking-tight text-balance text-ink sm:text-4xl">
+                  The statements begin before the city wakes.
+                </h2>
+                <p className="mt-5 text-[16.5px] leading-relaxed text-ink/70">
+                  Market vendors, transport operators, freelancers and shop owners open earlier than most
+                  ledgers can record. Their income is real, steady and legible to anyone who reads the
+                  statement instead of the payslip. That is the economy Hola Credit is built to read.
+                </p>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -305,7 +355,7 @@ export default function HomePage() {
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
                   href={WAITLIST_URL}
-                  className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="press group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 hover:bg-ink-50"
                 >
                   Join the waitlist
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />

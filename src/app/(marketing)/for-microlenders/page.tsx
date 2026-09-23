@@ -59,8 +59,8 @@ export default function ForMicrolendersPage() {
                   </Reveal>
                 ))}
               </div>
-              <Reveal delay={120} className="lg:sticky lg:top-28 lg:self-start">
-                <figure className="overflow-hidden rounded-none border border-sand-300">
+              <Reveal delay={120} variant="clip" className="lg:sticky lg:top-28 lg:self-start">
+                <div className="overflow-hidden rounded-none border border-sand-300">
                   <img
                     src="/images/landing/persona-transport.webp"
                     alt="Illustration of a transport operator, one of the self-employed earners microlenders serve"
@@ -69,11 +69,7 @@ export default function ForMicrolendersPage() {
                     loading="lazy"
                     className="h-auto w-full"
                   />
-                </figure>
-                <figcaption className="mt-4 text-sm text-ink/55">
-                  Illustrative persona. Transport operators are part of the self-employed
-                  majority in Namibian lending.
-                </figcaption>
+                </div>
               </Reveal>
             </div>
           </div>
@@ -90,7 +86,7 @@ export default function ForMicrolendersPage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
                 href="https://hola.tangison.com/waitlist"
-                className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                className="press group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 hover:bg-ink-50"
               >
                 Request pilot access
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />

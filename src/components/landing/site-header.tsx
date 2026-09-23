@@ -51,14 +51,18 @@ export function SiteHeader() {
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <nav aria-label="Primary" className="flex h-[76px] items-center justify-between gap-4">
-          <Link href="/" className="flex shrink-0 items-center rounded-lg" aria-label="Hola Credit, home">
-            <img
-              src="/logos/hola-credit-horizontal.svg"
-              alt="Hola Credit"
-              width={150}
-              height={32}
-              className="h-7 w-auto"
-            />
+          <Link
+            href="/"
+            className="flex shrink-0 items-center rounded-lg py-1"
+            aria-label="Hola Credit, home"
+          >
+            <span className="font-serif text-[1.65rem] font-semibold italic leading-none tracking-tight text-ink">
+              hola
+              <span className="not-italic text-teal-500" aria-hidden="true">
+                .
+              </span>
+              <span className="sr-only">Credit</span>
+            </span>
           </Link>
 
           {/* Desktop: plain text links, no dropdowns */}
@@ -70,7 +74,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`py-2 text-[13.5px] font-semibold tracking-wide transition-colors duration-ui ${
+                  className={`nav-link py-2 text-[13.5px] font-semibold tracking-wide transition-colors duration-ui ${
                     active ? "text-teal-600" : "text-ink/70 hover:text-ink"
                   }`}
                 >
@@ -89,7 +93,7 @@ export function SiteHeader() {
             </a>
             <a
               href={WAITLIST_URL}
-              className="group inline-flex items-center gap-1.5 rounded-none bg-ink px-5 py-2.5 text-[13.5px] font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+              className="press group inline-flex items-center gap-1.5 rounded-none bg-ink px-5 py-2.5 text-[13.5px] font-bold text-sand-50 hover:bg-ink-50"
             >
               Join the waitlist
               <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 transition-transform duration-ui group-hover:translate-x-0.5" />

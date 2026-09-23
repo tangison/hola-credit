@@ -49,28 +49,44 @@ export default function ContactPage() {
 
         <section className="border-b border-sand-300 bg-sand-50 py-24 lg:py-32">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="grid gap-6 lg:grid-cols-3">
-              {CHANNELS.map((channel, i) => (
-                <Reveal key={channel.label} delay={i * 60}>
-                  <div className="flex h-full flex-col rounded-none border border-sand-300 p-8">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-teal-50 text-teal-600">
-                      <channel.icon className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <p className="mt-6 text-[12px] font-bold uppercase tracking-[0.18em] text-ink/60">{channel.label}</p>
-                    {channel.href ? (
-                      <a
-                        href={channel.href}
-                        className="mt-2 font-serif text-2xl font-semibold tracking-tight text-ink underline decoration-sand-400 decoration-2 underline-offset-8 transition-colors hover:text-teal-600 hover:decoration-teal-400"
-                      >
-                        {channel.value}
-                      </a>
-                    ) : (
-                      <p className="mt-2 font-serif text-2xl font-semibold tracking-tight text-ink">{channel.value}</p>
-                    )}
-                    <p className="mt-4 text-[14.5px] leading-relaxed text-ink/60">{channel.note}</p>
-                  </div>
-                </Reveal>
-              ))}
+            <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+              <Reveal variant="clip" className="lg:sticky lg:top-28 lg:self-start">
+                <div className="overflow-hidden rounded-none border border-sand-300">
+                  <img
+                    src="/images/landing/greeting-desk.webp"
+                    alt="Illustration of a Hola Credit team member turning to greet you"
+                    width={640}
+                    height={854}
+                    loading="lazy"
+                    className="h-auto w-full"
+                  />
+                </div>
+              </Reveal>
+              <div className="grid content-start">
+                {CHANNELS.map((channel, i) => (
+                  <Reveal key={channel.label} delay={i * 60}>
+                    <div className="flex flex-col gap-4 border-t border-sand-300 py-8 sm:flex-row sm:items-start sm:gap-8">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+                        <channel.icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <div>
+                        <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-ink/60">{channel.label}</p>
+                        {channel.href ? (
+                          <a
+                            href={channel.href}
+                            className="mt-2 inline-block font-serif text-2xl font-semibold tracking-tight text-ink underline decoration-sand-400 decoration-2 underline-offset-8 transition-colors hover:text-teal-600 hover:decoration-teal-400"
+                          >
+                            {channel.value}
+                          </a>
+                        ) : (
+                          <p className="mt-2 font-serif text-2xl font-semibold tracking-tight text-ink">{channel.value}</p>
+                        )}
+                        <p className="mt-3 max-w-md text-[14.5px] leading-relaxed text-ink/60">{channel.note}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -88,7 +104,7 @@ export default function ContactPage() {
               </p>
               <a
                 href="https://hola.tangison.com/waitlist"
-                className="group mt-10 inline-flex items-center justify-center gap-2 rounded-none bg-ink px-8 py-4 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                className="press group mt-10 inline-flex items-center justify-center gap-2 rounded-none bg-ink px-8 py-4 text-sm font-bold text-sand-50 hover:bg-ink-50"
               >
                 Join the waitlist
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />

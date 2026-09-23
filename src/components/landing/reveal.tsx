@@ -9,13 +9,15 @@ interface RevealProps {
   as?: ElementType;
   className?: string;
   id?: string;
+  /** "up" fades and rises, "clip" uncovers via clip-path (for imagery) */
+  variant?: "up" | "clip";
 }
 
 /**
  * Lightweight scroll-reveal wrapper. Adds the `reveal-visible` class once the
  * element enters the viewport. Honours prefers-reduced-motion via globals.css.
  */
-export function Reveal({ children, delay = 0, as: Tag = "div", className, id }: RevealProps) {
+export function Reveal({ children, delay = 0, as: Tag = "div", className, id, variant = "up" }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -45,10 +47,18 @@ export function Reveal({ children, delay = 0, as: Tag = "div", className, id }: 
     <Tag
       id={id}
       ref={ref}
-      className={`reveal ${visible ? "reveal-visible" : ""} ${className ?? ""}`}
+      className={`${visible ? "reveal-visible" : ""} ${className ?? ""}`}
       style={{ ["--reveal-delay" as string]: `${delay}ms` }}
     >
-      {children}
+      {variant === "clip" ? (
+        // The clip lives on an inner wrapper: a fully-clipped element has zero
+        // visible area, which would stop IntersectionObserver from ever firing.
+        <div className={`reveal-clip ${visible ? "reveal-visible" : ""}`} style={{ ["--reveal-delay" as string]: `${delay}ms` }}>
+          {children}
+        </div>
+      ) : (
+        children
+      )}
     </Tag>
   );
 }

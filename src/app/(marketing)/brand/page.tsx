@@ -16,6 +16,7 @@ const COLORS = [
   { name: "Sand", hex: "#F3EFE4", note: "Backgrounds, warm surfaces", cls: "bg-sand" },
   { name: "Mineral teal", hex: "#16B8A6", note: "Accents, links, signal colour", cls: "bg-teal-400" },
   { name: "Deep teal", hex: "#0E8A7D", note: "Hover states, secondary accents", cls: "bg-teal-500" },
+  { name: "Gold", hex: "#C9A227", note: "Honesty semantics on ink surfaces, dawn illustration accents. Never body text on light surfaces", cls: "bg-gold" },
   { name: "Stone", hex: "#A8AAA3", note: "Muted text on light surfaces", cls: "bg-stone" },
   { name: "Alert", hex: "#B9382E", note: "Red-flag states only, never decoration", cls: "bg-alert" },
 ];
@@ -45,17 +46,14 @@ export default function BrandPage() {
             </Reveal>
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               {LOGOS.map((logo, i) => (
-                <Reveal key={logo.label} delay={i * 40}>
-                  <figure
-                    className={`flex min-h-[200px] flex-col justify-between overflow-hidden rounded-none border p-8 ${
+                <Reveal key={logo.label} delay={i * 40} variant="clip">
+                  <div
+                    className={`flex min-h-[200px] items-center justify-center overflow-hidden rounded-none border p-8 ${
                       logo.dark ? "border-ink bg-ink" : "border-sand-300 bg-sand-50"
                     }`}
                   >
-                    <img src={logo.src} alt={`Hola Credit logo, ${logo.label}`} className="h-10 w-auto self-start" />
-                    <figcaption className={`mt-10 text-sm ${logo.dark ? "text-sand-50/60" : "text-ink/55"}`}>
-                      {logo.label}
-                    </figcaption>
-                  </figure>
+                    <img src={logo.src} alt={`Hola Credit logo, ${logo.label}`} className="h-10 w-auto" />
+                  </div>
                 </Reveal>
               ))}
             </div>

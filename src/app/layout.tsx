@@ -1,124 +1,90 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Manrope, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
-/* Structured data for Hola Credit organisation */
-const organisationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Hola Credit",
-  description:
-    "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns.",
-  url: "https://hola.tangison.com",
-  logo: "https://hola.tangison.com/logos/hola-credit-logo-horizontal.svg",
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "hola@tangison.com",
-    contactType: "sales",
-    areaServed: "NA",
-    availableLanguage: "en",
-  },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Windhoek",
-    addressCountry: "NA",
-  },
-  parentOrganization: {
-    "@type": "Organization",
-    name: "Tangison Technologies",
-  },
-};
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "600", "700"],
+});
 
-const webAppJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "Hola Credit",
-  description:
-    "Cash-flow assessment platform for Namibian lenders and retailers.",
-  url: "https://hola.tangison.com",
-  applicationCategory: "FinanceApplication",
-  operatingSystem: "Web",
-  offers: {
-    "@type": "Offer",
-    category: "Pilot access",
-    description: "Available for pilot evaluation by authorised Namibian lenders and retailers.",
-  },
-};
+const sourceSerif = Source_Serif_4({
+  variable: "--font-serif-source",
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
+  weight: ["600"],
+});
+
+export const SITE_URL = "https://hola.tangison.com";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Hola Credit",
-    template: "%s | Hola Credit",
+    default: "Hola Credit · Say hola to the income a payslip never shows",
+    template: "%s · Hola Credit",
   },
   description:
-    "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns. Structure evidence from bank statements to support informed lending decisions.",
-  metadataBase: new URL("https://hola.tangison.com"),
+    "Cash-flow underwriting for Namibian microlenders and retailers. Hola Credit turns borrower-authorised bank statements into structured evidence: income floor, consistency, volatility and red flags.",
+  keywords: [
+    "cash-flow underwriting",
+    "Namibia",
+    "microlending",
+    "retail credit",
+    "bank statement assessment",
+    "self-employed income",
+    "Hola Credit",
+    "Tangison",
+  ],
+  authors: [{ name: "Tangison Technologies" }],
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
-      { url: "/logos/hola-credit-favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180" },
-    ],
+    apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
-    title: "Hola Credit",
+    title: "Hola Credit · Say hola to the income a payslip never shows",
     description:
-      "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns. Structure evidence from bank statements to support informed lending decisions.",
-    url: "https://hola.tangison.com",
+      "Cash-flow underwriting for Namibian microlenders and retailers. Structure the evidence in a bank statement, in plain language.",
+    url: SITE_URL,
     siteName: "Hola Credit",
-    locale: "en_NA",
     type: "website",
+    locale: "en_NA",
     images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Hola Credit" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hola Credit",
+    title: "Hola Credit · Cash-flow underwriting for Namibian lenders",
     description:
-      "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns. Structure evidence from bank statements to support informed lending decisions.",
-    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Hola Credit" }],
+      "Turn borrower-authorised bank statements into structured cash-flow evidence. Income floor, consistency, volatility, red flags.",
+    images: ["/og-default.png"],
   },
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#111512",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="icon" href="/logos/hola-credit-favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="preload" as="image" href="/images/cash-flow-to-clear-signal-1280.webp" type="image/webp" fetchPriority="high" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
-        />
-      </head>
-      <body className="min-h-screen flex flex-col bg-sand text-ink font-sans antialiased">
+    <html lang="en" className={`${manrope.variable} ${sourceSerif.variable}`}>
+      <body className="font-sans antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-teal-400 focus:text-ink focus:font-semibold focus:shadow-lg focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:font-bold focus:text-sand-50"
         >
-          Skip to main content
+          Skip to content
         </a>
         <noscript>
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>

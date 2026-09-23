@@ -7,6 +7,7 @@ import { PageHero } from "@/components/landing/page-hero";
 import { SectionHeading } from "@/components/landing/section-heading";
 import { Reveal } from "@/components/landing/reveal";
 import { RhythmSlider } from "@/components/landing/rhythm-slider";
+import { GhostNumeral } from "@/components/landing/ghost-numeral";
 
 export const metadata: Metadata = {
   title: "Product",
@@ -84,6 +85,24 @@ export default function ProductPage() {
           lead="Hola Credit converts a borrower-authorised bank statement into structured cash-flow evidence, bounded by confidence levels and produced by versioned deterministic code. Same inputs, same policy version, same result. Every time."
         />
 
+        {/* Lead visual */}
+        <section className="bg-sand-50 pb-24 pt-4 lg:pb-32">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <Reveal variant="clip">
+              <div className="overflow-hidden rounded-none border border-sand-300">
+                <img
+                  src="/images/landing/statement-signal.webp"
+                  alt="Illustration of a loan officer calmly studying a borrower's statement"
+                  width={1280}
+                  height={640}
+                  loading="lazy"
+                  className="h-auto w-full"
+                />
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* Four steps, detailed */}
         <section className="border-b border-sand-300 bg-sand-50 py-28 lg:py-40">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -92,9 +111,10 @@ export default function ProductPage() {
               {STEPS.map((step, i) => (
                 <Reveal key={step.n} delay={i * 40}>
                   <div className="relative border-t border-sand-300 py-12 lg:py-16">
-                    <span aria-hidden="true" className="pointer-events-none absolute -top-3 select-none font-serif text-[7rem] italic leading-none text-sand-300/70 sm:-left-14 sm:text-[9rem] lg:-left-24 lg:text-[11rem]">
-                      {step.n}
-                    </span>
+                    <GhostNumeral
+                      n={step.n}
+                      className="absolute -top-3 font-serif font-semibold text-[7rem] italic leading-none text-sand-300/70 sm:-left-14 sm:text-[9rem] lg:-left-24 lg:text-[11rem]"
+                    />
                     <div className="relative grid gap-4 sm:grid-cols-[minmax(200px,280px)_1fr] sm:gap-14">
                       <h3 className="relative font-serif text-[1.45rem] font-semibold leading-snug tracking-tight text-ink sm:translate-y-3 lg:translate-y-4">
                         {step.title}
@@ -116,7 +136,7 @@ export default function ProductPage() {
         <RhythmSlider />
 
         {/* Signals detail */}
-        <section className="border-t border-sand-300 bg-sand-50 py-28 lg:py-40">
+        <section className="border-t border-sand-300 bg-sand-100 py-28 lg:py-40">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading
               eyebrow="The assessment"
@@ -183,7 +203,7 @@ export default function ProductPage() {
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
                   href="https://hola.tangison.com/app"
-                  className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="press group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 hover:bg-ink-50"
                 >
                   Try the demo
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
