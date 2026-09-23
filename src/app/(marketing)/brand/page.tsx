@@ -1,189 +1,131 @@
 import type { Metadata } from "next";
-import { Logo } from "@/components/shared/logo";
+import { SiteHeader } from "@/components/landing/site-header";
+import { SiteFooter } from "@/components/landing/site-footer";
+import { PageHero } from "@/components/landing/page-hero";
+import { Reveal } from "@/components/landing/reveal";
 
 export const metadata: Metadata = {
-  title: "Brand Guidelines",
-  description: "Hola Credit brand assets and guidelines. Logo system, colour palette, typography, and icon usage for the Tangison Technologies cash-flow assessment product.",
+  title: "Brand",
+  description:
+    "Hola Credit brand assets and guidelines: logo system, colour palette, typography and usage rules for the Tangison Technologies cash-flow assessment product.",
+  alternates: { canonical: "/brand" },
 };
+
+const COLORS = [
+  { name: "Ink", hex: "#111512", note: "Primary text, dark bands, buttons", cls: "bg-ink" },
+  { name: "Sand", hex: "#F3EFE4", note: "Backgrounds, warm surfaces", cls: "bg-sand" },
+  { name: "Mineral teal", hex: "#16B8A6", note: "Accents, links, signal colour", cls: "bg-teal-400" },
+  { name: "Deep teal", hex: "#0E8A7D", note: "Hover states, secondary accents", cls: "bg-teal-500" },
+  { name: "Stone", hex: "#A8AAA3", note: "Muted text on light surfaces", cls: "bg-stone" },
+  { name: "Alert", hex: "#B9382E", note: "Red-flag states only, never decoration", cls: "bg-alert" },
+];
+
+const LOGOS = [
+  { label: "Horizontal (default)", src: "/logos/hola-credit-horizontal.svg", dark: false },
+  { label: "Stacked", src: "/logos/hola-credit-stacked.svg", dark: false },
+  { label: "Symbol mark", src: "/logos/hola-credit-symbol.svg", dark: false },
+  { label: "Reversed, on ink", src: "/logos/hola-credit-reversed.svg", dark: true },
+];
 
 export default function BrandPage() {
   return (
-    <div className="flex-1">
-        {/* Hero */}
-        <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-sm font-medium text-teal-600 mb-4 tracking-wide uppercase">Brand</p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
-              Hola Credit brand assets
-            </h1>
-            <p className="mt-6 text-lg text-ink/70 leading-relaxed max-w-2xl">
-              Official logos, colours, and typography for Hola Credit. Use these assets when referencing the product in presentations, documents, or partner materials. Do not alter, recolour, or reshape the mark.
-            </p>
-          </div>
-        </section>
+    <div className="flex min-h-screen flex-col bg-sand-50 text-ink">
+      <SiteHeader />
+      <main id="main-content" className="flex-1">
+        <PageHero
+          eyebrow="Brand"
+          title="Hola Credit brand assets."
+          lead="Official logos, colours and typography for Hola Credit. Use these assets when referencing the product in presentations, documents or partner materials. Do not alter, recolour or reshape the mark."
+        />
 
-        {/* Logo variants */}
-        <section className="bg-white py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-ink mb-8">Logo variants</h2>
-            <div className="grid gap-8">
-              {/* Horizontal, default */}
-              <div className="border border-sand-300 rounded-lg p-8">
-                <p className="text-sm font-medium text-ink/60 mb-4">Horizontal (default)</p>
-                <div className="flex items-center gap-4">
-                  <Logo variant="horizontal" />
-                </div>
-              </div>
-
-              {/* Symbol only */}
-              <div className="border border-sand-300 rounded-lg p-8">
-                <p className="text-sm font-medium text-ink/60 mb-4">Symbol mark</p>
-                <div className="flex items-center gap-4">
-                  <Logo variant="compact" />
-                </div>
-              </div>
-
-              {/* Stacked */}
-              <div className="border border-sand-300 rounded-lg p-8">
-                <p className="text-sm font-medium text-ink/60 mb-4">Stacked</p>
-                <div className="flex items-center gap-4">
-                  <Logo variant="stacked" />
-                </div>
-              </div>
-
-              {/* Reversed, on dark */}
-              <div className="border border-sand-300 rounded-lg p-8 bg-ink">
-                <p className="text-sm font-medium text-sand-300 mb-4">Reversed (on dark backgrounds)</p>
-                <div className="flex items-center gap-4">
-                  <Logo variant="reversed" />
-                </div>
-              </div>
+        <section className="border-b border-sand-300 bg-sand-50 py-20 lg:py-28">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <Reveal>
+              <h2 className="font-serif text-3xl font-semibold tracking-tight text-ink">Logo variants</h2>
+            </Reveal>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              {LOGOS.map((logo, i) => (
+                <Reveal key={logo.label} delay={i * 40}>
+                  <figure
+                    className={`flex min-h-[200px] flex-col justify-between overflow-hidden rounded-none border p-8 ${
+                      logo.dark ? "border-ink bg-ink" : "border-sand-300 bg-sand-50"
+                    }`}
+                  >
+                    <img src={logo.src} alt={`Hola Credit logo, ${logo.label}`} className="h-10 w-auto self-start" />
+                    <figcaption className={`mt-10 text-sm ${logo.dark ? "text-sand-50/60" : "text-ink/55"}`}>
+                      {logo.label}
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
             </div>
+            <Reveal delay={120}>
+              <p className="mt-8 max-w-2xl text-[15px] leading-relaxed text-ink/65">
+                Clear space: keep at least the height of the letter h around the wordmark. Minimum
+                size: 120 pixels wide for the horizontal lockup. The reversed logo is for use on ink
+                or photography only, never on light backgrounds.
+              </p>
+            </Reveal>
           </div>
         </section>
 
-        {/* Colours */}
-        <section className="bg-sand py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-ink mb-8">Colour palette</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-              {[
-                { name: "Ink", hex: "#111512", className: "bg-ink" },
-                { name: "Sand 50", hex: "#FAF9F7", className: "bg-sand-50 border border-sand-300" },
-                { name: "Sand", hex: "#F5F4F0", className: "bg-sand border border-sand-300" },
-                { name: "Mineral Teal", hex: "#16B8A6", className: "bg-teal-400" },
-                { name: "Alert", hex: "#E11D48", className: "bg-red-500" },
-              ].map((color) => (
-                <div key={color.name} className="rounded-lg overflow-hidden border border-sand-300">
-                  <div className={`h-20 ${color.className}`} />
-                  <div className="p-3 bg-white">
-                    <p className="text-sm font-medium text-ink">{color.name}</p>
-                    <p className="text-xs text-ink/50">{color.hex}</p>
+        <section className="border-b border-sand-300 bg-sand-50 py-20 lg:py-28">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <Reveal>
+              <h2 className="font-serif text-3xl font-semibold tracking-tight text-ink">Colour palette</h2>
+            </Reveal>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {COLORS.map((color, i) => (
+                <Reveal key={color.name} delay={i * 40}>
+                  <div className="overflow-hidden rounded-none border border-sand-300">
+                    <div className={`h-28 ${color.cls}`} />
+                    <div className="bg-sand-50 p-5">
+                      <p className="font-bold text-ink">{color.name}</p>
+                      <p className="mt-0.5 font-mono text-[13px] text-ink/55">{color.hex}</p>
+                      <p className="mt-2 text-[13.5px] leading-relaxed text-ink/60">{color.note}</p>
+                    </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Typography */}
-        <section className="bg-white py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-ink mb-8">Typography</h2>
-            <div className="space-y-6">
-              <div>
-                <p className="text-sm font-medium text-ink/60 mb-2">Headings: Manrope</p>
-                <p className="text-3xl font-bold text-ink tracking-tight">The quick brown fox jumps over the lazy dog</p>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-ink/60 mb-2">Body: Source Serif 4</p>
-                <p className="text-lg text-ink/70 leading-relaxed font-serif">
-                  Cash-flow underwriting support for Namibian lenders and retailers. Hola Credit helps organisations understand real cash flow when an applicant is self-employed or earns irregularly.
-                </p>
-              </div>
+        <section className="bg-sand-50 py-20 lg:py-28">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <Reveal>
+              <h2 className="font-serif text-3xl font-semibold tracking-tight text-ink">Typography</h2>
+            </Reveal>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              <Reveal>
+                <div className="rounded-none border border-sand-300 p-8">
+                  <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-600">Display · Source Serif 4</p>
+                  <p className="mt-5 font-serif text-4xl font-semibold italic leading-tight tracking-tight text-ink">
+                    Say hola.
+                  </p>
+                  <p className="mt-4 text-[14.5px] leading-relaxed text-ink/65">
+                    Serif carries the voice: headlines, pull quotes and the italic accents. Set tight,
+                    large and confident.
+                  </p>
+                </div>
+              </Reveal>
+              <Reveal delay={80}>
+                <div className="rounded-none border border-sand-300 p-8">
+                  <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-600">Text · Manrope</p>
+                  <p className="mt-5 text-[17px] font-semibold leading-relaxed text-ink">
+                    The plain language a lender reads aloud.
+                  </p>
+                  <p className="mt-4 text-[14.5px] leading-relaxed text-ink/65">
+                    Sans carries the work: body copy, labels, interface and data. Plain, warm, never
+                    decorative.
+                  </p>
+                </div>
+              </Reveal>
             </div>
           </div>
         </section>
-
-        {/* Usage rules */}
-        <section className="bg-sand py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-ink mb-8">Usage rules</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white border border-sand-300 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-ink mb-3">Do</h3>
-                <ul className="space-y-2 text-sm text-ink/70">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
-                    Use the horizontal logo in headers and navigation
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
-                    Use the reversed logo on dark backgrounds
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
-                    Maintain clear space around the mark equal to the height of the &quot;h&quot;
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
-                    Use the symbol mark when space is limited (favicons, avatars)
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
-                    Use Mineral Teal as the primary accent for interactive elements and links
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-white border border-sand-300 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-ink mb-3">Do not</h3>
-                <ul className="space-y-2 text-sm text-ink/70">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
-                    Stretch, rotate, or skew the mark
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
-                    Change the logo colours outside the approved palette
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
-                    Place the dark logo on a dark background without a container
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
-                    Add effects, shadows, or outlines to the mark
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
-                    Use the Alert red as a decorative colour — it is reserved for error and warning states only
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Brand philosophy */}
-        <section className="bg-white py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-ink mb-8">Brand philosophy</h2>
-            <div className="max-w-3xl space-y-6">
-              <p className="text-lg text-ink/70 leading-relaxed">
-                The Hola Credit brand communicates clarity, restraint, and professional trust. Our visual identity is built around the idea that lending decisions deserve structured evidence — not guesswork. The brand avoids decorative excess in favour of functional precision, reflecting the product itself: deterministic scoring with full auditability.
-              </p>
-              <p className="text-lg text-ink/70 leading-relaxed">
-                The Ink and Sand palette grounds the identity in seriousness and warmth simultaneously. Ink conveys authority and permanence. Sand provides the approachable, human-quality surface. Mineral Teal signals progress and insight without the typical fintech saturation. Together, they create a visual system that feels neither corporate nor casual — appropriate for a product that sits between regulated financial services and modern developer tooling.
-              </p>
-              <p className="text-lg text-ink/70 leading-relaxed">
-                Typography follows the same principle. Manrope for headings provides geometric clarity at large sizes. Source Serif 4 for body text adds the editorial weight appropriate for content about financial assessment, consent, and legal obligations. The pairing balances modern interface expectations with the gravitas the subject matter requires.
-              </p>
-              <p className="text-lg text-ink/70 leading-relaxed">
-                When using these assets in partner materials, presentations, or regulatory submissions, maintain the tone the brand establishes: specific claims, transparent limitations, and evidence-first communication. Avoid superlatives, guarantees, or language that overstates what the assessment can prove.
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

@@ -108,3 +108,72 @@
   font-display: swap;
   src: url("https://fonts.gstatic.com/s/sourceserif4/v8/vEFy2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHt6Oj0.woff2") format("woff2");
 }
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Quiet scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 640ms cubic-bezier(0.22, 1, 0.36, 1), transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+  /* No-JS fallback: never hide content if scripting is unavailable */
+  @media (scripting: none) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* Range input, flat and quiet */
+  .hola-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 24px;
+    background: transparent;
+    cursor: pointer;
+  }
+  .hola-range::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #16b8a6 var(--fill, 50%), #e8e3d5 var(--fill, 50%));
+  }
+  .hola-range::-moz-range-track {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #16b8a6 var(--fill, 50%), #e8e3d5 var(--fill, 50%));
+  }
+  .hola-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -9px;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: #111512;
+    border: 3px solid #16b8a6;
+    cursor: grab;
+  }
+  .hola-range::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: #111512;
+    border: 3px solid #16b8a6;
+    cursor: grab;
+  }
+  .hola-range:focus-visible {
+    outline: 2px solid #0e8a7d;
+    outline-offset: 4px;
+  }
+}

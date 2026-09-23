@@ -1,146 +1,106 @@
 import type { Metadata } from "next";
-import { Accordion } from "@/components/shared/accordion";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { SiteHeader } from "@/components/landing/site-header";
+import { SiteFooter } from "@/components/landing/site-footer";
+import { PageHero } from "@/components/landing/page-hero";
+import { SectionHeading } from "@/components/landing/section-heading";
+import { Reveal } from "@/components/landing/reveal";
 
 export const metadata: Metadata = {
-  title: "Credit Assessment for Retailers",
-  description: "Retail credit assessment for Namibian stores. Evaluate customers for goods on credit using cash-flow data from bank statements instead of payslip-only models.",
+  title: "For retail credit",
+  description:
+    "Credit checks built for how customers actually earn. Structured cash-flow evidence for Namibian retail credit teams assessing customers who do not earn a fixed salary.",
+  alternates: { canonical: "/for-retailers" },
 };
+
+const SECTIONS = [
+  {
+    title: "Point-of-sale review that fits the counter",
+    body: "Retail credit teams regularly assess customers who want to purchase goods on credit but do not earn a fixed salary. Hola Credit helps those teams understand the cash-flow evidence in a borrower-authorised bank statement, at the pace a counter actually moves at. The assessment is written in plain language, so it can be read, questioned and explained without a data specialist in the room.",
+  },
+  {
+    title: "Staff roles that match retail operations",
+    body: "Not every retail credit desk looks like a bank's. Hola Credit ships with roles that map onto how retail teams actually work: counter staff who start cases, credit leads who review assessments, and managers who see across the branch. Access is restricted by organisation and role, enforced on the server rather than only in the interface.",
+  },
+  {
+    title: "Case consistency across locations and staff",
+    body: "Two branches should not produce two different answers for the same kind of applicant. The assessment is deterministic: the same statement data and the same policy version produce the same result, whoever runs the case and wherever it is run. Consistency here is not a promise, it is a property of the design.",
+  },
+];
 
 export default function ForRetailersPage() {
   return (
-    <div className="flex-1">
-        <link rel="preload" as="image" type="image/webp" href="/images/retail-credit-conversation-1280.webp" />
-        {/* Hero */}
-        <section className="bg-sand pt-24 pb-16 lg:pt-32 lg:pb-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-8 h-8 text-teal-400">
-                    <path d="M4 9h16l-2-5H6zM5 9v11h14V9M9 20v-6h6v6" />
-                  </svg>
-                  <p className="text-sm font-medium text-teal-600 tracking-wide uppercase">For Retailers</p>
-                </div>
-                <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight">
-                  Credit checks built for how customers actually earn.
-                </h1>
-                <p className="mt-6 text-lg text-ink/70 leading-relaxed">
-                  Retail credit teams regularly assess customers who want to purchase goods on credit but do not earn a fixed salary. Hola Credit helps those teams understand the cash-flow evidence in a borrower-authorised bank statement, so the assessment reflects how the customer actually earns.
-                </p>
-              </div>
-              <div className="relative">
-                <picture>
-                  <source srcSet="/images/retail-credit-conversation-640.webp 640w, /images/retail-credit-conversation-960.webp 960w, /images/retail-credit-conversation-1280.webp 1280w, /images/retail-credit-conversation-1920.webp 1920w" type="image/webp" />
-                  <source srcSet="/images/retail-credit-conversation-master.png" type="image/png" />
-                  <img src="/images/retail-credit-conversation-1280.webp" alt="Retail credit conversation between staff and customer" width={1672} height={941} loading="eager" fetchPriority="high" className="rounded-2xl shadow-lg w-full h-auto" />
-                </picture>
-              </div>
-            </div>
-          </div>
-        </section>
+    <div className="flex min-h-screen flex-col bg-sand-50 text-ink">
+      <SiteHeader />
+      <main id="main-content" className="flex-1">
+        <PageHero
+          eyebrow="For retail credit"
+          title="Credit checks built for how customers actually earn."
+          lead="Structured cash-flow evidence for retail credit teams, so a customer without a payslip can be assessed on what their money actually does, at the pace of the counter."
+        />
 
-        {/* Point-of-sale review */}
-        <section className="bg-white py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-              <div>
-                <h2 className="text-3xl font-bold text-ink tracking-tight mb-6">
-                  Point-of-sale review that fits the counter
-                </h2>
-                <p className="text-ink/70 leading-relaxed">
-                  When a customer applies for store credit, the credit team needs to make a timely assessment. The applicant consents, the staff member uploads the bank statement, and the system returns structured cash-flow evidence. The assessment is supplementary: it does not replace the retailer&apos;s own policies, bureau enquiries, or the judgement of the person reviewing the case. The web portal is built for low-bandwidth and lower-spec devices, which matters in retail environments.
-                </p>
-              </div>
-              <div className="flex items-center">
-                <picture>
-                  <source srcSet="/images/retail-credit-conversation-640.webp 640w, /images/retail-credit-conversation-960.webp 960w, /images/retail-credit-conversation-1280.webp 1280w, /images/retail-credit-conversation-1920.webp 1920w" type="image/webp" />
-                  <source srcSet="/images/retail-credit-conversation-master.png" type="image/png" />
+        <section className="border-b border-sand-300 bg-sand-50 py-24 lg:py-32">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
+              <Reveal delay={120} className="order-last lg:order-first lg:sticky lg:top-28 lg:self-start">
+                <figure className="overflow-hidden rounded-none border border-sand-300">
                   <img
-                    src="/images/retail-credit-conversation-960.webp"
-                    alt="A retail credit conversation between staff and customer"
-                    width={960}
-                    height={640}
-                    className="w-full rounded-xl border border-sand-300"
+                    src="/images/landing/persona-retailer.webp"
+                    alt="Illustration of a shop owner at her counter, one of the earners retail credit teams serve"
+                    width={640}
+                    height={854}
                     loading="lazy"
+                    className="h-auto w-full"
                   />
-                </picture>
+                </figure>
+                <figcaption className="mt-4 text-sm text-ink/55">
+                  Illustrative persona. Shop owners earn steadily without a salary slip.
+                </figcaption>
+              </Reveal>
+              <div className="space-y-16">
+                {SECTIONS.map((section, i) => (
+                  <Reveal key={section.title} delay={i * 40}>
+                    <div className="border-t border-sand-300 pt-7">
+                      <h2 className="font-serif text-2xl font-semibold leading-snug tracking-tight text-ink sm:text-[1.7rem]">
+                        {section.title}
+                      </h2>
+                      <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-ink/70">{section.body}</p>
+                    </div>
+                  </Reveal>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Staff roles: accordion */}
-        <section className="bg-sand py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-ink tracking-tight mb-12">Staff roles that match retail operations</h2>
-            <Accordion
-              items={[
-                {
-                  title: "Loan officers handle daily assessments",
-                  content: "Loan officers create applications, upload statements, and review the cases assigned to them. They see the structured evidence: income floor, consistency, volatility, flags, and the plain-language explanation. They record their own notes and the final decision. The system does not make the decision for them, and their notes are clearly attributed to them, not to Hola Credit.",
-                },
-                {
-                  title: "Risk managers oversee quality and consistency",
-                  content: "Risk managers can review all applications, overrides, and flags across the organisation. This is important in retail credit where multiple locations or branches may be processing cases independently. The risk manager can see whether the same cash-flow pattern is being assessed consistently, whether overrides are being used appropriately, and whether the evidence is being interpreted as intended.",
-                },
-                {
-                  title: "Compliance auditors verify process without editing outcomes",
-                  content: "Compliance auditors can read cases, consent records, and audit history, but they cannot edit decisions. This separation ensures that the audit function remains independent. The audit trail records every material action with timestamps and actor attribution that cannot be rewritten after the fact.",
-                },
-              ]}
+        <section className="border-t border-sand-300 bg-sand-50 py-24 lg:py-32">
+          <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
+            <SectionHeading
+              align="center"
+              eyebrow="Pilot access"
+              title="Sell on credit with evidence, not guesswork."
+              lead="Pilot access is available for authorised Namibian retailers who want to test structured cash-flow evidence alongside their existing credit assessment process."
             />
-          </div>
-        </section>
-
-        {/* Case consistency */}
-        <section className="bg-white py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <h2 className="text-3xl font-bold text-ink tracking-tight mb-6">Case consistency across locations and staff</h2>
-              <p className="text-ink/70 leading-relaxed">
-                Hola Credit applies the same deterministic scoring policy to every application, regardless of who uploads the statement or which branch processes the case. The same inputs and the same policy version always produce the same result. The variation in outcomes comes from the applicant&apos;s actual financial situation and the lender&apos;s judgement, not from inconsistency in how the statement was interpreted. The scoring policy version is recorded immutably with every assessment.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Future API & what Hola Credit does not claim: accordion */}
-        <section className="bg-sand py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-ink tracking-tight mb-8">More to know</h2>
-            <Accordion
-              items={[
-                {
-                  title: "Future API integration",
-                  content: "The initial launch provides a web portal for credit assessment. A REST API is planned after the portal flow is proven, so that retailers can integrate Hola Credit assessments directly into their own point-of-sale or loan-management systems. The API will follow the same consent, isolation, and auditability standards as the portal. Webhook endpoints are also planned for event-driven workflows.",
-                },
-                {
-                  title: "What Hola Credit does not claim",
-                  content: "Hola Credit does not claim instant approval. The assessment is designed to be fast, but the quality depends on the quality of the statement data, and cases with low-confidence data are routed to human review rather than rushed through. Hola Credit does not replace formal bureau checks. It is a supplementary source of evidence that the credit team can use alongside their existing bureau enquiries and policy requirements. Retailers should continue to follow their own compliance and regulatory obligations.",
-                },
-              ]}
-            />
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-ink py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-sand-100 tracking-tight">Evaluate Hola Credit for your retail credit team</h2>
-            <p className="mt-4 text-sand-300 max-w-xl mx-auto leading-relaxed">
-              Pilot access is available for authorised Namibian retailers who want to test structured cash-flow evidence alongside their existing credit assessment process.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-teal-400 text-ink px-6 py-3 text-base font-medium hover:bg-teal-300 transition-colors duration-ui">
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href="https://hola.tangison.com/waitlist"
+                className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+              >
                 Request pilot access
-              </Link>
-              <Link href="/product" className="inline-flex items-center justify-center rounded-full border border-sand-300 text-sand-100 px-6 py-3 text-base font-medium hover:bg-ink-50 transition-colors duration-ui">
+                <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
+              </a>
+              <Link
+                href="/product"
+                className="inline-flex items-center justify-center rounded-none border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
+              >
                 See how it works
               </Link>
             </div>
           </div>
         </section>
-      </div>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }
