@@ -72,6 +72,35 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/* Organisation identity, sitewide. The home page adds SoftwareApplication. */
+const organisationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Hola Credit",
+  description:
+    "Explainable cash-flow assessments for Namibian lenders and retailers reviewing applicants without fixed salary patterns.",
+  url: "https://hola.tangison.com",
+  logo: "https://hola.tangison.com/logos/hola-credit-horizontal.svg",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "hola@tangison.com",
+    telephone: "+264-83-411-522",
+    contactType: "sales",
+    areaServed: "NA",
+    availableLanguage: "en",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Windhoek",
+    addressCountry: "NA",
+  },
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Tangison Technologies",
+    url: "https://tangison.com",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,6 +109,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${sourceSerif.variable}`}>
       <body className="font-sans antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd) }} />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:font-bold focus:text-sand-50"
@@ -87,7 +117,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <noscript>
-          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}.reveal-clip{clip-path:none !important;transform:none !important}`}</style>
         </noscript>
         {children}
       </body>
