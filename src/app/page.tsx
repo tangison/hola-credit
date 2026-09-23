@@ -66,18 +66,43 @@ const PEOPLE = [
 ];
 
 export default function HomePage() {
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Hola Credit",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    description:
+      "Cash-flow underwriting support for Namibian microlenders and retailers. Converts borrower-authorised bank statements into structured cash-flow evidence: income floor, consistency, volatility and red flags.",
+    url: "https://hola.tangison.com",
+    producer: {
+      "@type": "Organization",
+      name: "Tangison Technologies",
+      url: "https://tangison.com",
+      address: { "@type": "PostalAddress", addressLocality: "Windhoek", addressCountry: "NA" },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+264-83-411-522",
+        email: "hola@tangison.com",
+        contactType: "customer support",
+      },
+    },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "NAD", description: "Demo access without an account. Pilot access via waitlist." },
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-sand-50 text-ink">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       <SiteHeader />
       <main id="main-content" className="flex-1">
         {/* Hero: one statement, one paragraph, two doors, one image */}
-        <section className="bg-sand-50 pb-4 pt-32 lg:pt-40">
+        <section className="bg-sand-50 pb-4 pt-28 lg:pt-36">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <Reveal>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-teal-500">
+              <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-600">
                 Cash-flow underwriting for Namibia
               </p>
-              <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-[1.04] tracking-tight text-balance text-ink sm:text-6xl lg:text-7xl">
+              <h1 className="mt-5 max-w-4xl font-serif text-[2.75rem] font-semibold leading-[1.02] tracking-tight text-balance text-ink sm:text-6xl lg:text-8xl">
                 Say hola to the income a payslip never shows.
               </h1>
               <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-ink/65 lg:text-lg">
@@ -88,21 +113,21 @@ export default function HomePage() {
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <a
                   href={DEMO_URL}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
                 >
                   Try the demo
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
                 </a>
                 <a
                   href={WAITLIST_URL}
-                  className="inline-flex items-center justify-center rounded-full border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
+                  className="inline-flex items-center justify-center rounded-none border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
                 >
                   Join the waitlist
                 </a>
               </div>
             </Reveal>
           </div>
-          <div className="mt-16 lg:mt-24">
+          <div className="mt-12 lg:mt-16">
             <Reveal delay={120}>
               <img
                 src="/images/landing/hero-greeting.webp"
@@ -110,6 +135,7 @@ export default function HomePage() {
                 width={1280}
                 height={640}
                 loading="eager"
+                fetchPriority="high"
                 className="h-auto w-full"
               />
             </Reveal>
@@ -145,7 +171,7 @@ export default function HomePage() {
         </section>
 
         {/* Four steps: editorial numbered list */}
-        <section id="how" className="border-t border-sand-300 bg-sand-50 py-28 lg:py-40">
+        <section id="how" className="border-t border-sand-300 bg-sand-50 py-24 lg:py-32">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading
               eyebrow="How it works"
@@ -174,7 +200,7 @@ export default function HomePage() {
             <Reveal delay={120}>
               <Link
                 href="/product"
-                className="group mt-10 inline-flex items-center gap-2 text-sm font-bold text-teal-600 transition-colors hover:text-ink"
+                className="group mt-10 inline-flex items-center gap-2 py-1.5 text-sm font-bold text-teal-600 transition-colors hover:text-ink"
               >
                 See the product in detail
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
@@ -184,14 +210,14 @@ export default function HomePage() {
         </section>
 
         {/* Four signals */}
-        <section id="signals" className="border-t border-sand-300 bg-sand-50 py-28 lg:py-40">
+        <section id="signals" className="border-t border-sand-300 bg-sand-50 py-24 lg:py-32">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading
               eyebrow="The assessment"
               title="Four signals. One clear picture."
               lead="Each signal answers one question a lender actually asks, and each carries its own confidence level based on the quality of the data behind it."
             />
-            <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-sand-300 bg-sand-300 sm:grid-cols-2">
+            <div className="mt-14 grid gap-px overflow-hidden rounded-none border border-sand-300 bg-sand-300 sm:grid-cols-2">
               {SIGNALS.map((signal, i) => (
                 <Reveal key={signal.title} delay={i * 60} className="bg-sand-50">
                   <div className="h-full p-10 lg:p-12">
@@ -209,7 +235,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <Reveal>
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-teal-300">Honesty first</p>
+                <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-300">Honesty first</p>
                 <p className="mt-6 font-serif text-3xl font-semibold italic leading-snug text-sand-50 sm:text-4xl">
                   Evidence for a decision, never the decision itself.
                 </p>
@@ -220,7 +246,7 @@ export default function HomePage() {
                 </p>
                 <Link
                   href="/faq"
-                  className="group mt-9 inline-flex items-center gap-2 text-sm font-bold text-teal-300 transition-colors hover:text-sand-50"
+                  className="group mt-9 inline-flex items-center gap-2 py-1.5 text-sm font-bold text-teal-300 transition-colors hover:text-sand-50"
                 >
                   Read the honest FAQ
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
@@ -231,7 +257,7 @@ export default function HomePage() {
         </section>
 
         {/* People strip */}
-        <section id="people" className="border-t border-sand-300 bg-sand-50 py-28 lg:py-40">
+        <section id="people" className="border-t border-sand-300 bg-sand-50 py-24 lg:py-32">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading
               eyebrow="Who it is for"
@@ -242,14 +268,14 @@ export default function HomePage() {
               {PEOPLE.map((person, i) => (
                 <Reveal key={person.name} delay={i * 60}>
                   <figure>
-                    <div className="overflow-hidden rounded-xl border border-sand-300">
+                    <div className="overflow-hidden rounded-none border border-sand-300">
                       <img
                         src={person.img}
                         alt={`Illustration of ${person.name}, a ${person.role.toLowerCase()} in ${person.city}`}
                         width={640}
                         height={854}
                         loading="lazy"
-                        className="h-auto w-full transition-transform duration-500 hover:scale-[1.02]"
+                        className="h-auto w-full"
                       />
                     </div>
                     <figcaption className="mt-4">
@@ -266,7 +292,7 @@ export default function HomePage() {
         </section>
 
         {/* Closing CTA */}
-        <section className="border-t border-sand-300 bg-sand-50 py-28 lg:py-40">
+        <section className="border-t border-sand-300 bg-sand-50 py-24 lg:py-32">
           <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
             <Reveal>
               <h2 className="mx-auto max-w-2xl font-serif text-4xl font-semibold leading-[1.08] tracking-tight text-balance text-ink sm:text-5xl">
@@ -279,14 +305,14 @@ export default function HomePage() {
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
                   href={WAITLIST_URL}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
                 >
                   Join the waitlist
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
                 </a>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
+                  className="inline-flex items-center justify-center rounded-none border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
                 >
                   Talk to us
                 </Link>

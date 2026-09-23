@@ -13,7 +13,7 @@ export function SectionHeading({ eyebrow, title, lead, align = "left", dark = fa
   return (
     <Reveal className={centered ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow && (
-        <p className={`text-[11px] font-bold uppercase tracking-[0.22em] ${dark ? "text-teal-300" : "text-teal-500"}`}>
+        <p className={`text-[12px] font-bold uppercase tracking-[0.22em] ${dark ? "text-teal-300" : "text-teal-600"}`}>
           {eyebrow}
         </p>
       )}

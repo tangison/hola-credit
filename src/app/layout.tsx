@@ -120,6 +120,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
         {children}
       </body>
     </html>

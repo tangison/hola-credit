@@ -207,7 +207,7 @@ export default function PrivacyPage() {
               </p>
               <Link
                 href="/contact"
-                className="mt-8 inline-flex items-center justify-center rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                className="mt-8 inline-flex items-center justify-center rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
               >
                 Talk to us
               </Link>

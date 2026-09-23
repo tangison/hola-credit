@@ -58,10 +58,10 @@ export function RhythmSlider() {
         />
 
         <Reveal delay={120} className="mt-14">
-          <div className="rounded-2xl border border-sand-50/10 bg-ink-100 p-6 sm:p-9">
+          <div className="rounded-none border border-sand-50/10 bg-ink-100 p-6 sm:p-9">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-teal-300">Illustrative example</p>
+                <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-300">Illustrative example</p>
                 <p className="mt-2.5 font-serif text-2xl font-semibold tracking-tight text-sand-50">
                   Nangula, freelance designer, Windhoek
                 </p>
@@ -70,14 +70,14 @@ export function RhythmSlider() {
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-sand-50/40">Months read</p>
+                <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-sand-50/60">Months read</p>
                 <p className="mt-1 text-lg font-bold text-sand-50 tabular-nums">
                   {month + 1} <span className="font-normal text-sand-50/50">of 12</span>
                 </p>
               </div>
             </div>
 
-            <div className="mt-8 overflow-hidden rounded-xl border border-sand-50/10 bg-sand-50 p-4 sm:p-5">
+            <div className="mt-8 overflow-hidden rounded-none border border-sand-50/10 bg-sand-50 p-4 sm:p-5">
               <svg
                 viewBox={`0 0 ${w} ${h}`}
                 className="h-auto w-full touch-none"
@@ -86,7 +86,7 @@ export function RhythmSlider() {
               >
                 <rect x={pad} y={floorY} width={w - pad * 2} height={h - 22 - floorY} fill="#16B8A6" opacity="0.07" rx="10" />
                 <line x1={pad} y1={floorY} x2={w - pad} y2={floorY} stroke="#0E8A7D" strokeWidth="2" strokeDasharray="7 6" />
-                <text x={pad + 6} y={floorY - 7} fontSize="11.5" fontWeight="700" fill="#075C54">
+                <text x={pad + 6} y={floorY - 7} fontSize="12" fontWeight="700" fill="#075C54">
                   Income floor: N$ {(Math.round(stats.floor / 100) * 100).toLocaleString("en-NA")}
                 </text>
 
@@ -146,7 +146,7 @@ export function RhythmSlider() {
                   style={{ ["--fill" as string]: `${fill}%` }}
                   aria-valuetext={`${MONTH_NAMES[month]}, month ${month + 1}`}
                 />
-                <div className="mt-2.5 flex justify-between px-0.5 text-[10.5px] font-bold tracking-wider text-ink/40 uppercase">
+                <div className="mt-2.5 flex justify-between px-0.5 text-[12px] font-bold tracking-wide text-ink/60 uppercase">
                   {["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map((m, i) => (
                     <span key={m} className={i === month ? "text-teal-600" : undefined}>
                       {m}
@@ -158,15 +158,15 @@ export function RhythmSlider() {
 
             <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
               {cards.map((card) => (
-                <div key={card.label} className="rounded-xl border border-sand-50/10 p-4">
-                  <p className="text-[11px] font-bold uppercase tracking-wide text-teal-300">{card.label}</p>
+                <div key={card.label} className="rounded-none border border-sand-50/10 p-4">
+                  <p className="text-[12px] font-bold uppercase tracking-wide text-teal-300">{card.label}</p>
                   <p className="mt-2.5 text-xl font-bold tracking-tight text-sand-50 tabular-nums">{card.value}</p>
-                  <p className="mt-1 text-xs text-sand-50/45">{card.note}</p>
+                  <p className="mt-1 text-xs text-sand-50/60">{card.note}</p>
                 </div>
               ))}
             </div>
 
-            <p className="mt-6 text-center text-xs text-sand-50/40">
+            <p className="mt-6 text-center text-xs text-sand-50/60">
               Illustrative example for demonstration only, not real customer data and not a lending recommendation.
             </p>
           </div>

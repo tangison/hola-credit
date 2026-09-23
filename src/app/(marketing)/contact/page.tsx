@@ -52,11 +52,11 @@ export default function ContactPage() {
             <div className="grid gap-6 lg:grid-cols-3">
               {CHANNELS.map((channel, i) => (
                 <Reveal key={channel.label} delay={i * 60}>
-                  <div className="flex h-full flex-col rounded-2xl border border-sand-300 p-8">
+                  <div className="flex h-full flex-col rounded-none border border-sand-300 p-8">
                     <span className="flex h-11 w-11 items-center justify-center rounded-full bg-teal-50 text-teal-600">
                       <channel.icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.18em] text-ink/45">{channel.label}</p>
+                    <p className="mt-6 text-[12px] font-bold uppercase tracking-[0.18em] text-ink/60">{channel.label}</p>
                     {channel.href ? (
                       <a
                         href={channel.href}
@@ -88,7 +88,7 @@ export default function ContactPage() {
               </p>
               <a
                 href="https://hola.tangison.com/waitlist"
-                className="group mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-8 py-4 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                className="group mt-10 inline-flex items-center justify-center gap-2 rounded-none bg-ink px-8 py-4 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
               >
                 Join the waitlist
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />

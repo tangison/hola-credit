@@ -26,7 +26,7 @@ export default function TermsPage() {
         <section className="border-b border-sand-300 bg-sand-50 py-20 lg:py-28">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <Reveal>
-              <div className="rounded-2xl border-l-4 border-teal-400 bg-teal-50 p-6">
+              <div className="rounded-none border-l-4 border-teal-400 bg-teal-50 p-6">
                 <p className="text-[15.5px] font-semibold leading-relaxed text-ink/80">
                   Hola Credit is supplementary decision support. It does not approve or decline an
                   applicant, it does not replace formal bureau checks, and it does not make the
@@ -167,7 +167,7 @@ export default function TermsPage() {
               </p>
               <Link
                 href="/contact"
-                className="mt-8 inline-flex items-center justify-center rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                className="mt-8 inline-flex items-center justify-center rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
               >
                 Talk to us
               </Link>

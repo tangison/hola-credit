@@ -44,7 +44,7 @@ export default function ForRetailersPage() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
               <Reveal delay={120} className="order-last lg:order-first lg:sticky lg:top-28 lg:self-start">
-                <figure className="overflow-hidden rounded-2xl border border-sand-300">
+                <figure className="overflow-hidden rounded-none border border-sand-300">
                   <img
                     src="/images/landing/persona-retailer.webp"
                     alt="Illustration of a shop owner at her counter, one of the earners retail credit teams serve"
@@ -85,14 +85,14 @@ export default function ForRetailersPage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
                 href="https://hola.tangison.com/waitlist"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
               >
                 Request pilot access
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
               </a>
               <Link
                 href="/product"
-                className="inline-flex items-center justify-center rounded-full border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
+                className="inline-flex items-center justify-center rounded-none border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
               >
                 See how it works
               </Link>

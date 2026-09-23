@@ -47,11 +47,11 @@ export default function BrandPage() {
               {LOGOS.map((logo, i) => (
                 <Reveal key={logo.label} delay={i * 40}>
                   <figure
-                    className={`flex min-h-[200px] flex-col justify-between overflow-hidden rounded-2xl border p-8 ${
+                    className={`flex min-h-[200px] flex-col justify-between overflow-hidden rounded-none border p-8 ${
                       logo.dark ? "border-ink bg-ink" : "border-sand-300 bg-sand-50"
                     }`}
                   >
-                    <img src={logo.src} alt={`Hola Credit logo, ${logo.label}`} className="h-10 w-auto" />
+                    <img src={logo.src} alt={`Hola Credit logo, ${logo.label}`} className="h-10 w-auto self-start" />
                     <figcaption className={`mt-10 text-sm ${logo.dark ? "text-sand-50/60" : "text-ink/55"}`}>
                       {logo.label}
                     </figcaption>
@@ -77,7 +77,7 @@ export default function BrandPage() {
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {COLORS.map((color, i) => (
                 <Reveal key={color.name} delay={i * 40}>
-                  <div className="overflow-hidden rounded-2xl border border-sand-300">
+                  <div className="overflow-hidden rounded-none border border-sand-300">
                     <div className={`h-28 ${color.cls}`} />
                     <div className="bg-sand-50 p-5">
                       <p className="font-bold text-ink">{color.name}</p>
@@ -98,8 +98,8 @@ export default function BrandPage() {
             </Reveal>
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               <Reveal>
-                <div className="rounded-2xl border border-sand-300 p-8">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-teal-500">Display · Source Serif 4</p>
+                <div className="rounded-none border border-sand-300 p-8">
+                  <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-600">Display · Source Serif 4</p>
                   <p className="mt-5 font-serif text-4xl font-semibold italic leading-tight tracking-tight text-ink">
                     Say hola.
                   </p>
@@ -110,8 +110,8 @@ export default function BrandPage() {
                 </div>
               </Reveal>
               <Reveal delay={80}>
-                <div className="rounded-2xl border border-sand-300 p-8">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-teal-500">Text · Manrope</p>
+                <div className="rounded-none border border-sand-300 p-8">
+                  <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-teal-600">Text · Manrope</p>
                   <p className="mt-5 text-[17px] font-semibold leading-relaxed text-ink">
                     The plain language a lender reads aloud.
                   </p>

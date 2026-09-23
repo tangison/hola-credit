@@ -51,7 +51,7 @@ export default function SecurityPage() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
               <Reveal delay={100} className="lg:sticky lg:top-28 lg:self-start">
-                <figure className="overflow-hidden rounded-2xl border border-sand-300">
+                <figure className="overflow-hidden rounded-none border border-sand-300">
                   <img
                     src="/images/landing/consent-security.webp"
                     alt="Illustration of a professional holding a blank consent document"
@@ -93,14 +93,14 @@ export default function SecurityPage() {
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
                 >
                   Talk to us
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
                 </Link>
                 <Link
                   href="/privacy"
-                  className="inline-flex items-center justify-center rounded-full border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
+                  className="inline-flex items-center justify-center rounded-none border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
                 >
                   Read the privacy policy
                 </Link>

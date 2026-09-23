@@ -25,15 +25,15 @@ export function SiteFooter() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-2 text-[14.5px]">
-          <a href="mailto:hola@tangison.com" className="text-sand-50/80 transition-colors hover:text-teal-300">
+          <a href="mailto:hola@tangison.com" className="py-1 text-sand-50/80 transition-colors hover:text-teal-300">
             hola@tangison.com
           </a>
           <span aria-hidden="true" className="text-sand-50/25">·</span>
-          <a href="tel:+26483411522" className="text-sand-50/80 transition-colors hover:text-teal-300">
+          <a href="tel:+26483411522" className="py-1 text-sand-50/80 transition-colors hover:text-teal-300">
             +264 83 411 522
           </a>
           <span aria-hidden="true" className="text-sand-50/25">·</span>
-          <span className="text-sand-50/40">Windhoek, Namibia</span>
+          <span className="py-1 text-sand-50/60">Windhoek, Namibia</span>
         </div>
 
         <nav aria-label="Footer" className="mt-14 border-t border-sand-50/10 pt-8">
@@ -52,7 +52,7 @@ export function SiteFooter() {
         </nav>
 
         <div className="mt-10 flex flex-col gap-5 border-t border-sand-50/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[13px] text-sand-50/40">© 2026 Hola Credit, a product of Tangison Technologies.</p>
+          <p className="py-1 text-[13px] text-sand-50/60">© 2026 Hola Credit, a product of Tangison Technologies.</p>
           <a
             href="https://tangison.com"
             className="group inline-flex items-center gap-2.5 py-1 transition-opacity hover:opacity-80"

@@ -150,14 +150,14 @@ export default function FaqPage() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="grid gap-6 lg:grid-cols-5 lg:gap-10">
               <Reveal className="lg:col-span-2">
-                <div className="relative h-full overflow-hidden rounded-2xl bg-ink p-7 text-sand-50 sm:p-8">
+                <div className="relative h-full overflow-hidden rounded-none bg-ink p-7 text-sand-50 sm:p-8">
                   <p className="font-serif text-lg italic leading-snug text-sand-50/90">
                     We show our work, and we mark what is still pending.
                   </p>
                   <div className="mt-7 space-y-3">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-teal-300">Measured today</p>
+                    <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-teal-300">Measured today</p>
                     {LEDGER_TODAY.map(({ icon: Icon, label, detail }) => (
-                      <div key={label} className="flex items-start gap-3 rounded-xl border border-sand-50/10 p-4">
+                      <div key={label} className="flex items-start gap-3 rounded-none border border-sand-50/10 p-4">
                         <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal-400/15 text-teal-300">
                           <Icon className="h-4 w-4" aria-hidden="true" />
                         </span>
@@ -169,17 +169,17 @@ export default function FaqPage() {
                     ))}
                   </div>
                   <div className="mt-6 space-y-3">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-sand-50/50">
+                    <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-sand-50/60">
                       Proven later, with real loans
                     </p>
                     {LEDGER_LATER.map(({ icon: Icon, label, detail }) => (
-                      <div key={label} className="flex items-start gap-3 rounded-xl border border-dashed border-sand-50/15 p-4">
+                      <div key={label} className="flex items-start gap-3 rounded-none border border-dashed border-sand-50/15 p-4">
                         <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sand-50/[0.06] text-sand-50/50">
                           <Icon className="h-4 w-4" aria-hidden="true" />
                         </span>
                         <div>
                           <p className="text-sm font-bold text-sand-50/80">{label}</p>
-                          <p className="mt-1 text-[13px] leading-relaxed text-sand-50/45">{detail}</p>
+                          <p className="mt-1 text-[13px] leading-relaxed text-sand-50/60">{detail}</p>
                         </div>
                       </div>
                     ))}
@@ -198,7 +198,7 @@ export default function FaqPage() {
                   type="single"
                   collapsible
                   defaultValue="measure"
-                  className="h-full rounded-2xl border border-sand-300 bg-sand-50 px-6 sm:px-8"
+                  className="h-full rounded-none border border-sand-300 bg-sand-50 px-6 sm:px-8"
                 >
                   {HONESTY.map((item) => (
                     <AccordionItem key={item.id} value={item.id} className="border-sand-300">
@@ -236,7 +236,7 @@ export default function FaqPage() {
                             {item.title}
                             <span
                               aria-hidden="true"
-                              className="relative inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-sand-400 text-ink/60 transition-transform duration-300 group-open:rotate-45"
+                              className="relative inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-sand-400 text-ink/60 transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none"
                             >
                               <span className="absolute h-[9px] w-[1.5px] rounded bg-current" />
                               <span className="absolute h-[1.5px] w-[9px] rounded bg-current" />
@@ -264,7 +264,7 @@ export default function FaqPage() {
               </p>
               <Link
                 href="/contact"
-                className="group mt-8 inline-flex items-center gap-2 text-sm font-bold text-teal-600 transition-colors hover:text-ink"
+                className="group mt-8 inline-flex items-center gap-2 py-1.5 text-sm font-bold text-teal-600 transition-colors hover:text-ink"
               >
                 Talk to us
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />

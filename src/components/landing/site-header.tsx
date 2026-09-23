@@ -70,7 +70,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`text-[13.5px] font-semibold tracking-wide transition-colors duration-ui ${
+                  className={`py-2 text-[13.5px] font-semibold tracking-wide transition-colors duration-ui ${
                     active ? "text-teal-600" : "text-ink/70 hover:text-ink"
                   }`}
                 >
@@ -83,13 +83,13 @@ export function SiteHeader() {
           <div className="hidden shrink-0 items-center gap-5 lg:flex">
             <a
               href={DEMO_URL}
-              className="text-[13.5px] font-semibold text-ink/70 transition-colors duration-ui hover:text-ink"
+              className="py-2 text-[13.5px] font-semibold text-ink/70 transition-colors duration-ui hover:text-ink"
             >
               Sign in
             </a>
             <a
               href={WAITLIST_URL}
-              className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-[13.5px] font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+              className="group inline-flex items-center gap-1.5 rounded-none bg-ink px-5 py-2.5 text-[13.5px] font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
             >
               Join the waitlist
               <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 transition-transform duration-ui group-hover:translate-x-0.5" />
@@ -132,13 +132,13 @@ export function SiteHeader() {
             <div className="mt-6 grid gap-2.5">
               <a
                 href={WAITLIST_URL}
-                className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-sm font-bold text-sand-50"
+                className="inline-flex items-center justify-center rounded-none bg-ink px-5 py-3 text-sm font-bold text-sand-50"
               >
                 Join the waitlist
               </a>
               <a
                 href={DEMO_URL}
-                className="inline-flex items-center justify-center rounded-full border border-sand-400 px-5 py-3 text-sm font-bold text-ink"
+                className="inline-flex items-center justify-center rounded-none border border-sand-400 px-5 py-3 text-sm font-bold text-ink"
               >
                 Sign in
               </a>

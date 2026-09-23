@@ -68,14 +68,14 @@ export default function AboutPage() {
               lead="Tangison Technologies builds financial-tools software with a focus on explainability, auditability and responsible data handling, designed to serve the Namibian market first."
             />
             <Reveal delay={120}>
-              <div className="mt-12 flex flex-col items-start gap-6 rounded-2xl border border-sand-300 bg-sand-100 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+              <div className="mt-12 flex flex-col items-start gap-6 rounded-none border border-sand-300 bg-sand-100 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
                 <div>
                   <p className="font-serif text-2xl font-semibold tracking-tight text-ink">Tangison Technologies</p>
                   <p className="mt-2 text-sm text-ink/60">Windhoek, Namibia · tangison.com</p>
                 </div>
                 <a
                   href="https://tangison.com"
-                  className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="group inline-flex items-center gap-2 rounded-none bg-ink px-6 py-3 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
                 >
                   Visit tangison.com
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
@@ -96,14 +96,14 @@ export default function AboutPage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
                 href="https://hola.tangison.com/waitlist"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
               >
                 Request pilot access
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
               </a>
               <Link
                 href="/product"
-                className="inline-flex items-center justify-center rounded-full border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
+                className="inline-flex items-center justify-center rounded-none border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
               >
                 See how it works
               </Link>

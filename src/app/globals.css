@@ -129,20 +129,34 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; }
   }
+  /* No-JS fallback: never hide content if scripting is unavailable */
+  @media (scripting: none) {
+    .reveal { opacity: 1; transform: none; }
+  }
 
   /* Range input, flat and quiet */
   .hola-range {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
+    height: 24px;
+    background: transparent;
+    cursor: pointer;
+  }
+  .hola-range::-webkit-slider-runnable-track {
     height: 4px;
     border-radius: 999px;
     background: linear-gradient(to right, #16b8a6 var(--fill, 50%), #e8e3d5 var(--fill, 50%));
-    cursor: pointer;
+  }
+  .hola-range::-moz-range-track {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #16b8a6 var(--fill, 50%), #e8e3d5 var(--fill, 50%));
   }
   .hola-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
+    margin-top: -9px;
     width: 22px;
     height: 22px;
     border-radius: 999px;

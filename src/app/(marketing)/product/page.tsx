@@ -183,14 +183,14 @@ export default function ProductPage() {
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
                   href="https://hola.tangison.com/app"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
+                  className="group inline-flex items-center justify-center gap-2 rounded-none bg-ink px-7 py-3.5 text-sm font-bold text-sand-50 transition-colors duration-ui hover:bg-ink-50"
                 >
                   Try the demo
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-ui group-hover:translate-x-0.5" />
                 </a>
                 <Link
                   href="/security"
-                  className="inline-flex items-center justify-center rounded-full border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
+                  className="inline-flex items-center justify-center rounded-none border border-sand-400 px-7 py-3.5 text-sm font-bold text-ink transition-colors duration-ui hover:border-ink"
                 >
                   Security and consent
                 </Link>
